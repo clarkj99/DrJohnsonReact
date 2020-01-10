@@ -5,7 +5,7 @@ const Hero = props => {
     <section className="hero is-primary is-bold">
       <div className="hero-body">
         <div className="container">
-          <h1 className="title">Clark was here!</h1>
+          <h1 className="title">{props.title}</h1>
           <h2 className="subtitle">Hero subtitle</h2>
         </div>
       </div>

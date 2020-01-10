@@ -15,10 +15,9 @@ $beige-lighter: #eff0eb;
 
 $family-sans-serif: "Montserrat", sans-serif;
 $family-monospace: "Inconsolata", sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $ming;
-$link: $pink;
+$primary: $powder-blue;
+$link: $sizzling-red;
+$scheme-main: $seashell;
 
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
@@ -29,3 +28,11 @@ $link: $pink;
 @import "../node_modules/bulma/sass/components/navbar.sass";
 @import "../node_modules/bulma/sass/layout/hero.sass";
 @import "../node_modules/bulma/sass/layout/section.sass";
+
+.navbar {
+  min-height: 5rem;
+}
+
+.hero {
+  min-height: 20rem;
+}
