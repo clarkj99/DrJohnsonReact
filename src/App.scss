@@ -1,0 +1,31 @@
+/* Coolors Exported Palette - coolors.co/ff3154-f7f8ee-bee9e8-387780-393e41 */
+$sizzling-red: #ff3154;
+$seashell: #f7f8ee;
+$powder-blue: #bee9e8;
+$ming: #387780;
+$black-olive: #393e41;
+
+$purple: #8a4d76;
+$pink: #fa7c91;
+$brown: #757763;
+$beige-light: #d0d1cd;
+$beige-lighter: #eff0eb;
+
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Inconsolata|Montserrat|Roboto&display=swap");
+
+$family-sans-serif: "Montserrat", sans-serif;
+$family-monospace: "Inconsolata", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $ming;
+$link: $pink;
+
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/form.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
