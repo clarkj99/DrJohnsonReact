@@ -19,20 +19,17 @@ $primary: $powder-blue;
 $link: $sizzling-red;
 $scheme-main: $seashell;
 
-@import "../node_modules/bulma/sass/utilities/_all.sass";
-@import "../node_modules/bulma/sass/base/_all.sass";
-@import "../node_modules/bulma/sass/elements/button.sass";
-@import "../node_modules/bulma/sass/elements/container.sass";
-@import "../node_modules/bulma/sass/elements/form.sass";
-@import "../node_modules/bulma/sass/elements/title.sass";
-@import "../node_modules/bulma/sass/components/navbar.sass";
-@import "../node_modules/bulma/sass/layout/hero.sass";
-@import "../node_modules/bulma/sass/layout/section.sass";
+$navbar-breakpoint: 0;
+$navbar-height: 3.25rem;
 
-.navbar {
-  min-height: 5rem;
+@import "../node_modules/bulma/bulma.sass";
+@import "../node_modules/bulma-divider/dist/css/bulma-divider.sass";
+
+.login-column {
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
-.hero {
-  min-height: 20rem;
+.login-column .title {
+  text-align: center;
 }
