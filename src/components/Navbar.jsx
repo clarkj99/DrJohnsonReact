@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import Logo from "../images/DrJohnson-white.png";
 
 const Navbar = props => {
+  let user = JSON.parse(localStorage.getItem("user"));
   return (
     <nav
       className="navbar is-dark"
@@ -27,9 +28,16 @@ const Navbar = props => {
           </NavLink>
         </div>
         <div className="navbar-end">
-          <NavLink className="navbar-item" to="/contact-us">
-            Contact Us
-          </NavLink>
+          {user && (
+            <div className="navbar-item">
+              {user.first_name} {user.last_name}
+            </div>
+          )}
+          <div className="navbar-item">
+            <NavLink className="button is-small is-link" to="/contact-us">
+              Contact Us
+            </NavLink>
+          </div>
         </div>
       </div>
     </nav>

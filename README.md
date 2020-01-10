@@ -38,3 +38,17 @@ yarn create react-app frontend
 yarn add bulma
 yarn add node-sass
 ```
+
+2020-01-10
+
+- fun fact: if you make the prop name the same as your action name, then you can just do this
+
+```
+const mapDispatchToProps = {
+  login
+};
+```
+
+- I can store objects in local storage using JSON.stringify and JSON.parse
+
+- redux and jwt: https://levelup.gitconnected.com/using-jwt-in-your-react-redux-app-for-authorization-d31be51a50d2

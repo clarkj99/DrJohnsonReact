@@ -6,7 +6,9 @@ const Hero = props => {
       <div className="hero-body">
         <div className="container">
           <h1 className="title">{props.title}</h1>
-          <h2 className="subtitle">Hero subtitle</h2>
+          <h2 className="subtitle">
+            The Best Micro EMR Built in January 2020!
+          </h2>
         </div>
       </div>
     </section>
