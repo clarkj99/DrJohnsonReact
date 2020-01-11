@@ -47,9 +47,9 @@ class Login extends React.Component {
       })
       .then(res => res.json())
       .then(res => {
-        // this.props.login(res.user);
+        this.props.login(res.user);
         localStorage.setItem("token", res.jwt);
-        localStorage.setItem("user", JSON.stringify(res.user));
+        // localStorage.setItem("user", JSON.stringify(res.user));
       })
       .catch(res => {
         this.setState({ loginError: res.message });
@@ -76,9 +76,9 @@ class Login extends React.Component {
       })
       .then(res => res.json())
       .then(res => {
-        // this.props.login(res.user);
+        this.props.login(res.user);
         localStorage.setItem("token", res.jwt);
-        localStorage.setItem("user", JSON.stringify(res.user));
+        // localStorage.setItem("user", JSON.stringify(res.user));
       })
       .catch(res => {
         this.setState({ signupError: res.message });

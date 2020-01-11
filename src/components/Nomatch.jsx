@@ -8,7 +8,7 @@ const Nomatch = () => {
         <div className="container">
           <div className="columns is-vcentered">
             <div className="column">
-              <figure class="image is-1by1">
+              <figure className="image is-1by1">
                 <img
                   style={{ objectFit: "cover" }}
                   src={Arnold}

@@ -1,9 +1,16 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../images/DrJohnson-white.png";
+import { connect } from "react-redux";
+import { logout } from "../actions/login";
 
 const Navbar = props => {
-  let user = JSON.parse(localStorage.getItem("user"));
+  const handleClick = e => {
+    localStorage.removeItem("token");
+    props.logout();
+  };
+
+  let user = props.user;
   return (
     <nav
       className="navbar is-dark"
@@ -29,10 +36,20 @@ const Navbar = props => {
         </div>
         <div className="navbar-end">
           {user && (
-            <div className="navbar-item">
-              {user.first_name} {user.last_name}
-            </div>
+            <Fragment>
+              <div className="navbar-item">
+                <NavLink className="button is-small" to="/profile">
+                  {user.first_name} {user.last_name}
+                </NavLink>
+              </div>
+              <div className="navbar-item">
+                <button className="button is-small" onClick={handleClick}>
+                  Logout
+                </button>
+              </div>
+            </Fragment>
           )}
+
           <div className="navbar-item">
             <NavLink className="button is-small is-link" to="/contact-us">
               Contact Us
@@ -44,4 +61,9 @@ const Navbar = props => {
   );
 };
 
-export default Navbar;
+function mapStateToProps(state) {
+  return { user: state.user };
+}
+
+const mapDispatchToProps = { logout };
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

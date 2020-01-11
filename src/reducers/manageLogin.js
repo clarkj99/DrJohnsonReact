@@ -1,7 +1,9 @@
-const manageLogin = (state = { token: null, role: 0, user: null }, action) => {
+const manageLogin = (state = { user: null }, action) => {
     switch (action.type) {
         case 'LOGIN':
             return { ...state, user: action.user }
+        case 'LOGOUT':
+            return { ...state, user: null }
         default:
             return state
     }
