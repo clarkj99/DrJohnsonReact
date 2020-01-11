@@ -27,7 +27,7 @@ class Profile extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { user: state.user };
+  return { user: state.login.user };
 }
 
 export default connect(mapStateToProps)(Profile);

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../images/DrJohnson-white.png";
 import { connect } from "react-redux";
-import { logout } from "../actions/login";
+import { logout } from "../actions/rootActions";
 
 const Navbar = props => {
   const handleClick = e => {
@@ -62,7 +62,7 @@ const Navbar = props => {
 };
 
 function mapStateToProps(state) {
-  return { user: state.user };
+  return { user: state.login.user };
 }
 
 const mapDispatchToProps = { logout };

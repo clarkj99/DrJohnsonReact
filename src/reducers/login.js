@@ -1,4 +1,4 @@
-const manageLogin = (state = { user: null }, action) => {
+const login = (state = { user: null }, action) => {
     switch (action.type) {
         case 'LOGIN':
             return { ...state, user: action.user }
@@ -9,4 +9,4 @@ const manageLogin = (state = { user: null }, action) => {
     }
 }
 
-export default manageLogin;
+export default login;

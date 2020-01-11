@@ -10,3 +10,10 @@ export const logout = () => {
         type: "LOGOUT"
     }
 }
+
+export const add_encounters = (encounters) => {
+    return {
+        type: 'ADD_ENCOUNTERS',
+        encounters
+    }
+} 

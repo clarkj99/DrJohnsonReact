@@ -10,7 +10,7 @@ import Profile from './components/Profile';
 import Provider from './containers/Provider';
 
 import { connect } from 'react-redux'
-import { login } from './actions/login'
+import { login } from './actions/rootActions'
 
 class App extends React.Component {
 
@@ -88,7 +88,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.user }
+  return { user: state.login.user }
 }
 
 const mapDispatchToProps = { login }
