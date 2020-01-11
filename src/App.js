@@ -7,9 +7,11 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Nomatch from './components/Nomatch';
 import Profile from './components/Profile';
+import Provider from './containers/Provider';
 
 import { connect } from 'react-redux'
 import { login } from './actions/login'
+
 class App extends React.Component {
 
   componentDidMount = () => {
@@ -51,18 +53,26 @@ class App extends React.Component {
               <Hero title="DrJohnson - FlatIron's Premier EMR" />
               <Home />
             </Route>
-            <Route exact path="/about">
+            <Route path="/about">
               <Hero title="About DrJohnson" />
             </Route>
-            <Route exact path="/features">
+            <Route path="/features">
               <Hero title="EMR Features" />
             </Route>
-            <Route exact path="/contact-us">
+            <Route path="/contact-us">
               <Hero title="Contact US" />
             </Route>
-            <Route exact path="/providers">
-              <Hero title="Healthcare Provider Access" />
+            <Route path="/login">
+              <Hero title="Login" />
               <Login />
+            </Route>
+            <Route path="/provider">
+              <Hero title="Provider Access" />
+              {this.props.user ? <Provider /> : <Login />}
+
+            </Route>
+            <Route path="/patient">
+              <Hero title="Patient Portal" />
             </Route>
             <Route path="/profile">
               <Profile />
@@ -77,6 +87,10 @@ class App extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return { user: state.user }
+}
+
 const mapDispatchToProps = { login }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
