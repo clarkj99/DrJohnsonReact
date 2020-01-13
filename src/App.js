@@ -10,7 +10,7 @@ import Profile from './components/Profile';
 import Provider from './containers/Provider';
 
 import { connect } from 'react-redux'
-import { login } from './actions/rootActions'
+import { addLogin } from './actions/rootActions'
 import Patient from './containers/Patient';
 import NewPatient from './components/NewPatient';
 
@@ -35,7 +35,7 @@ class App extends React.Component {
         })
         .then(res => res.json())
         .then(data => {
-          this.props.login(data)
+          this.props.addLogin(data)
         })
         .catch(res => {
           // remove the token if user not found
@@ -92,6 +92,6 @@ const mapStateToProps = (state) => {
   return { user: state.login.user }
 }
 
-const mapDispatchToProps = { login }
+const mapDispatchToProps = { addLogin }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

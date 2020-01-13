@@ -1,7 +1,12 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { add_encounters } from "../actions/rootActions";
+import {
+  addEncounters,
+  selectEncounter,
+  clearEncounter,
+  startEncounter
+} from "../actions/rootActions";
 import Hero from "../components/Hero";
 
 class Provider extends React.Component {
@@ -14,16 +19,21 @@ class Provider extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        this.props.add_encounters(data);
+        this.props.addEncounters(data);
       });
   };
 
   state = { selectedEncounter: {} };
 
   handleToggle = encounter => {
-    if (this.state.selectedEncounter.id === encounter.id)
-      this.setState({ selectedEncounter: {} });
-    else this.setState({ selectedEncounter: encounter });
+    if (this.props.selectedEncounter.id === encounter.id)
+      this.props.clearEncounter();
+    else this.props.selectEncounter(encounter);
+  };
+
+  handleEdit = encounter => {
+    this.props.selectEncounter(encounter);
+    this.props.startEncounter();
   };
 
   render() {
@@ -48,7 +58,7 @@ class Provider extends React.Component {
                               <span className="icon">
                                 <i
                                   className={
-                                    this.state.selectedEncounter.id ===
+                                    this.props.selectedEncounter.id ===
                                     encounter.id
                                       ? "fas fa-minus"
                                       : "fas fa-plus"
@@ -56,7 +66,10 @@ class Provider extends React.Component {
                                 ></i>
                               </span>
                             </button>
-                            <button className="button">
+                            <button
+                              className="button"
+                              onClick={e => this.handleEdit(encounter)}
+                            >
                               <span className="icon">
                                 <i className="fas fa-edit"></i>
                               </span>
@@ -77,7 +90,7 @@ class Provider extends React.Component {
                           </span>
                         </div>
                       </div>
-                      {this.state.selectedEncounter.id === encounter.id && (
+                      {this.props.selectedEncounter.id === encounter.id && (
                         <div className="">
                           <span>{encounter.complaint}</span>
                         </div>
@@ -121,9 +134,17 @@ class Provider extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  return { encounters: state.encounter.encounters };
+  return {
+    encounters: state.encounter.encounters,
+    selectedEncounter: state.encounter.selectedEncounter
+  };
 };
 
-const mapDispatchToProps = { add_encounters };
+const mapDispatchToProps = {
+  addEncounters,
+  selectEncounter,
+  clearEncounter,
+  startEncounter
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Provider);

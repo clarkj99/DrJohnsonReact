@@ -4,6 +4,12 @@ export const login = (user) => {
         user
     }
 }
+export const addLogin = (user) => {
+    return {
+        type: "ADD_LOGIN",
+        user
+    }
+}
 
 export const logout = () => {
     return {
@@ -11,9 +17,28 @@ export const logout = () => {
     }
 }
 
-export const add_encounters = (encounters) => {
+export const addEncounters = (encounters) => {
     return {
         type: 'ADD_ENCOUNTERS',
         encounters
+    }
+}
+
+export const selectEncounter = (encounter) => {
+    return {
+        type: 'SELECT_ENCOUNTER',
+        encounter
+    }
+}
+
+export const clearEncounter = () => {
+    return {
+        type: 'CLEAR_ENCOUNTER'
+    }
+}
+
+export const startEncounter = () => {
+    return {
+        type: 'START_ENCOUNTER'
     }
 } 

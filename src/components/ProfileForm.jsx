@@ -2,14 +2,14 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 
 class ProfileForm extends React.Component {
-  //   initalState = {
-  //     address1: "",
-  //     address2: "",
-  //     city: "",
-  //     state: "",
-  //     zip: "",
-  //     photo: null
-  //   };
+  initalState = {
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    zip: "",
+    photo: null
+  };
 
   componentDidMount = () => {
     this.initalState = { ...this.props.user.profile };

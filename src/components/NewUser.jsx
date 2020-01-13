@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { login } from "../actions/rootActions";
-import Hero from "./Hero";
+// import Hero from "./Hero";
 
 class NewUser extends React.Component {
   initalUser = {
