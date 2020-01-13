@@ -14,7 +14,7 @@ const Home = () => {
                 </span>
               </div>
               <h2 className="title has-text-primary">Healthcare Providers</h2>
-              <Link to="/provider" className="button is-dark is-large">
+              <Link to="/providers" className="button is-dark is-large">
                 Go to Patient Care
               </Link>
             </div>

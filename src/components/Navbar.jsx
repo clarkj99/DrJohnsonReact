@@ -35,19 +35,36 @@ const Navbar = props => {
           </NavLink>
         </div>
         <div className="navbar-end">
-          {user && (
+          {user ? (
             <Fragment>
               <div className="navbar-item">
                 <NavLink className="button is-small" to="/profile">
-                  {user.first_name} {user.last_name}
+                  <span className="icon">
+                    <i className="fas fa-user"></i>
+                  </span>
+                  <span>
+                    {user.first_name} {user.last_name}
+                  </span>
                 </NavLink>
               </div>
               <div className="navbar-item">
                 <button className="button is-small" onClick={handleClick}>
-                  Logout
+                  <span className="icon">
+                    <i className="fas fa-sign-out-alt"></i>
+                  </span>
+                  <span>Logout</span>
                 </button>
               </div>
             </Fragment>
+          ) : (
+            <div className="navbar-item">
+              <NavLink className="button is-small" to="/login">
+                <span className="icon">
+                  <i className="fas fa-sign-in-alt"></i>
+                </span>
+                <span> Login</span>
+              </NavLink>
+            </div>
           )}
 
           <div className="navbar-item">

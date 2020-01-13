@@ -11,6 +11,8 @@ import Provider from './containers/Provider';
 
 import { connect } from 'react-redux'
 import { login } from './actions/rootActions'
+import Patient from './containers/Patient';
+import NewPatient from './components/NewPatient';
 
 class App extends React.Component {
 
@@ -59,22 +61,22 @@ class App extends React.Component {
               <Hero title="EMR Features" />
             </Route>
             <Route path="/contact-us">
-              <Hero title="Contact US" />
+              <Hero title="Contact Us" />
             </Route>
             <Route path="/login">
-              <Hero title="Login" />
-              <Login />
+              {this.props.user ? <Profile /> : <Login />}
             </Route>
-            <Route path="/provider">
-              <Hero title="Provider Access" />
+            <Route exact path="/providers">
               {this.props.user ? <Provider /> : <Login />}
-
             </Route>
-            <Route path="/patient">
-              <Hero title="Patient Portal" />
+            <Route path="/providers/newpatient">
+              <NewPatient />
+            </Route>
+            <Route path="/patients">
+              {this.props.user ? <Patient /> : <Login />}
             </Route>
             <Route path="/profile">
-              <Profile />
+              {this.props.user ? <Profile /> : <Login />}
             </Route>
             <Route path="*">
               <Nomatch />
