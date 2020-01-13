@@ -1,4 +1,4 @@
-const encounter = (state = { encounters: [], selectedEncounter: {}, startEncounter: false }, action) => {
+const encounter = (state = { encounters: [], selectedEncounter: {}, editingEncounter: false }, action) => {
     switch (action.type) {
         case 'ADD_ENCOUNTERS':
             return { ...state, encounters: action.encounters }
@@ -7,7 +7,9 @@ const encounter = (state = { encounters: [], selectedEncounter: {}, startEncount
         case 'CLEAR_ENCOUNTER':
             return { ...state, selectedEncounter: {} }
         case 'START_ENCOUNTER':
-            return { ...state, startEncounter: true }
+            return { ...state, editingEncounter: true }
+        case 'STOP_ENCOUNTER':
+            return { ...state, editingEncounter: false }
         default:
             return state
     }
