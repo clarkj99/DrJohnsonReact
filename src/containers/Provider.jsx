@@ -34,8 +34,8 @@ class Provider extends React.Component {
             {this.props.encounters &&
               this.props.encounters.map(encounter => {
                 return (
-                  <div className="box">
-                    <div className="columns" key={encounter.id}>
+                  <div className="box" key={encounter.id}>
+                    <div className="columns">
                       <div className="column">
                         <div className="buttons">
                           <button

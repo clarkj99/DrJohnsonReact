@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
 import Hero from "./Hero";
 import { connect } from "react-redux";
+import ProfileForm from "./ProfileForm";
 
 class Profile extends React.Component {
   render = () => {
-    console.log(this.props);
     return (
       <Fragment>
         <Hero title="Profile" />
-        <section class="section">
+        <section className="section">
           <div className="container">
             {this.props.user && (
               <Fragment>
@@ -16,7 +16,9 @@ class Profile extends React.Component {
                   {this.props.user.first_name} {this.props.user.last_name},{" "}
                   {this.props.user.role}
                 </h2>
-                <p>Email: {this.props.user.email}</p>
+                <p className="subtitle">Email: {this.props.user.email}</p>
+
+                <ProfileForm />
               </Fragment>
             )}
           </div>

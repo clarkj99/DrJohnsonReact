@@ -17,7 +17,6 @@ class App extends React.Component {
   componentDidMount = () => {
     // If a token is present, then get the user profile
     if (localStorage.getItem('token')) {
-      console.log('fetching user');
       fetch("http://localhost:3000/api/v1/profile", {
         method: 'GET',
         headers: {
@@ -34,11 +33,11 @@ class App extends React.Component {
         })
         .then(res => res.json())
         .then(data => {
-          this.props.login(data.user)
+          this.props.login(data)
         })
         .catch(res => {
           // remove the token if user not found
-          localStorage.removeItem("token")
+          // localStorage.removeItem("token")
         });
     }
   }
