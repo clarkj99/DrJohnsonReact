@@ -37,14 +37,22 @@ export const clearEncounter = () => {
     }
 }
 
-export const startEncounter = () => {
+export const startEncounter = (encounter) => {
     return {
-        type: 'START_ENCOUNTER'
+        type: 'START_ENCOUNTER',
+        encounter
     }
 }
 
 export const stopEncounter = () => {
     return {
         type: 'STOP_ENCOUNTER'
+    }
+}
+
+export const changeHPI = (hpi) => {
+    return {
+        type: 'CHANGE_HPI',
+        hpi
     }
 } 

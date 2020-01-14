@@ -1,8 +1,48 @@
 import React from "react";
 import { connect } from "react-redux";
+import { changeHPI } from "../actions/rootActions";
 
 class HPI extends React.Component {
-  state = {};
+  initialState = {
+    duration: "",
+    duration_units: "",
+    aggravating_factors: "",
+    context: "",
+    location: "",
+    severity: ""
+  };
+
+  state = { ...this.initialState };
+
+  componentDidMount = () => {
+    this.initialState = { ...this.props.hpi };
+    this.setState({ ...this.props.hpi });
+  };
+
+  handleChange = e => {
+    // this.props.changeHPI({
+    //   ...this.props.hpi,
+    //   [e.target.name]: e.target.value
+    // });
+
+    this.setState({ [e.target.name]: e.target.value });
+
+    fetch(`http://localhost:3000/api/v1/hpi/${this.props.hpi.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      },
+      body: JSON.stringify({
+        hpi: { ...this.state, [e.target.name]: e.target.value }
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        this.setState(data);
+      });
+  };
 
   render() {
     let {
@@ -10,8 +50,10 @@ class HPI extends React.Component {
       duration_units,
       aggravating_factors,
       context,
-      location
-    } = this.props.hpi;
+      location,
+      severity
+    } = this.state;
+
     return (
       <section className="section">
         <div className="container">
@@ -31,12 +73,13 @@ class HPI extends React.Component {
                     placeholder="number"
                     name="duration"
                     value={duration || ""}
+                    onChange={this.handleChange}
                   />
                 </div>
 
                 <div className="control">
                   <div className="select">
-                    <select name="duration_units">
+                    <select name="duration_units" onChange={this.handleChange}>
                       <option>Units</option>
                       <option value="days">days</option>
                       <option value="weeks">weeks</option>
@@ -47,16 +90,49 @@ class HPI extends React.Component {
               </div>
             </div>
 
-            <div className="field is-horizontal">
+            <div className="field is-horizontal has-addons">
+              <div className="field-label is-normal">
+                <label className="label" htmlFor="severity">
+                  Severity
+                </label>
+              </div>
+              <div className="field-body">
+                <div className="control is-expanded">
+                  <input
+                    name="severity"
+                    className="slider is-fullwidth is-medium"
+                    step="1"
+                    min="1"
+                    max="10"
+                    value={severity || "5"}
+                    type="range"
+                    onChange={this.handleChange}
+                  />
+                </div>
+
+                <div className="control">
+                  <div className=" field-label is-normal ">
+                    <span className="label has-text-link" htmlFor="severity">
+                      {severity || "5"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="field is-horizontal has-addons">
               <div className="field-label is-normal">
                 <label className="label" htmlFor="aggravating_factors">
                   Aggravating Factors
                 </label>
               </div>
               <div className="field-body">
-                <div className="control">
+                <div className="control is-expanded">
                   <div className="select">
-                    <select name="aggravating_factors">
+                    <select
+                      name="aggravating_factors"
+                      onChange={this.handleChange}
+                    >
                       <option>Factors</option>
                       <option value="movement">movement</option>
                       <option value="rest">rest</option>
@@ -85,13 +161,14 @@ class HPI extends React.Component {
                     placeholder="context"
                     name="context"
                     value={context || ""}
+                    onChange={this.handleChange}
                   />
                 </div>
               </div>
             </div>
 
             <div className="field is-horizontal has-addons">
-              <div className="field-label  is-normal">
+              <div className="field-label is-normal">
                 <label className="label" htmlFor="location">
                   Location
                 </label>
@@ -104,6 +181,7 @@ class HPI extends React.Component {
                     placeholder="location"
                     name="location"
                     value={location || ""}
+                    onChange={this.handleChange}
                   />
                 </div>
               </div>
@@ -119,4 +197,5 @@ const mapStateToProps = state => {
   return { hpi: state.encounter.selectedEncounter.hpi };
 };
 
-export default connect(mapStateToProps)(HPI);
+const mapDispatchToProps = { changeHPI };
+export default connect(mapStateToProps, mapDispatchToProps)(HPI);

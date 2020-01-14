@@ -32,8 +32,7 @@ class EncounterSelection extends React.Component {
   };
 
   handleEdit = encounter => {
-    this.props.selectEncounter(encounter);
-    this.props.startEncounter();
+    this.props.startEncounter(encounter);
   };
 
   render() {
