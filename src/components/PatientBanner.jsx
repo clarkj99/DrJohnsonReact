@@ -24,12 +24,11 @@ const PatientBanner = props => {
               <span className="has-text-weight-bold">Chief complaint:</span>{" "}
               {props.encounter.complaint}
             </div>
-            <div className="column">
-              <button
-                className="delete is-large"
-                onClick={e => props.stopEncounter()}
-              ></button>
-            </div>
+            <div className="column"></div>{" "}
+            <button
+              className="delete is-large"
+              onClick={e => props.stopEncounter()}
+            ></button>
           </div>
         </div>
       </div>

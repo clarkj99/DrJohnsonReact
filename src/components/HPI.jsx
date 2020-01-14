@@ -30,7 +30,7 @@ class HPI extends React.Component {
                     type="text"
                     placeholder="number"
                     name="duration"
-                    value={duration}
+                    value={duration || ""}
                   />
                 </div>
 
@@ -84,7 +84,7 @@ class HPI extends React.Component {
                     type="text"
                     placeholder="context"
                     name="context"
-                    value={context}
+                    value={context || ""}
                   />
                 </div>
               </div>
@@ -103,7 +103,7 @@ class HPI extends React.Component {
                     type="text"
                     placeholder="location"
                     name="location"
-                    value={location}
+                    value={location || ""}
                   />
                 </div>
               </div>
