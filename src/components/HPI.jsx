@@ -37,10 +37,18 @@ class HPI extends React.Component {
         hpi: { ...this.state, [e.target.name]: e.target.value }
       })
     })
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response; //we only get here if there is no error
+      })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         this.setState(data);
+      })
+      .catch(res => {
+        this.setState({ error: res.message });
       });
   };
 
@@ -79,8 +87,12 @@ class HPI extends React.Component {
 
                 <div className="control">
                   <div className="select">
-                    <select name="duration_units" onChange={this.handleChange}>
-                      <option>Units</option>
+                    <select
+                      name="duration_units"
+                      value={duration_units}
+                      onChange={this.handleChange}
+                    >
+                      <option value="">Units</option>
                       <option value="days">days</option>
                       <option value="weeks">weeks</option>
                       <option value="months">months</option>
@@ -131,9 +143,10 @@ class HPI extends React.Component {
                   <div className="select">
                     <select
                       name="aggravating_factors"
+                      value={aggravating_factors}
                       onChange={this.handleChange}
                     >
-                      <option>Factors</option>
+                      <option value="">Factors</option>
                       <option value="movement">movement</option>
                       <option value="rest">rest</option>
                       <option value="intercourse">intercourse</option>
