@@ -44,9 +44,9 @@ export const stopEncounter = () => {
     }
 }
 
-export const changeHPI = (hpi) => {
+export const updateHPI = (hpi) => {
     return {
-        type: 'CHANGE_HPI',
+        type: 'UPDATE_HPI',
         hpi
     }
 } 

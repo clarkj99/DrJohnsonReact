@@ -91,7 +91,8 @@ class EncounterSelection extends React.Component {
                       </div>
                       {this.props.selectedEncounter.id === encounter.id && (
                         <div className="">
-                          <span>{encounter.complaint}</span>
+                          <p>{encounter.complaint}</p>
+                          <p>{encounter.hpi.context}</p>
                         </div>
                       )}
                     </div>

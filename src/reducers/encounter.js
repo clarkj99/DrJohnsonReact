@@ -1,4 +1,4 @@
-const encounter = (state = { encounters: [], selectedEncounter: {}, editedEncounter: {}, editingEncounter: false }, action) => {
+const encounter = (state = { encounters: [], selectedEncounter: {}, editingEncounter: false }, action) => {
     console.log(action);
     switch (action.type) {
         case 'ADD_ENCOUNTERS':
@@ -8,11 +8,11 @@ const encounter = (state = { encounters: [], selectedEncounter: {}, editedEncoun
         case 'CLEAR_ENCOUNTER':
             return { ...state, selectedEncounter: {} }
         case 'START_ENCOUNTER':
-            return { ...state, editingEncounter: true, selectedEncounter: { ...action.encounter }, editedEncounter: { ...action.encounter } }
+            return { ...state, editingEncounter: true, selectedEncounter: { ...action.encounter } }
         case 'STOP_ENCOUNTER':
-            return { ...state, editingEncounter: false }
-        case 'CHANGE_HPI':
-            return { ...state, editedEncounter: { ...state.editedEncounter, hpi: { ...action.hpi } } }
+            return { ...state, editingEncounter: false, selectedEncounter: {} }
+        case 'UPDATE_HPI':
+            return { ...state, selectedEncounter: { ...state.selectedEncounter, hpi: { ...action.hpi } } }
         default:
             return state
     }

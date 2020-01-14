@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { updateHPI } from "../actions/rootActions";
 
 class HPI extends React.Component {
   initialState = {
@@ -19,11 +20,6 @@ class HPI extends React.Component {
   };
 
   handleChange = e => {
-    // this.props.changeHPI({
-    //   ...this.props.hpi,
-    //   [e.target.name]: e.target.value
-    // });
-
     this.setState({ [e.target.name]: e.target.value });
 
     fetch(`http://localhost:3000/api/v1/hpi/${this.props.hpi.id}`, {
@@ -44,7 +40,8 @@ class HPI extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        this.setState(data);
+        // this.setState(data);
+        this.props.updateHPI(data);
       })
       .catch(res => {
         this.setState({ error: res.message });
@@ -209,4 +206,6 @@ const mapStateToProps = state => {
   return { hpi: state.encounter.selectedEncounter.hpi };
 };
 
-export default connect(mapStateToProps)(HPI);
+const mapDispatchToProps = { updateHPI };
+
+export default connect(mapStateToProps, mapDispatchToProps)(HPI);
