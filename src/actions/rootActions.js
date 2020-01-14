@@ -41,4 +41,10 @@ export const startEncounter = () => {
     return {
         type: 'START_ENCOUNTER'
     }
+}
+
+export const stopEncounter = () => {
+    return {
+        type: 'STOP_ENCOUNTER'
+    }
 } 
