@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { changeHPI } from "../actions/rootActions";
 
 class HPI extends React.Component {
   initialState = {
@@ -210,5 +209,4 @@ const mapStateToProps = state => {
   return { hpi: state.encounter.selectedEncounter.hpi };
 };
 
-const mapDispatchToProps = { changeHPI };
-export default connect(mapStateToProps, mapDispatchToProps)(HPI);
+export default connect(mapStateToProps)(HPI);

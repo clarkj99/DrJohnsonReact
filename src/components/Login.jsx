@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { login } from "../actions/rootActions";
+import { addLogin } from "../actions/rootActions";
 import Hero from "./Hero";
 
 class Login extends React.Component {
@@ -41,7 +41,7 @@ class Login extends React.Component {
       })
       .then(res => res.json())
       .then(res => {
-        this.props.login(res.user);
+        this.props.addLogin(res.user);
         localStorage.setItem("token", res.jwt);
         // localStorage.setItem("user", JSON.stringify(res.user));
       })
@@ -103,7 +103,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = {
-  login
+  addLogin
 };
 
 export default connect(null, mapDispatchToProps)(Login);

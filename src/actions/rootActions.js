@@ -1,9 +1,3 @@
-export const login = (user) => {
-    return {
-        type: "LOGIN",
-        user
-    }
-}
 export const addLogin = (user) => {
     return {
         type: "ADD_LOGIN",
