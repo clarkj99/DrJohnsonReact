@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { updateEncounterChild } from "../actions/rootActions";
+import Checkbox from "./Checkbox";
 
 class RoSystems extends React.Component {
   initialState = {
@@ -29,12 +31,15 @@ class RoSystems extends React.Component {
   state = { ...this.initialState };
 
   componentDidMount = () => {
-    this.initialState = { ...this.props.hpi };
-    this.setState({ ...this.props.hpi });
+    this.initialState = { ...this.props.rosystem };
+    this.setState({ ...this.props.rosystem });
   };
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    console.log(e.target);
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    this.setState({ [e.target.name]: value });
 
     fetch(`http://localhost:3000/api/v1/rosystem/${this.props.rosystem.id}`, {
       method: "PATCH",
@@ -43,7 +48,7 @@ class RoSystems extends React.Component {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify({
-        rosystem: { ...this.state, [e.target.name]: e.target.value }
+        rosystem: { ...this.state, [e.target.name]: value }
       })
     })
       .then(response => {
@@ -54,7 +59,7 @@ class RoSystems extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        this.setState(data);
+        this.props.updateEncounterChild("rosystem", data);
       })
       .catch(res => {
         this.setState({ error: res.message });
@@ -91,7 +96,37 @@ class RoSystems extends React.Component {
         <div className="container">
           <h2 className="subtitle">Review of Systems</h2>
           <hr />
-          <form className="form"></form>
+          <form className="form">
+            <div className="field is-horizontal has-addons">
+              <div className="field-label is-normal">
+                <label className="label">Constitutional</label>
+              </div>
+              <Checkbox
+                field="fever"
+                label="Fever"
+                value={fever}
+                handleChange={this.handleChange}
+              />
+              <Checkbox
+                field="fatigue"
+                label="Fatigue"
+                value={fatigue}
+                handleChange={this.handleChange}
+              />
+              <Checkbox
+                field="appetite"
+                label="Appetite"
+                value={appetite}
+                handleChange={this.handleChange}
+              />
+              <Checkbox
+                field="weight"
+                label="Weight"
+                value={weight}
+                handleChange={this.handleChange}
+              />
+            </div>
+          </form>
         </div>
       </section>
     );
@@ -101,5 +136,5 @@ class RoSystems extends React.Component {
 const mapStateToProps = state => {
   return { rosystem: state.encounter.selectedEncounter.rosystem };
 };
-
-export default connect(mapStateToProps)(RoSystems);
+const mapDispatchToProps = { updateEncounterChild };
+export default connect(mapStateToProps, mapDispatchToProps)(RoSystems);

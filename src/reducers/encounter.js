@@ -13,6 +13,10 @@ const encounter = (state = { encounters: [], selectedEncounter: {}, editingEncou
             return { ...state, editingEncounter: false, selectedEncounter: {} }
         case 'UPDATE_HPI':
             return { ...state, selectedEncounter: { ...state.selectedEncounter, hpi: { ...action.hpi } } }
+        case 'UPDATE_ROSYSTEM':
+            return { ...state, selectedEncounter: { ...state.selectedEncounter, rosystem: { ...action.hpi } } }
+        case 'UPDATE_ENCOUNTER_CHILD':
+            return { ...state, selectedEncounter: { ...state.selectedEncounter, [action.model]: { ...action.value } } }
         default:
             return state
     }

@@ -44,9 +44,10 @@ export const stopEncounter = () => {
     }
 }
 
-export const updateHPI = (hpi) => {
+export const updateEncounterChild = (model, value) => {
     return {
-        type: 'UPDATE_HPI',
-        hpi
+        type: 'UPDATE_ENCOUNTER_CHILD',
+        model,
+        value
     }
-} 
+}

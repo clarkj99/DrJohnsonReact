@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateHPI } from "../actions/rootActions";
+import { updateEncounterChild } from "../actions/rootActions";
 
 class HPI extends React.Component {
   initialState = {
@@ -40,8 +40,7 @@ class HPI extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        // this.setState(data);
-        this.props.updateHPI(data);
+        this.props.updateEncounterChild("hpi", data);
       })
       .catch(res => {
         this.setState({ error: res.message });
@@ -64,7 +63,7 @@ class HPI extends React.Component {
           <h2 className="subtitle">History of Present Illness</h2>
           <form className="form">
             <div className="field is-horizontal has-addons">
-              <div className="field-label  is-normal">
+              <div className="field-label is-normal">
                 <label className="label" htmlFor="duration">
                   Duration
                 </label>
@@ -206,6 +205,6 @@ const mapStateToProps = state => {
   return { hpi: state.encounter.selectedEncounter.hpi };
 };
 
-const mapDispatchToProps = { updateHPI };
+const mapDispatchToProps = { updateEncounterChild };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HPI);
