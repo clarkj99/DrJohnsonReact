@@ -22,6 +22,9 @@ yarn create react-app frontend
 - [ ] Models and Controllers
 - [ ] Authentication and Roles
 - [ ] Seed data
+- [ ]
+- [ ] Search bar
+- [ ] Admin Page to add new providers
 - [ ] ICD-10 Lookup/Download
 - [ ] Photo for Profile
 - [ ] Alexa Skill (?)
@@ -52,3 +55,13 @@ const mapDispatchToProps = {
 - I can store objects in local storage using JSON.stringify and JSON.parse
 
 - redux and jwt: https://levelup.gitconnected.com/using-jwt-in-your-react-redux-app-for-authorization-d31be51a50d2
+
+2020-01-14
+
+- Implemented forms by creating rails models for each form view.
+- Added steps navigation for encounter using bulma-steps. I had to create my own implementation in Rails, without the included javascript.
+
+2020-01-15
+
+- Remember to create child models with user and encounter
+- Added search bar. Loaded user in state, then searched first name and last name using Array.includes().

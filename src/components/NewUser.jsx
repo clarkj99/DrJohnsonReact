@@ -53,8 +53,10 @@ class NewUser extends React.Component {
   render() {
     return (
       <Fragment>
-        <h2 className="title">Sign Up</h2>
-        <p>New to DrJohnson? Get started!</p>
+        <h2 className="title">New User</h2>
+        <p>
+          Create a new user login. User will still need to update their profile.
+        </p>
         <form onSubmit={this.submitSignup}>
           <div className="field">
             <div className="control">
@@ -103,7 +105,7 @@ class NewUser extends React.Component {
               <p className="help is-danger">{this.state.signupError}</p>
             )}
             <button type="submit" className="button is-fullwidth is-primary">
-              Sign Up
+              Create User
             </button>
           </div>
         </form>
@@ -111,8 +113,12 @@ class NewUser extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { user: state.login.user };
+};
 const mapDispatchToProps = {
   addLogin
 };
 
-export default connect(null, mapDispatchToProps)(NewUser);
+export default connect(mapStateToProps, mapDispatchToProps)(NewUser);

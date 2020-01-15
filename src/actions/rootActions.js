@@ -58,3 +58,19 @@ export const setStep = (stepNumber) => {
         stepNumber
     }
 }
+
+export const addUsers = (userType, userList) => {
+    return {
+        type: 'ADD_USERS',
+        userType,
+        userList
+    }
+}
+
+export const selectUser = (user) => {
+    return {
+        type: 'SELECT_USER',
+        user,
+
+    }
+}

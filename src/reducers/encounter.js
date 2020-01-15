@@ -1,5 +1,4 @@
 const encounter = (state = { encounters: [], selectedEncounter: {}, editingEncounter: false }, action) => {
-    console.log(action);
     switch (action.type) {
         case 'ADD_ENCOUNTERS':
             return { ...state, encounters: action.encounters }

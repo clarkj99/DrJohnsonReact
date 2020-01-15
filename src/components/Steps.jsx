@@ -18,7 +18,7 @@ const Steps = props => {
           className={
             props.stepNumber >= 1
               ? "step-item is-active is-success"
-              : "step-item "
+              : "step-item"
           }
           onClick={e => props.setStep(1)}
         >
@@ -64,7 +64,7 @@ const Steps = props => {
           className={
             props.stepNumber >= 4
               ? "step-item is-active is-success"
-              : "step-item "
+              : "step-item is-large"
           }
           onClick={e => props.setStep(4)}
         >
