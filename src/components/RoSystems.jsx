@@ -37,7 +37,6 @@ class RoSystems extends React.Component {
   };
 
   handleChange = e => {
-    console.log(e.target);
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     this.setState({ [e.target.name]: value });
