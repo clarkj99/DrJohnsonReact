@@ -8,9 +8,10 @@ import {
   startEncounter,
   clearUser
 } from "../actions/rootActions";
-import user from "../reducers/user";
 
 class EncounterList extends React.Component {
+  state = { open: true };
+
   componentDidMount = () => {
     fetch("http://localhost:3000/api/v1/encounters", {
       method: "GET",
@@ -43,11 +44,21 @@ class EncounterList extends React.Component {
   };
 
   encounterList = () => {
+    const status = this.state.open ? "open" : "closed";
     if (this.props.selectedUser) {
       return this.props.encounters.filter(
-        encounter => encounter.patient_id === this.props.selectedUser.id
+        encounter =>
+          encounter.patient_id === this.props.selectedUser.id &&
+          encounter.status === status
       );
-    } else return this.props.encounters;
+    } else
+      return this.props.encounters.filter(
+        encounter => encounter.status === status
+      );
+  };
+
+  handleRadio = () => {
+    this.setState({ open: !this.state.open });
   };
 
   render() {
@@ -63,58 +74,83 @@ class EncounterList extends React.Component {
             ></button>
           </h3>
         )}
-        {this.encounterList() &&
-          this.encounterList().map(encounter => {
-            return (
-              <div className="box" key={encounter.id}>
-                <div className="columns">
-                  <div className="column">
-                    <div className="buttons">
-                      <button
-                        className="button"
-                        onClick={e => this.handleToggle(encounter)}
-                      >
-                        <span className="icon">
-                          <i
-                            className={
-                              this.props.selectedEncounter.id === encounter.id
-                                ? "fas fa-minus"
-                                : "fas fa-plus"
-                            }
-                          ></i>
-                        </span>
-                      </button>
-                      <button
-                        className="button"
-                        onClick={e => this.handleEdit(encounter)}
-                      >
-                        <span className="icon">
-                          <i className="fas fa-edit"></i>
-                        </span>
-                      </button>
+        {this.props.encounters.length > 0 && (
+          <Fragment>
+            <div className="form">
+              <div class="field">
+                <input
+                  className="is-checkradio is-link"
+                  id="exampleRadioInline1"
+                  type="radio"
+                  name="exampleRadioInline"
+                  onClick={this.handleRadio}
+                  checked={this.state.open ? "checked" : ""}
+                />
+                <label for="exampleRadioInline1">Open</label>
+                <input
+                  className="is-checkradio is-link"
+                  id="exampleRadioInline2"
+                  type="radio"
+                  name="exampleRadioInline"
+                  onClick={this.handleRadio}
+                  checked={!this.state.open ? "checked" : ""}
+                />
+                <label for="exampleRadioInline2">Closed</label>
+              </div>
+            </div>
+            {this.encounterList().map(encounter => {
+              return (
+                <div className="box" key={encounter.id}>
+                  <div className="columns">
+                    <div className="column">
+                      <div className="buttons">
+                        <button
+                          className="button"
+                          onClick={e => this.handleToggle(encounter)}
+                        >
+                          <span className="icon">
+                            <i
+                              className={
+                                this.props.selectedEncounter.id === encounter.id
+                                  ? "fas fa-minus"
+                                  : "fas fa-plus"
+                              }
+                            ></i>
+                          </span>
+                        </button>
+                        <button
+                          className="button"
+                          onClick={e => this.handleEdit(encounter)}
+                        >
+                          <span className="icon">
+                            <i className="fas fa-edit"></i>
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                    <div className="column">
+                      <span>
+                        {encounter.patient.last_name},{" "}
+                        {encounter.patient.first_name}
+                      </span>
+                    </div>
+                    <div className="column">
+                      <span>
+                        {new Date(encounter.appointment_at).toLocaleString()}
+                      </span>
                     </div>
                   </div>
-                  <div className="column">
-                    <span>
-                      {encounter.patient.last_name},{" "}
-                      {encounter.patient.first_name}
-                    </span>
-                  </div>
-                  <div className="column">
-                    <span>
-                      {new Date(encounter.appointment_at).toLocaleString()}
-                    </span>
-                  </div>
+                  {this.props.selectedEncounter.id === encounter.id && (
+                    <div className="">
+                      <p>{encounter.complaint}</p>
+                      <p>{encounter.hpi.context}</p>
+                    </div>
+                  )}
                 </div>
-                {this.props.selectedEncounter.id === encounter.id && (
-                  <div className="">
-                    <p>{encounter.complaint}</p>
-                    <p>{encounter.hpi.context}</p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+              );
+            })}{" "}
+          </Fragment>
+        )}
       </Fragment>
     );
   }

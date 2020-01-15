@@ -14,7 +14,7 @@ const Textarea = props => {
             className="textarea"
             type="text"
             placeholder={props.label}
-            name="constitutional_details"
+            name={props.field}
             value={props.value || ""}
             onChange={props.handleChange}
           />

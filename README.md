@@ -59,7 +59,7 @@ const mapDispatchToProps = {
 2020-01-14
 
 - Implemented forms by creating rails models for each form view.
-- Added steps navigation for encounter using bulma-steps. I had to create my own implementation in Rails, without the included javascript.
+- Added steps navigation for encounter using bulma-steps. I had to create my own implementation in Rails, without the included javascript. Manage classes is-active, is-complete, is-success
 
 2020-01-15
 
