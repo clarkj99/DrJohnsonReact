@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { updateEncounterChild } from "../actions/rootActions";
+import Textarea from "./Textarea";
 
 class HPI extends React.Component {
   initialState = {
@@ -155,45 +156,19 @@ class HPI extends React.Component {
               </div>
             </div>
 
-            <div className="field is-horizontal has-addons">
-              <div className="field-label  is-normal">
-                <label className="label" htmlFor="context">
-                  Context
-                </label>
-              </div>
-              <div className="field-body">
-                <div className="control is-expanded">
-                  <textarea
-                    className="textarea"
-                    type="text"
-                    placeholder="context"
-                    name="context"
-                    value={context || ""}
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-            </div>
+            <Textarea
+              field="context"
+              label="Context"
+              value={context}
+              handleChange={this.handleChange}
+            />
 
-            <div className="field is-horizontal has-addons">
-              <div className="field-label is-normal">
-                <label className="label" htmlFor="location">
-                  Location
-                </label>
-              </div>
-              <div className="field-body">
-                <div className="control is-expanded">
-                  <textarea
-                    className="textarea"
-                    type="text"
-                    placeholder="location"
-                    name="location"
-                    value={location || ""}
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-            </div>
+            <Textarea
+              field="location"
+              label="Location"
+              value={location}
+              handleChange={this.handleChange}
+            />
           </form>
         </div>
       </section>
