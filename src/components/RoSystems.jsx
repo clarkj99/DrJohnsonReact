@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { updateEncounterChild } from "../actions/rootActions";
 import Checkbox from "./Checkbox";
+import Textarea from "./Textarea";
 
 class RoSystems extends React.Component {
   initialState = {
@@ -101,31 +102,172 @@ class RoSystems extends React.Component {
               <div className="field-label is-normal">
                 <label className="label">Constitutional</label>
               </div>
-              <Checkbox
-                field="fever"
-                label="Fever"
-                value={fever}
-                handleChange={this.handleChange}
-              />
-              <Checkbox
-                field="fatigue"
-                label="Fatigue"
-                value={fatigue}
-                handleChange={this.handleChange}
-              />
-              <Checkbox
-                field="appetite"
-                label="Appetite"
-                value={appetite}
-                handleChange={this.handleChange}
-              />
-              <Checkbox
-                field="weight"
-                label="Weight"
-                value={weight}
-                handleChange={this.handleChange}
-              />
+              <div className="field-body">
+                <Checkbox
+                  field="fever"
+                  label="Fever"
+                  value={fever}
+                  handleChange={this.handleChange}
+                />
+                <Checkbox
+                  field="fatigue"
+                  label="Fatigue"
+                  value={fatigue}
+                  handleChange={this.handleChange}
+                />
+                <Checkbox
+                  field="appetite"
+                  label="Appetite"
+                  value={appetite}
+                  handleChange={this.handleChange}
+                />
+                <Checkbox
+                  field="weight"
+                  label="Weight"
+                  value={weight}
+                  handleChange={this.handleChange}
+                />
+              </div>
             </div>
+
+            <Textarea
+              field="constitutional_details"
+              label="Constitutional Details"
+              value={constitutional_details}
+              handleChange={this.handleChange}
+            />
+
+            <div className="field is-horizontal has-addons">
+              <div className="field-label is-normal">
+                <label className="label">Psychiatric</label>
+              </div>
+              <div className="field-body">
+                <Checkbox
+                  field="depression"
+                  label="Depression"
+                  value={depression}
+                  handleChange={this.handleChange}
+                />
+                <Checkbox
+                  field="anxiety"
+                  label="Anxiety"
+                  value={anxiety}
+                  handleChange={this.handleChange}
+                />
+              </div>
+            </div>
+
+            <Textarea
+              field="psychiatric_details"
+              label="Psychiatric Details"
+              value={psychiatric_details}
+              handleChange={this.handleChange}
+            />
+
+            <div className="field is-horizontal has-addons">
+              <div className="field-label is-normal">
+                <label className="label">Gastrointestinal</label>
+              </div>
+              <div className="field-body">
+                <Checkbox
+                  field="trouble_swallowing"
+                  label="Trouble Swallowing"
+                  value={trouble_swallowing}
+                  handleChange={this.handleChange}
+                />
+                <Checkbox
+                  field="heartburn"
+                  label="Heartburn"
+                  value={heartburn}
+                  handleChange={this.handleChange}
+                />
+                <Checkbox
+                  field="nausea"
+                  label="Nausea"
+                  value={nausea}
+                  handleChange={this.handleChange}
+                />
+                <Checkbox
+                  field="vomiting"
+                  label="Vomiting"
+                  value={vomiting}
+                  handleChange={this.handleChange}
+                />
+                <Checkbox
+                  field="irregular_bm"
+                  label="Irregular Bowel Movement"
+                  value={irregular_bm}
+                  handleChange={this.handleChange}
+                />
+              </div>
+            </div>
+
+            <Textarea
+              field="gastrointestinal_details"
+              label="Gastrointestinal Details"
+              value={gastrointestinal_details}
+              handleChange={this.handleChange}
+            />
+
+            <div className="field is-horizontal has-addons">
+              <div className="field-label is-normal">
+                <label className="label">Genital / Urinary</label>
+              </div>
+              <div className="field-body">
+                <Checkbox
+                  field="trouble_urinating"
+                  label="Trouble Urinating"
+                  value={trouble_urinating}
+                  handleChange={this.handleChange}
+                />
+                <Checkbox
+                  field="abnormal_bleeding"
+                  label="Abnormal Bleeding"
+                  value={abnormal_bleeding}
+                  handleChange={this.handleChange}
+                />
+                <Checkbox
+                  field="vaginal_discharge"
+                  label="Vaginal Discharge"
+                  value={vaginal_discharge}
+                  handleChange={this.handleChange}
+                />
+              </div>
+            </div>
+
+            <Textarea
+              field="genital_urinary_description"
+              label="Genital / Urinary Details"
+              value={genital_urinary_description}
+              handleChange={this.handleChange}
+            />
+
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">Musculoskeletal</label>
+              </div>
+              <div className="field-body">
+                <Checkbox
+                  field="joint_pain"
+                  label="Joint Pain"
+                  value={joint_pain}
+                  handleChange={this.handleChange}
+                />
+                <Checkbox
+                  field="joint_swelling"
+                  label="Joint Swelling"
+                  value={joint_swelling}
+                  handleChange={this.handleChange}
+                />
+              </div>
+            </div>
+
+            <Textarea
+              field="musculoskeletal_details"
+              label="Musculoskeletal Details"
+              value={musculoskeletal_details}
+              handleChange={this.handleChange}
+            />
           </form>
         </div>
       </section>
