@@ -4,18 +4,26 @@ import PatientBanner from "../components/PatientBanner";
 import HPI from "../components/HPI";
 import RoSystems from "../components/RoSystems";
 import ProblemExam from "../components/ProblemExam";
+import Steps from "../components/Steps";
 
 class EncounterEdit extends React.Component {
   render() {
+    const { stepNumber } = this.props;
     return (
       <Fragment>
         <PatientBanner />
-        <HPI />
-        <RoSystems />
-        <ProblemExam />
+        <Steps />
+
+        {stepNumber === 1 && <HPI />}
+        {stepNumber === 2 && <RoSystems />}
+        {stepNumber === 3 && <ProblemExam />}
       </Fragment>
     );
   }
 }
 
-export default connect()(EncounterEdit);
+const mapStateToProps = state => {
+  return { stepNumber: state.steps.stepNumber };
+};
+
+export default connect(mapStateToProps)(EncounterEdit);

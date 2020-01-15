@@ -51,3 +51,10 @@ export const updateEncounterChild = (model, value) => {
         value
     }
 }
+
+export const setStep = (stepNumber) => {
+    return {
+        type: 'SET_STEP',
+        stepNumber
+    }
+}

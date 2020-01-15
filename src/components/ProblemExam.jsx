@@ -74,7 +74,6 @@ class ProblemExam extends React.Component {
       abdominal_tenderness,
       abdominal_details,
       mass_detected,
-      mass_details,
       bowel_sounds,
       pelvic_external,
       pelvic_vaginal,
