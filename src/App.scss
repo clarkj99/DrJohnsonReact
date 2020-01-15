@@ -34,3 +34,14 @@ $navbar-breakpoint: 0;
 .home-logo {
   padding: 0 2em 0 0;
 }
+html,
+body {
+  height: 100%;
+}
+section {
+  height: 100%;
+}
+.search-results {
+  max-height: 540px;
+  overflow-x: auto;
+}

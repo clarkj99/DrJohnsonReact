@@ -10,23 +10,21 @@ const EncounterSelection = () => {
       <Hero title="Provider Access" />
       <section className="section">
         <div className="columns">
-          <div className="column">
-            <EncounterList />
+          <div className="column is-one-fifth">
+            <h2 className="title">Add A New Patient</h2>
+            <Link to="/providers/newpatient" className="button is-link ">
+              New Patient
+            </Link>
           </div>
-
           <div className="is-divider-vertical"></div>
-
           <div className="column">
             <Search />
           </div>
 
           <div className="is-divider-vertical"></div>
 
-          <div className="column is-one-fifth">
-            <h2 className="title">Add A New Patient</h2>
-            <Link to="/providers/newpatient" className="button is-link ">
-              New Patient
-            </Link>
+          <div className="column">
+            <EncounterList />
           </div>
         </div>
       </section>

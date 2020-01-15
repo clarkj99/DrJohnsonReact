@@ -76,7 +76,7 @@ class Search extends React.Component {
         </div>
         <div className="">
           {this.searchResults().length > 0 ? (
-            <div className=" search-results">
+            <div className="search-results">
               {this.searchResults().map(user => (
                 <this.SearchResult key={user.id} user={user} />
               ))}

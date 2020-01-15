@@ -5,7 +5,8 @@ import {
   addEncounters,
   selectEncounter,
   clearEncounter,
-  startEncounter
+  startEncounter,
+  clearUser
 } from "../actions/rootActions";
 import user from "../reducers/user";
 
@@ -53,7 +54,15 @@ class EncounterList extends React.Component {
     return (
       <Fragment>
         <h2 className="title">Encounters</h2>
-        {this.props.selectedUser && <p>{this.props.selectedUser.last_name}</p>}
+        {this.props.selectedUser && (
+          <h3 className="subtitle">
+            Patient: {this.props.selectedUser.last_name}{" "}
+            <button
+              className="delete"
+              onClick={() => this.props.clearUser()}
+            ></button>
+          </h3>
+        )}
         {this.encounterList() &&
           this.encounterList().map(encounter => {
             return (
@@ -122,7 +131,8 @@ const mapDispatchToProps = {
   addEncounters,
   selectEncounter,
   clearEncounter,
-  startEncounter
+  startEncounter,
+  clearUser
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EncounterList);
