@@ -39,7 +39,7 @@ const Step = props => {
         <p
           className={
             props.stepNumber === props.myStep
-              ? "step-title has-text-link "
+              ? "box step-title has-text-link "
               : "step-title has-text-dark"
           }
         >
