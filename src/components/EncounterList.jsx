@@ -130,7 +130,7 @@ class EncounterList extends React.Component {
           </div>
           {this.props.selectedEncounter.id === encounter.id && (
             <div className="">
-              <p>{encounter.complaint}</p>
+              <p>{encounter.intake.complaint}</p>
               <p>{encounter.hpi.context}</p>
             </div>
           )}

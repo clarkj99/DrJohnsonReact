@@ -32,7 +32,7 @@ const PatientBanner = props => {
               <div className="column is-four-fifths">
                 <p>
                   <span className="has-text-weight-bold">Chief complaint:</span>{" "}
-                  {props.encounter.complaint}
+                  {props.encounter.intake.complaint}
                 </p>
               </div>
             </div>

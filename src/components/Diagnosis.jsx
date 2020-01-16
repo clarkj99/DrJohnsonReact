@@ -50,10 +50,36 @@ class Diagnosis extends React.Component {
   };
 
   render() {
+    let { orders, follow_up, icd } = this.props.diagnosis;
     return (
       <section className="encounter-section section">
         <div className="container">
           <h2 className="subtitle">Diagnosis</h2>
+
+          <div className="field is-horizontal has-addons">
+            <div className="field-label  is-normal">
+              <label className="label">ICD-10</label>
+            </div>
+
+            <div className="field-body">
+              <div className="control">
+                <input className="input" />
+              </div>
+            </div>
+          </div>
+
+          <Textarea
+            field="orders"
+            label="Orders"
+            value={orders}
+            handleChange={this.handleChange}
+          />
+          <Textarea
+            field="follow_up"
+            label="Follow Up"
+            value={follow_up}
+            handleChange={this.handleChange}
+          />
         </div>
       </section>
     );
