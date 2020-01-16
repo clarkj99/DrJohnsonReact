@@ -47,3 +47,8 @@ section {
   max-height: 540px;
   overflow-x: auto;
 }
+
+.avatar {
+  object-fit: cover;
+  background-color: $dark;
+}

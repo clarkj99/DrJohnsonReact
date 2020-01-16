@@ -6,31 +6,41 @@ const PatientBanner = props => {
   return (
     <section className="hero">
       <div className="hero-body box has-background-primary">
-        <div className="container">
-          <div className="columns">
-            <div className="column is-one-third">
-              <p className="is-size-5 has-text-weight-bold">
-                {props.encounter.patient.last_name},{" "}
-                {props.encounter.patient.first_name}
-              </p>
-              <p>
-                {props.encounter.patient.profile.address1} <br />
-                {props.encounter.patient.profile.city},{" "}
-                {props.encounter.patient.profile.state}{" "}
-                {props.encounter.patient.profile.zip}
-              </p>
+        <article className="media">
+          <figure className="media-left">
+            <p className="avatar image is-128x128">
+              <img src={props.encounter.patient.profile.photo}></img>
+            </p>
+          </figure>
+          <div className="media-content">
+            <div className="columns">
+              <div className="column is-one-fifth">
+                <p className="has-text-weight-bold">
+                  {props.encounter.patient.last_name},{" "}
+                  {props.encounter.patient.first_name}
+                </p>
+                <p>
+                  {props.encounter.patient.profile.address1} <br />
+                  {props.encounter.patient.profile.city},{" "}
+                  {props.encounter.patient.profile.state}{" "}
+                  {props.encounter.patient.profile.zip}
+                </p>
+              </div>
+              <div className="column is-four-fifths">
+                <p>
+                  <span className="has-text-weight-bold">Chief complaint:</span>{" "}
+                  {props.encounter.complaint}
+                </p>
+              </div>
             </div>
-            <div className="column">
-              <span className="has-text-weight-bold">Chief complaint:</span>{" "}
-              {props.encounter.complaint}
-            </div>
-            <div className="column"></div>{" "}
+          </div>
+          <div className="media-right">
             <button
               className="delete is-large"
               onClick={e => props.stopEncounter()}
             ></button>
           </div>
-        </div>
+        </article>
       </div>
     </section>
   );

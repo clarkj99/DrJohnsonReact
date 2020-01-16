@@ -2,80 +2,97 @@ import React from "react";
 import { connect } from "react-redux";
 import { setStep } from "../actions/rootActions";
 
-const Icon = () => {
+const Icon = props => {
   return (
     <span class="icon">
-      <i class="fas fa-check"></i>
+      <i class={`fas fa-${props.icon}`}></i>
     </span>
+  );
+};
+
+const stepClass = (stepNumber, myStep) => {
+  switch (true) {
+    case myStep < stepNumber:
+      return "step-item is-completed is-dark ";
+    case myStep === stepNumber:
+      return "step-item is-active is-link";
+    default:
+      return "step-item";
+  }
+};
+
+const Step = props => {
+  return (
+    <div
+      className={stepClass(props.stepNumber, props.myStep)}
+      onClick={e => props.setStep(props.myStep)}
+    >
+      <div className="step-marker">
+        {props.stepNumber === props.myStep ? (
+          <Icon icon={props.icon} />
+        ) : (
+          <Icon icon={props.icon} />
+          // props.myStep
+        )}
+      </div>
+      <div className="step-details">
+        <p
+          className={
+            props.stepNumber === props.myStep
+              ? "step-title has-text-link "
+              : "step-title has-text-dark"
+          }
+        >
+          {props.title}
+        </p>
+      </div>
+    </div>
   );
 };
 
 const Steps = props => {
   return (
     <section className="section">
-      <div className="steps" id="stepsDemo">
-        <div
-          className={
-            props.stepNumber >= 1
-              ? "step-item is-active is-success"
-              : "step-item"
-          }
-          onClick={e => props.setStep(1)}
-        >
-          <div className="step-marker">
-            {props.stepNumber === 1 ? <Icon /> : 1}
-          </div>
-          <div className="step-details">
-            <p className="step-title">History of Present Illness</p>
-          </div>
-        </div>
-        <div
-          className={
-            props.stepNumber >= 2
-              ? "step-item is-active is-success"
-              : "step-item "
-          }
-          onClick={e => props.setStep(2)}
-        >
-          <div className="step-marker">
-            {props.stepNumber === 2 ? <Icon /> : 2}
-          </div>
-          <div className="step-details">
-            <p className="step-title">Review of Systems</p>
-          </div>
-        </div>
-        <div
-          className={
-            props.stepNumber >= 3
-              ? "step-item is-active is-success"
-              : "step-item "
-          }
-          onClick={e => props.setStep(3)}
-        >
-          <div className="step-marker">
-            {" "}
-            {props.stepNumber === 3 ? <Icon /> : 3}
-          </div>
-          <div className="step-details">
-            <p className="step-title">Problem Exam</p>
-          </div>
-        </div>
-        <div
-          className={
-            props.stepNumber >= 4
-              ? "step-item is-active is-success"
-              : "step-item is-large"
-          }
-          onClick={e => props.setStep(4)}
-        >
-          <div className="step-marker">
-            {" "}
-            {props.stepNumber === 4 ? <Icon /> : 4}
-          </div>
-          <div className="step-details">
-            <p className="step-title">Diagnosis</p>
-          </div>
-        </div>
+      <div className="steps is-medium" id="encounterSteps">
+        <Step
+          stepNumber={props.stepNumber}
+          myStep={1}
+          icon="user"
+          title="Intake"
+          setStep={props.setStep}
+        />
+
+        <Step
+          stepNumber={props.stepNumber}
+          myStep={2}
+          icon="medkit"
+          title="History of Present Illness"
+          setStep={props.setStep}
+        />
+
+        <Step
+          stepNumber={props.stepNumber}
+          myStep={3}
+          icon="medkit"
+          title="Review of Systems"
+          setStep={props.setStep}
+        />
+
+        <Step
+          stepNumber={props.stepNumber}
+          myStep={4}
+          icon="medkit"
+          title="Problem Exam"
+          setStep={props.setStep}
+        />
+
+        <Step
+          stepNumber={props.stepNumber}
+          myStep={5}
+          icon="check"
+          title="Diagnosis"
+          setStep={props.setStep}
+        />
       </div>
     </section>
   );

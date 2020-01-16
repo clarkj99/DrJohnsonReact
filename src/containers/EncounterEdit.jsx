@@ -14,9 +14,9 @@ class EncounterEdit extends React.Component {
         <PatientBanner />
         <Steps />
 
-        {stepNumber === 1 && <HPI />}
-        {stepNumber === 2 && <RoSystems />}
-        {stepNumber === 3 && <ProblemExam />}
+        {stepNumber === 2 && <HPI />}
+        {stepNumber === 3 && <RoSystems />}
+        {stepNumber === 4 && <ProblemExam />}
       </Fragment>
     );
   }

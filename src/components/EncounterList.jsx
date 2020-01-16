@@ -61,95 +61,106 @@ class EncounterList extends React.Component {
     this.setState({ open: !this.state.open });
   };
 
+  StatusButtons = () => {
+    return (
+      <div className="level">
+        <div class="field">
+          <input
+            className="is-checkradio is-link"
+            id="exampleRadioInline1"
+            type="radio"
+            name="exampleRadioInline"
+            onClick={this.handleRadio}
+            checked={this.state.open ? "checked" : ""}
+          />
+          <label for="exampleRadioInline1">Open</label>
+          <input
+            className="is-checkradio is-link"
+            id="exampleRadioInline2"
+            type="radio"
+            name="exampleRadioInline"
+            onClick={this.handleRadio}
+            checked={!this.state.open ? "checked" : ""}
+          />
+          <label for="exampleRadioInline2">Closed</label>
+        </div>
+      </div>
+    );
+  };
+
+  Encounters = () => {
+    return this.encounterList().map(encounter => {
+      return (
+        <div className="box" key={encounter.id}>
+          <div className="columns">
+            <div className="column">
+              <div className="buttons">
+                <button
+                  className="button"
+                  onClick={e => this.handleToggle(encounter)}
+                >
+                  <span className="icon">
+                    <i
+                      className={
+                        this.props.selectedEncounter.id === encounter.id
+                          ? "fas fa-minus"
+                          : "fas fa-plus"
+                      }
+                    ></i>
+                  </span>
+                </button>
+                <button
+                  className="button"
+                  onClick={e => this.handleEdit(encounter)}
+                >
+                  <span className="icon">
+                    <i className="fas fa-edit"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div className="column">
+              <span>
+                {encounter.patient.last_name}, {encounter.patient.first_name}
+              </span>
+            </div>
+            <div className="column">
+              <span>{new Date(encounter.appointment_at).toLocaleString()}</span>
+            </div>
+          </div>
+          {this.props.selectedEncounter.id === encounter.id && (
+            <div className="">
+              <p>{encounter.complaint}</p>
+              <p>{encounter.hpi.context}</p>
+            </div>
+          )}
+        </div>
+      );
+    });
+  };
+
   render() {
     return (
       <Fragment>
         <h2 className="title">Encounters</h2>
-        {this.props.selectedUser && (
+        {this.props.selectedUser ? (
           <h3 className="subtitle">
-            Patient: {this.props.selectedUser.last_name}{" "}
             <button
               className="delete"
               onClick={() => this.props.clearUser()}
             ></button>
+            {this.props.selectedUser.last_name},{" "}
+            {this.props.selectedUser.first_name}
           </h3>
+        ) : (
+          <h3 className="subtitle">All Users</h3>
         )}
-        {this.props.encounters.length > 0 && (
-          <Fragment>
-            <div className="form">
-              <div class="field">
-                <input
-                  className="is-checkradio is-link"
-                  id="exampleRadioInline1"
-                  type="radio"
-                  name="exampleRadioInline"
-                  onClick={this.handleRadio}
-                  checked={this.state.open ? "checked" : ""}
-                />
-                <label for="exampleRadioInline1">Open</label>
-                <input
-                  className="is-checkradio is-link"
-                  id="exampleRadioInline2"
-                  type="radio"
-                  name="exampleRadioInline"
-                  onClick={this.handleRadio}
-                  checked={!this.state.open ? "checked" : ""}
-                />
-                <label for="exampleRadioInline2">Closed</label>
-              </div>
-            </div>
-            {this.encounterList().map(encounter => {
-              return (
-                <div className="box" key={encounter.id}>
-                  <div className="columns">
-                    <div className="column">
-                      <div className="buttons">
-                        <button
-                          className="button"
-                          onClick={e => this.handleToggle(encounter)}
-                        >
-                          <span className="icon">
-                            <i
-                              className={
-                                this.props.selectedEncounter.id === encounter.id
-                                  ? "fas fa-minus"
-                                  : "fas fa-plus"
-                              }
-                            ></i>
-                          </span>
-                        </button>
-                        <button
-                          className="button"
-                          onClick={e => this.handleEdit(encounter)}
-                        >
-                          <span className="icon">
-                            <i className="fas fa-edit"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                    <div className="column">
-                      <span>
-                        {encounter.patient.last_name},{" "}
-                        {encounter.patient.first_name}
-                      </span>
-                    </div>
-                    <div className="column">
-                      <span>
-                        {new Date(encounter.appointment_at).toLocaleString()}
-                      </span>
-                    </div>
-                  </div>
-                  {this.props.selectedEncounter.id === encounter.id && (
-                    <div className="">
-                      <p>{encounter.complaint}</p>
-                      <p>{encounter.hpi.context}</p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}{" "}
-          </Fragment>
+
+        <this.StatusButtons />
+        {this.encounterList().length > 0 ? (
+          <this.Encounters />
+        ) : (
+          <div className=" box has-dark">No encounters found</div>
         )}
       </Fragment>
     );
