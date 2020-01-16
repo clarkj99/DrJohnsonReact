@@ -65,3 +65,11 @@ const mapDispatchToProps = {
 
 - Remember to create child models with user and encounter
 - Added search bar. Loaded user in state, then searched first name and last name using Array.includes().
+
+2020-01-16
+
+- process for creating a new encounters form:
+  - create new JSX component for the form (Intake.jsx)
+  - add component to `EncounterEdit.jsx`
+  - initalize in encounter reducer
+  - add fields to component

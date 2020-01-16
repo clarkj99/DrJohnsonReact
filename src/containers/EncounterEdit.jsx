@@ -5,6 +5,8 @@ import HPI from "../components/HPI";
 import RoSystems from "../components/RoSystems";
 import ProblemExam from "../components/ProblemExam";
 import Steps from "../components/Steps";
+import Intake from "../components/Intake";
+import Diagnosis from "../components/Diagnosis";
 
 class EncounterEdit extends React.Component {
   render() {
@@ -14,9 +16,11 @@ class EncounterEdit extends React.Component {
         <PatientBanner />
         <Steps />
 
+        {stepNumber === 1 && <Intake />}
         {stepNumber === 2 && <HPI />}
         {stepNumber === 3 && <RoSystems />}
         {stepNumber === 4 && <ProblemExam />}
+        {stepNumber === 5 && <Diagnosis />}
       </Fragment>
     );
   }

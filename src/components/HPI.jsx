@@ -59,9 +59,9 @@ class HPI extends React.Component {
     } = this.state;
 
     return (
-      <section className="section">
+      <section className="encounter-section section">
         <div className="container">
-          {/* <h2 className="subtitle">History of Present Illness</h2> */}
+          <h2 className="subtitle">History of Present Illness</h2>
           <form className="form">
             <div className="field is-horizontal has-addons">
               <div className="field-label is-normal">
@@ -120,7 +120,7 @@ class HPI extends React.Component {
 
                 <div className="control">
                   <div className=" field-label is-normal ">
-                    <span className="label has-text-link" htmlFor="severity">
+                    <span className="severity-output label has-text-link">
                       {severity || "5"}
                     </span>
                   </div>

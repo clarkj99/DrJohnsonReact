@@ -92,10 +92,9 @@ class RoSystems extends React.Component {
     } = this.props.rosystem;
 
     return (
-      <section className="section">
+      <section className="encounter-section section">
         <div className="container">
-          {/* <h2 className="subtitle">Review of Systems</h2> */}
-          <hr />
+          <h2 className="subtitle">Review of Systems</h2>
           <form className="form">
             <div className="field is-horizontal has-addons">
               <div className="field-label is-normal">

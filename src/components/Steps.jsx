@@ -52,7 +52,7 @@ const Step = props => {
 
 const Steps = props => {
   return (
-    <section className="section">
+    <section className="steps-section section">
       <div className="steps is-medium" id="encounterSteps">
         <Step
           stepNumber={props.stepNumber}
@@ -65,7 +65,7 @@ const Steps = props => {
         <Step
           stepNumber={props.stepNumber}
           myStep={2}
-          icon="medkit"
+          icon="user-injured"
           title="History of Present Illness"
           setStep={props.setStep}
         />
@@ -73,7 +73,7 @@ const Steps = props => {
         <Step
           stepNumber={props.stepNumber}
           myStep={3}
-          icon="medkit"
+          icon="question"
           title="Review of Systems"
           setStep={props.setStep}
         />
@@ -81,7 +81,7 @@ const Steps = props => {
         <Step
           stepNumber={props.stepNumber}
           myStep={4}
-          icon="medkit"
+          icon="stethoscope"
           title="Problem Exam"
           setStep={props.setStep}
         />
@@ -89,7 +89,7 @@ const Steps = props => {
         <Step
           stepNumber={props.stepNumber}
           myStep={5}
-          icon="check"
+          icon="user-md"
           title="Diagnosis"
           setStep={props.setStep}
         />

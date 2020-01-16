@@ -52,3 +52,24 @@ section {
   object-fit: cover;
   background-color: $dark;
 }
+
+.encounter-section {
+  padding: 0 1.5rem;
+}
+
+.steps-section {
+  padding: 3rem 1.5rem 1rem 1.5rem;
+}
+
+.encounter-section h2 {
+  text-align: center;
+  display: none;
+}
+
+.steps.is-medium .step-item .step-details .step-title {
+  font-size: 1.2rem;
+}
+
+.severity-output {
+  padding: 0 1em;
+}
