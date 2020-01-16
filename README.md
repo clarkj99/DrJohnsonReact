@@ -71,5 +71,5 @@ const mapDispatchToProps = {
 - process for creating a new encounters form:
   - create new JSX component for the form (Intake.jsx)
   - add component to `EncounterEdit.jsx`
-  - initalize in encounter reducer
+  - use updateEncounterChild action for updates
   - add fields to component
