@@ -60,6 +60,7 @@ class RoSystems extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.props.updateEncounterChild("rosystem", data);
+        this.setState(data);
       })
       .catch(res => {
         this.setState({ error: res.message });

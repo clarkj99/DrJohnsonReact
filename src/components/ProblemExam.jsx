@@ -32,7 +32,6 @@ class ProblemExam extends React.Component {
   };
 
   handleChange = e => {
-    console.log(e.target.value);
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     this.setState({ [e.target.name]: value });
@@ -59,6 +58,7 @@ class ProblemExam extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.props.updateEncounterChild("problem_exam", data);
+        this.setState(data);
       })
       .catch(res => {
         this.setState({ error: res.message });

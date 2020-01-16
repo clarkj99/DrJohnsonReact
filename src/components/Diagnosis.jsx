@@ -42,6 +42,7 @@ class Diagnosis extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.props.updateEncounterChild("diagnosis", data);
+        this.setState(data);
       })
       .catch(res => {
         this.setState({ error: res.message });

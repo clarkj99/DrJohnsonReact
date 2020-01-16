@@ -4,8 +4,8 @@ import { setStep } from "../actions/rootActions";
 
 const Icon = props => {
   return (
-    <span class="icon">
-      <i class={`fas fa-${props.icon}`}></i>
+    <span className="icon">
+      <i className={`fas fa-${props.icon}`}></i>
     </span>
   );
 };

@@ -64,25 +64,25 @@ class EncounterList extends React.Component {
   StatusButtons = () => {
     return (
       <div className="level">
-        <div class="field">
+        <div className="field">
           <input
             className="is-checkradio is-link"
             id="exampleRadioInline1"
             type="radio"
             name="exampleRadioInline"
-            onClick={this.handleRadio}
+            onChange={this.handleRadio}
             checked={this.state.open ? "checked" : ""}
           />
-          <label for="exampleRadioInline1">Open</label>
+          <label htmlFor="exampleRadioInline1">Open</label>
           <input
             className="is-checkradio is-link"
             id="exampleRadioInline2"
             type="radio"
             name="exampleRadioInline"
-            onClick={this.handleRadio}
+            onChange={this.handleRadio}
             checked={!this.state.open ? "checked" : ""}
           />
-          <label for="exampleRadioInline2">Closed</label>
+          <label htmlFor="exampleRadioInline2">Closed</label>
         </div>
       </div>
     );

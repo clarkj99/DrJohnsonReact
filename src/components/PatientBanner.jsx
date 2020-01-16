@@ -9,7 +9,10 @@ const PatientBanner = props => {
         <article className="media">
           <figure className="media-left">
             <p className="avatar image is-128x128">
-              <img src={props.encounter.patient.profile.photo}></img>
+              <img
+                src={props.encounter.patient.profile.photo}
+                alt={props.encounter.patient.last_name}
+              ></img>
             </p>
           </figure>
           <div className="media-content">
