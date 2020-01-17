@@ -8,7 +8,7 @@ class Intake extends React.Component {
   initialState = {
     complaint: "",
     appointment_at: "",
-    checkin_at: new Date(),
+    checkin_at: "",
     weight: "",
     height: "",
     bp_systolic: "",
@@ -29,12 +29,17 @@ class Intake extends React.Component {
         value = e.target.checked;
         break;
       case "datetime-local":
-        value = moment(e.target.value).toString();
+        console.log(
+          moment(e.target.value, moment.HTML5_FMT.DATETIME_LOCAL).format()
+        );
+        value = moment(
+          e.target.value,
+          moment.HTML5_FMT.DATETIME_LOCAL
+        ).format();
         break;
       default:
         value = e.target.value;
     }
-    console.log(value);
     fetch(`http://localhost:3000/api/v1/intake/${this.props.intake.id}`, {
       method: "PATCH",
       headers: {
@@ -54,11 +59,11 @@ class Intake extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.props.updateEncounterChild("intake", data);
-        this.setState(data);
       })
       .catch(res => {
         this.setState({ error: res.message });
       });
+    this.setState({ ...this.state, [e.target.name]: value });
   };
 
   StringField = props => {
@@ -87,6 +92,7 @@ class Intake extends React.Component {
   };
 
   DateTime = props => {
+    console.log();
     return (
       <div className="field is-horizontal has-addons">
         <div className="field-label  is-normal">
@@ -101,11 +107,33 @@ class Intake extends React.Component {
               className="input"
               name={props.field}
               type="datetime-local"
-              value={moment(props.value || new Date()).format(
+              value={moment(props.value).format(
                 moment.HTML5_FMT.DATETIME_LOCAL
               )}
               onChange={this.handleChange}
             />
+          </div>
+          {/* Set the time to current time if you want  */}
+          <div className="control">
+            <button
+              className="button is-dark"
+              onClick={() =>
+                this.handleChange({
+                  target: {
+                    name: props.field,
+                    type: "datetime-local",
+                    value: moment(new Date()).format(
+                      moment.HTML5_FMT.DATETIME_LOCAL
+                    )
+                  }
+                })
+              }
+            >
+              <span className="icon is-small">
+                <i className="fas fa-clock"></i>
+              </span>
+              <span>now</span>
+            </button>
           </div>
         </div>
       </div>
@@ -121,7 +149,7 @@ class Intake extends React.Component {
       height,
       bp_systolic,
       bp_diastolic
-    } = this.props.intake;
+    } = this.state;
 
     return (
       <section className="encounter-section section">

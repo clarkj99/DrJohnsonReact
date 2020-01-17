@@ -69,7 +69,10 @@ const mapDispatchToProps = {
 2020-01-16
 
 - process for creating a new encounters form:
+
   - create new JSX component for the form (Intake.jsx)
   - add component to `EncounterEdit.jsx`
   - use updateEncounterChild action for updates
   - add fields to component
+
+- using `<input type="datetime-local" />` presented a challenge. Fortunately my coach suggested using `moment.js`
