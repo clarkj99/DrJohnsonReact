@@ -76,3 +76,7 @@ const mapDispatchToProps = {
   - add fields to component
 
 - using `<input type="datetime-local" />` presented a challenge. Fortunately my coach suggested using `moment.js`
+
+2020-01-17
+
+- added photo booth to user profile component, using a react component `react-html5-camera-photo`.

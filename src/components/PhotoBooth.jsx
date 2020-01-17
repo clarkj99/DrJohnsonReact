@@ -7,17 +7,41 @@ import { addLogin } from "../actions/rootActions";
 class PhotoBooth extends React.Component {
   initialState = { currentPhoto: null, takingPhoto: false };
   state = { ...this.initialState };
+
+  componentDidMount = () => {
+    this.setState({ originalPhoto: this.props.photo });
+  };
+
   handlePhoto = dataUri => {
-    console.log(dataUri);
     this.setState({ currentPhoto: dataUri });
   };
 
   handleKeep = () => {
     console.log("keeping it");
+    this.setState({
+      ...this.initialState,
+      originalPhoto: this.state.currentPhoto
+    });
+
+    const formData = new FormData();
+
+    formData.append("photo", this.state.currentPhoto);
+    console.log(formData);
+
+    fetch(`http://localhost:3000/api/v1/photo/${this.props.profile.id}`, {
+      method: "PATCH",
+      headers: {
+        // "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      },
+      body: formData
+    })
+      .then(res => res.json())
+      .then(console.log);
   };
 
   handleTrash = () => {
-    this.setState({ ...this.initialState });
+    this.setState({ ...this.state, ...this.initialState });
   };
 
   handleTakePhoto = () => {
@@ -38,13 +62,16 @@ class PhotoBooth extends React.Component {
           <figure className="image is-4by3">
             <img
               className="avatar"
-              src={this.state.currentPhoto || this.props.photo}
+              src={this.state.currentPhoto || this.state.originalPhoto}
               alt="me"
             ></img>
           </figure>
 
           {this.state.currentPhoto && (
-            <button className="button is-success is-fullwidth">
+            <button
+              className="button is-success is-fullwidth"
+              onClick={this.handleKeep}
+            >
               <span className="icon">
                 <i className="fas fa-thumbs-up"></i>
               </span>
@@ -81,7 +108,10 @@ class PhotoBooth extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { photo: state.login.user.profile.photo };
+  return {
+    photo: state.login.user.profile.photo,
+    profile: state.login.user.profile
+  };
 };
 
 export default connect(mapStateToProps)(PhotoBooth);
