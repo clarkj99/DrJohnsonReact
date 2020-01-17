@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import Hero from "./Hero";
 import { connect } from "react-redux";
 import ProfileForm from "./ProfileForm";
+import PhotoBooth from "./PhotoBooth";
 
 class Profile extends React.Component {
   render = () => {
@@ -10,17 +11,19 @@ class Profile extends React.Component {
         <Hero title="Profile" />
         <section className="section">
           <div className="container">
-            {this.props.user && (
-              <Fragment>
+            <div className="columns">
+              <div className="column">
                 <h2 className="title">
                   {this.props.user.first_name} {this.props.user.last_name},{" "}
                   {this.props.user.role}
                 </h2>
                 <p className="subtitle">Email: {this.props.user.email}</p>
-
+                <PhotoBooth />
+              </div>
+              <div className="column">
                 <ProfileForm />
-              </Fragment>
-            )}
+              </div>
+            </div>
           </div>
         </section>
       </Fragment>

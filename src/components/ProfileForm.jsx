@@ -45,7 +45,7 @@ class ProfileForm extends React.Component {
   render() {
     let profile = this.state;
     return (
-      <Fragment>
+      <div className="container">
         <h2 className="title">Edit Profile</h2>
         <form className="form" onSubmit={this.handleSubmit}>
           <div className="field">
@@ -141,7 +141,7 @@ class ProfileForm extends React.Component {
             <button className="button">Submit</button>
           </div>
         </form>
-      </Fragment>
+      </div>
     );
   }
 }
