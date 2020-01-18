@@ -17,15 +17,14 @@ class PhotoBooth extends React.Component {
   };
 
   handleKeep = () => {
-    console.log("keeping it");
     this.setState({
       ...this.initialState,
       originalPhoto: this.state.currentPhoto
     });
 
     const formData = new FormData();
-
     formData.append("photo", this.state.currentPhoto);
+    // formData.append("profile", this.props.profile);
     console.log(formData);
 
     fetch(`http://localhost:3000/api/v1/photo/${this.props.profile.id}`, {

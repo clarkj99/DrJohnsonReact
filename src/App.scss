@@ -50,11 +50,11 @@ section {
 
 .avatar {
   object-fit: cover;
-  background-color: $scheme-main;
+  background-color: $dark;
 }
 
 .encounter-section {
-  padding: 0 1.5rem;
+  padding: 0 1.5rem 1.5rem;
 }
 
 .steps-section {
@@ -72,4 +72,8 @@ section {
 
 .severity-output {
   padding: 0 1em;
+}
+
+.hero-body.box {
+  padding: 0 1.25rem;
 }

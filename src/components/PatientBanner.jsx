@@ -7,13 +7,12 @@ const PatientBanner = props => {
     <section className="hero">
       <div className="hero-body box has-background-primary">
         <article className="media">
-          <figure className="media-left">
-            <p className="avatar image is-128x128">
-              <img
-                src={props.encounter.patient.profile.photo}
-                alt={props.encounter.patient.last_name}
-              ></img>
-            </p>
+          <figure className="image avatar is-128x128 media-left">
+            <img
+              className=""
+              src={props.encounter.patient.profile.photo}
+              alt={props.encounter.patient.last_name}
+            ></img>
           </figure>
           <div className="media-content">
             <div className="columns">
