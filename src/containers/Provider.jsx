@@ -18,11 +18,7 @@ const Provider = props => {
         </Fragment>
       ) : (
         <Fragment>
-          {this.props.editingEncounter ? (
-            <EncounterEdit />
-          ) : (
-            <EncounterSelection />
-          )}
+          {props.editingEncounter ? <EncounterEdit /> : <EncounterSelection />}
         </Fragment>
       )}
     </Fragment>

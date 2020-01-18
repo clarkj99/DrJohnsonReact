@@ -2,26 +2,42 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import Hero from "../components/Hero";
 import Message from "../components/Message";
+import PatientList from "../components/PatientList";
+import EncounterDetail from "../components/EncounterDetail";
 
 const Patient = props => {
   const isPatient = props.user.role === "patient";
   return (
     <Fragment>
-      <Hero title="Patient Portal" />
       {!(props.user.role === "patient") ? (
-        <Message
-          text=" You must be logged in as a patient to access the patient portal."
-          type="warning"
-        />
+        <Fragment>
+          <Hero title="Patient Portal" />
+          <Message
+            text=" You must be logged in as a patient to access the patient portal."
+            type="warning"
+          />
+        </Fragment>
       ) : (
-        <section className="section"></section>
+        <section className="section">
+          <div className="columns">
+            <div className="column">
+              <PatientList />
+            </div>
+            <div className="column">
+              <EncounterDetail />
+            </div>
+          </div>
+        </section>
       )}
     </Fragment>
   );
 };
 
 const mapStateToProps = state => {
-  return { user: state.login.user };
+  return {
+    user: state.login.user,
+    encounters: state.encounter.encounters
+  };
 };
 
 export default connect(mapStateToProps)(Patient);

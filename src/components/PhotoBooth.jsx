@@ -24,8 +24,6 @@ class PhotoBooth extends React.Component {
 
     const formData = new FormData();
     formData.append("photo", this.state.currentPhoto);
-    // formData.append("profile", this.props.profile);
-    console.log(formData);
 
     fetch(`http://localhost:3000/api/v1/photo/${this.props.profile.id}`, {
       method: "PATCH",
@@ -36,7 +34,9 @@ class PhotoBooth extends React.Component {
       body: formData
     })
       .then(res => res.json())
-      .then(console.log);
+      .then(data => {
+        console.log("TODO - save profile to state", data);
+      });
   };
 
   handleTrash = () => {

@@ -48,9 +48,10 @@ section {
   overflow-x: auto;
 }
 
-.avatar {
+.avatar img {
   object-fit: cover;
-  background-color: $dark;
+  width: 128px;
+  height: 128px;
 }
 
 .encounter-section {
@@ -75,5 +76,5 @@ section {
 }
 
 .hero-body.box {
-  padding: 0 1.25rem;
+  padding: 1em 1.25rem;
 }
