@@ -1,6 +1,11 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { addLogin, selectPatient } from "../actions/rootActions";
+import {
+  addLogin,
+  selectPatient,
+  addPatientToList,
+  setCreatingPatient
+} from "../actions/rootActions";
 // import Hero from "./Hero";
 
 class NewUser extends React.Component {
@@ -45,6 +50,8 @@ class NewUser extends React.Component {
         console.log("new user done");
         // this.props.addLogin(res.user);
         this.props.selectPatient(res.user);
+        this.props.addPatientToList(res.user);
+        this.props.setCreatingPatient(false);
         this.setState({ signupError: "", signupUser: { ...this.initalUser } });
         // localStorage.setItem("token", res.jwt);
         // localStorage.setItem("user", JSON.stringify(res.user));
@@ -123,7 +130,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   addLogin,
-  selectPatient
+  selectPatient,
+  addPatientToList,
+  setCreatingPatient
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewUser);

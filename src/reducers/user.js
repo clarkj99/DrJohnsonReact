@@ -2,6 +2,8 @@ const user = (state = { patients: [], providers: [], admins: [], selectedPatient
     switch (action.type) {
         case 'ADD_USERS':
             return { ...state, [action.userType]: action.userList }
+        case 'ADD_PATIENT_TO_LIST':
+            return { ...state, patients: [action.user, ...state.patients] }
         case 'SELECT_PATIENT':
             return { ...state, selectedPatient: action.user }
         case 'SET_CREATING_PATIENT':
