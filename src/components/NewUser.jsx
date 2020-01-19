@@ -45,6 +45,7 @@ class NewUser extends React.Component {
         console.log("new user done");
         // this.props.addLogin(res.user);
         this.props.selectPatient(res.user);
+        this.setState({ signupError: "", signupUser: { ...this.initalUser } });
         // localStorage.setItem("token", res.jwt);
         // localStorage.setItem("user", JSON.stringify(res.user));
       })
@@ -58,7 +59,7 @@ class NewUser extends React.Component {
     return (
       <Fragment>
         <h2 className="title">{title}</h2>
-        <p>Create a new {this.props.role} login.</p>
+        <p className="subtitle">Create a new {this.props.role} login</p>
         <form onSubmit={this.submitSignup}>
           <div className="field">
             <div className="control">
@@ -106,8 +107,8 @@ class NewUser extends React.Component {
             {this.state.signupError && (
               <p className="help is-danger">{this.state.signupError}</p>
             )}
-            <button type="submit" className="button is-fullwidth is-primary">
-              Create User
+            <button type="submit" className="button is-fullwidth is-link">
+              Create {this.props.role}
             </button>
           </div>
         </form>

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { stopEncounter } from "../actions/rootActions";
+import unknownUser from "../images/unknown-user2.png";
 
 const PatientBanner = props => {
   return (
@@ -10,7 +11,7 @@ const PatientBanner = props => {
           <figure className="image avatar is-128x128 media-left">
             <img
               className=""
-              src={props.encounter.patient.profile.photo}
+              src={props.encounter.patient.profile.photo || unknownUser}
               alt={props.encounter.patient.last_name}
             ></img>
           </figure>

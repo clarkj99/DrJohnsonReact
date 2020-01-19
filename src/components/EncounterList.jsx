@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import unknownUser from "../images/unknown-user2.png";
 
 import {
   addEncounters,
@@ -143,7 +144,7 @@ class EncounterList extends React.Component {
     return (
       <article className="box media">
         <figure className="media-left image avatar-small is-64x64">
-          <img src={this.props.selectedPatient.profile.photo} />
+          <img src={this.props.selectedPatient.profile.photo || unknownUser} />
         </figure>
         <div className="media-content">
           <div className="field">

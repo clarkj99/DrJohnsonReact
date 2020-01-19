@@ -37,7 +37,7 @@ class Search extends React.Component {
           .toLowerCase()
           .includes(this.state.searchTerm.toLowerCase());
       });
-    else return [];
+    else return this.props.patients.slice(0, 5);
   };
 
   handleClick = user => {

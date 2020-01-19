@@ -8,7 +8,6 @@ class Profile extends React.Component {
   render = () => {
     return (
       <Fragment>
-        <Hero title="Profile" />
         <section className="section">
           <div className="container">
             <div className="columns">

@@ -70,14 +70,18 @@ export const addUsers = (userType, userList) => {
 export const selectPatient = (user) => {
     return {
         type: 'SELECT_PATIENT',
-        user,
-
+        user
     }
 }
 
+export const setCreatingPatient = (value) => {
+    return {
+        type: 'SET_CREATING_PATIENT',
+        value
+    }
+}
 export const clearUser = () => {
     return {
         type: 'CLEAR_USER'
-
     }
 }
