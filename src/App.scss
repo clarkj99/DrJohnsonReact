@@ -53,6 +53,11 @@ section {
   width: 128px;
   height: 128px;
 }
+.avatar-small img {
+  object-fit: cover;
+  width: 64px;
+  height: 64px;
+}
 
 .encounter-section {
   padding: 0 1.5rem 1.5rem;
@@ -77,4 +82,8 @@ section {
 
 .hero-body.box {
   padding: 1em 1.25rem;
+}
+
+.selected-patient {
+  padding: 0 0 1rem 0;
 }

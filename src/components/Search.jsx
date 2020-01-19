@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { addUsers, selectUser } from "../actions/rootActions";
+import { addUsers, selectPatient } from "../actions/rootActions";
 
 class Search extends React.Component {
   state = { searchTerm: "" };
@@ -41,7 +41,7 @@ class Search extends React.Component {
   };
 
   handleClick = user => {
-    this.props.selectUser(user);
+    this.props.selectPatient(user);
   };
 
   SearchResult = props => {
@@ -96,6 +96,6 @@ const mapStateToProps = state => {
   return { patients: state.user.patients };
 };
 
-const mapDispatchToProps = { addUsers, selectUser };
+const mapDispatchToProps = { addUsers, selectPatient };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

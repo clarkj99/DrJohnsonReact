@@ -1,11 +1,11 @@
-const user = (state = { patients: [], providers: [], admins: [], selectedUser: null }, action) => {
+const user = (state = { patients: [], providers: [], admins: [], selectedPatient: null }, action) => {
     switch (action.type) {
         case 'ADD_USERS':
             return { ...state, [action.userType]: action.userList }
-        case 'SELECT_USER':
-            return { ...state, selectedUser: action.user }
+        case 'SELECT_PATIENT':
+            return { ...state, selectedPatient: action.user }
         case 'CLEAR_USER':
-            return { ...state, selectedUser: null }
+            return { ...state, selectedPatient: null }
         default:
             return state
     }

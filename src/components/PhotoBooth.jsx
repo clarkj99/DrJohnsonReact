@@ -53,7 +53,7 @@ class PhotoBooth extends React.Component {
         {this.state.takingPhoto && (
           <div className="column">
             <figure className="image">
-              <Camera onTakePhoto={this.handlePhoto} />
+              <Camera onTakePhoto={this.handlePhoto} isImageMirror={false} />
             </figure>
           </div>
         )}

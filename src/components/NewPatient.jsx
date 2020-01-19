@@ -5,10 +5,9 @@ import NewUser from "./NewUser";
 const NewPatient = props => {
   return (
     <Fragment>
-      <Hero title="Create New Patient" />
       <section className="section">
         <div className="container">
-          <NewUser />
+          <NewUser role="patient" />
         </div>
       </section>
     </Fragment>

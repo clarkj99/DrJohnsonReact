@@ -67,9 +67,9 @@ export const addUsers = (userType, userList) => {
     }
 }
 
-export const selectUser = (user) => {
+export const selectPatient = (user) => {
     return {
-        type: 'SELECT_USER',
+        type: 'SELECT_PATIENT',
         user,
 
     }

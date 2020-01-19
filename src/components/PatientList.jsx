@@ -38,7 +38,7 @@ class PatientList extends React.Component {
     const status = "open";
     return this.props.encounters.filter(
       encounter =>
-        encounter.patient_id === this.props.selectedUser.id &&
+        encounter.patient_id === this.props.selectedPatient.id &&
         encounter.status === status
     );
   };
@@ -83,8 +83,8 @@ class PatientList extends React.Component {
       <Fragment>
         <h2 className="title">Encounters</h2>
         <h3 className="subtitle">
-          {this.props.selectedUser.last_name},{" "}
-          {this.props.selectedUser.first_name}
+          {this.props.selectedPatient.last_name},{" "}
+          {this.props.selectedPatient.first_name}
         </h3>
         {this.encounterList().length > 0 ? (
           <this.Encounters />
@@ -100,7 +100,7 @@ const mapStateToProps = state => {
   return {
     encounters: state.encounter.encounters,
     selectedEncounter: state.encounter.selectedEncounter,
-    selectedUser: state.login.user
+    selectedPatient: state.login.user
   };
 };
 

@@ -45,10 +45,10 @@ class EncounterList extends React.Component {
 
   encounterList = () => {
     const status = this.state.open ? "open" : "closed";
-    if (this.props.selectedUser) {
+    if (this.props.selectedPatient) {
       return this.props.encounters.filter(
         encounter =>
-          encounter.patient_id === this.props.selectedUser.id &&
+          encounter.patient_id === this.props.selectedPatient.id &&
           encounter.status === status
       );
     } else
@@ -139,19 +139,60 @@ class EncounterList extends React.Component {
     });
   };
 
+  SelectedPatientInfo = props => {
+    return (
+      <article className="box media">
+        <figure className="media-left image avatar-small is-64x64">
+          <img src={this.props.selectedPatient.profile.photo} />
+        </figure>
+        <div className="media-content">
+          <div className="field">
+            <p className="has-text-weight-bold">
+              {this.props.selectedPatient.last_name},{" "}
+              {this.props.selectedPatient.first_name}
+            </p>
+            <p>
+              {this.props.selectedPatient.profile.address1} <br />
+              {this.props.selectedPatient.profile.city},{" "}
+              {this.props.selectedPatient.profile.state}{" "}
+              {this.props.selectedPatient.profile.zip}
+            </p>
+          </div>
+          <nav className="level">
+            <div className="level-item">
+              <a className="is-link  button is-small">
+                <span className="icon">
+                  <i className="fas fa-plus-square"></i>
+                </span>
+                <span>New Encounter</span>
+              </a>
+            </div>
+            <div className="level-item">
+              <a className="is-link button is-small">
+                <span className="icon">
+                  <i className="fas fa-edit"></i>
+                </span>
+                <span> Edit Profile</span>
+              </a>
+            </div>
+          </nav>
+        </div>
+        <div className="media-right is-link">
+          <button
+            className="delete is-link"
+            onClick={() => this.props.clearUser()}
+          ></button>
+        </div>
+      </article>
+    );
+  };
+
   render() {
     return (
       <Fragment>
         <h2 className="title">Encounters</h2>
-        {this.props.selectedUser ? (
-          <h3 className="subtitle">
-            <button
-              className="delete"
-              onClick={() => this.props.clearUser()}
-            ></button>
-            {this.props.selectedUser.last_name},{" "}
-            {this.props.selectedUser.first_name}
-          </h3>
+        {this.props.selectedPatient ? (
+          <this.SelectedPatientInfo />
         ) : (
           <h3 className="subtitle">All Users</h3>
         )}
@@ -170,7 +211,7 @@ const mapStateToProps = state => {
   return {
     encounters: state.encounter.encounters,
     selectedEncounter: state.encounter.selectedEncounter,
-    selectedUser: state.user.selectedUser
+    selectedPatient: state.user.selectedPatient
   };
 };
 

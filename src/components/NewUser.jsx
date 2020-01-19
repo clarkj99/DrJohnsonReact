@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { addLogin } from "../actions/rootActions";
+import { addLogin, selectPatient } from "../actions/rootActions";
 // import Hero from "./Hero";
 
 class NewUser extends React.Component {
@@ -27,7 +27,8 @@ class NewUser extends React.Component {
     fetch("http://localhost:3000/api/v1/users", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify({
         user: this.state.signupUser
@@ -41,8 +42,10 @@ class NewUser extends React.Component {
       })
       .then(res => res.json())
       .then(res => {
-        this.props.addLogin(res.user);
-        localStorage.setItem("token", res.jwt);
+        console.log("new user done");
+        // this.props.addLogin(res.user);
+        this.props.selectPatient(res.user);
+        // localStorage.setItem("token", res.jwt);
         // localStorage.setItem("user", JSON.stringify(res.user));
       })
       .catch(res => {
@@ -51,12 +54,11 @@ class NewUser extends React.Component {
   };
 
   render() {
+    const title = `New ${this.props.role}`;
     return (
       <Fragment>
-        <h2 className="title">New User</h2>
-        <p>
-          Create a new user login. User will still need to update their profile.
-        </p>
+        <h2 className="title">{title}</h2>
+        <p>Create a new {this.props.role} login.</p>
         <form onSubmit={this.submitSignup}>
           <div className="field">
             <div className="control">
@@ -117,8 +119,10 @@ class NewUser extends React.Component {
 const mapStateToProps = state => {
   return { user: state.login.user };
 };
+
 const mapDispatchToProps = {
-  addLogin
+  addLogin,
+  selectPatient
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewUser);

@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { addLogin } from "../actions/rootActions";
 import Hero from "./Hero";
+import DemoUsers from "./DemoUsers";
 
 class Login extends React.Component {
   initalUser = {
@@ -54,6 +55,7 @@ class Login extends React.Component {
     return (
       <Fragment>
         <Hero title="Login" />
+        <DemoUsers />
         <section className="section">
           <div className="container">
             <h2 className="title">Login</h2>
@@ -61,7 +63,6 @@ class Login extends React.Component {
               Healthcare providers, enter your credentials to access patient
               care.
             </p>
-
             <form onSubmit={this.submitLogin}>
               <div className="field">
                 <input

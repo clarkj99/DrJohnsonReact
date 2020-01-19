@@ -7,7 +7,7 @@ import Search from "../components/Search";
 const EncounterSelection = () => {
   return (
     <Fragment>
-      <Hero title="Provider Access" />
+      {/* <Hero title="Provider Access" /> */}
       <section className="section">
         <div className="columns">
           <div className="column is-one-fifth">
