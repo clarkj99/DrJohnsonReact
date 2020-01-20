@@ -7,6 +7,7 @@ $black-olive: #393e41;
 
 @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Inconsolata|Montserrat|Roboto&display=swap");
 
+// @import "../node_modules/bulmaswatch/sandstone/variables";
 $family-sans-serif: "Montserrat", sans-serif;
 $family-monospace: "Inconsolata", sans-serif;
 $primary: $powder-blue;
@@ -18,6 +19,9 @@ $navbar-breakpoint: 0;
 // $navbar-height: 3.25rem;
 
 @import "../node_modules/bulma/bulma.sass";
+
+// @import "../node_modules/bulmaswatch/sandstone/overrides";
+
 @import "../node_modules/bulma-divider/dist/css/bulma-divider.sass";
 @import "../node_modules/bulma-slider/dist/css/bulma-slider.sass";
 @import "../node_modules/bulma-switch/dist/css/bulma-switch.sass";
@@ -28,7 +32,9 @@ $navbar-breakpoint: 0;
   padding-left: 5rem;
   padding-right: 5rem;
 }
-
+.title {
+  text-transform: uppercase;
+}
 .login-column .title {
   text-align: center;
 }
@@ -44,8 +50,9 @@ section {
   height: 100%;
 }
 .search-results {
-  max-height: 540px;
-  overflow-x: auto;
+  height: 740px;
+  overflow-y: auto;
+  padding: 3px;
 }
 
 .avatar img {

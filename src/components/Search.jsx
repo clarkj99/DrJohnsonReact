@@ -6,7 +6,7 @@ class Search extends React.Component {
   state = { searchTerm: "" };
 
   componentDidMount = () => {
-    fetch("http://localhost:3000/api/v1/users", {
+    fetch("http://localhost:3000/api/v1/users?role=patient", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ class Search extends React.Component {
           .toLowerCase()
           .includes(this.state.searchTerm.toLowerCase());
       });
-    else return this.props.patients.slice(0, 5);
+    else return this.props.patients.slice(0, 20);
   };
 
   handleClick = user => {

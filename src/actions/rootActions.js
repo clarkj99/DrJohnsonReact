@@ -18,6 +18,13 @@ export const addEncounters = (encounters) => {
     }
 }
 
+export const addEncounter = (encounter) => {
+    return {
+        type: 'ADD_ENCOUNTER',
+        encounter
+    }
+}
+
 export const selectEncounter = (encounter) => {
     return {
         type: 'SELECT_ENCOUNTER',

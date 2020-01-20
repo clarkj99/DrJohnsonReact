@@ -12,6 +12,7 @@
     "bulma-slider": "^2.0.0",
     "bulma-steps": "^2.2.1",
     "bulma-switch": "^2.0.0",
+    "bulmaswatch": "^0.7.5",
     "moment": "^2.24.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",

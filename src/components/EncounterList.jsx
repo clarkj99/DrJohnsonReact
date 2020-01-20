@@ -1,9 +1,12 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import unknownUser from "../images/unknown-user2.png";
+import { fetchFunction } from "../utils";
+import ProviderSelect from "./ProviderSelect";
 
 import {
   addEncounters,
+  addEncounter,
   selectEncounter,
   clearEncounter,
   startEncounter,
@@ -11,27 +14,16 @@ import {
 } from "../actions/rootActions";
 
 class EncounterList extends React.Component {
-  state = { open: true };
+  state = {
+    open: true,
+    creatingEncounter: false,
+    selectedProvider: ""
+  };
 
   componentDidMount = () => {
-    fetch("http://localhost:3000/api/v1/encounters", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response; //we only get here if there is no error
-      })
-      .then(res => res.json())
-      .then(data => {
-        this.props.addEncounters(data);
-      })
-      .catch(res => {});
+    fetchFunction("encounters", "GET", null).then(response => {
+      this.props.addEncounters(response);
+    });
   };
 
   handleToggle = encounter => {
@@ -42,6 +34,33 @@ class EncounterList extends React.Component {
 
   handleEdit = encounter => {
     this.props.startEncounter(encounter);
+  };
+
+  handleChange = e => {
+    this.setState({ selectedProvider: e.target.value });
+  };
+
+  handleCancel = () => {
+    this.setState({ creatingEncounter: false });
+  };
+
+  handleNewClick = () => {
+    this.setState({ creatingEncounter: true });
+  };
+
+  handleCreateEncounter = () => {
+    fetchFunction("encounters", "POST", {
+      encounter: {
+        patient_id: this.props.selectedPatient.id,
+        provider_id: this.state.selectedProvider,
+        status: "open"
+      }
+    })
+      .then(response => {
+        this.props.addEncounter(response);
+        this.setState({ creatingEncounter: false, selectedProvider: "" });
+      })
+      .catch(error => this.setState({ error }));
   };
 
   encounterList = () => {
@@ -159,24 +178,67 @@ class EncounterList extends React.Component {
               {this.props.selectedPatient.profile.zip}
             </p>
           </div>
-          <nav className="level">
-            <div className="level-item">
-              <a className="is-link  button is-small">
-                <span className="icon">
-                  <i className="fas fa-plus-square"></i>
-                </span>
-                <span>New Encounter</span>
-              </a>
-            </div>
-            <div className="level-item">
-              <a className="is-link button is-small">
-                <span className="icon">
-                  <i className="fas fa-edit"></i>
-                </span>
-                <span> Edit Profile</span>
-              </a>
-            </div>
-          </nav>
+          {!this.state.creatingEncounter && (
+            <nav className="level">
+              <div className="level-item">
+                <button
+                  className="is-link  button"
+                  onClick={this.handleNewClick}
+                >
+                  <span className="icon">
+                    <i className="fas fa-plus-square"></i>
+                  </span>
+                  <span>New Encounter</span>
+                </button>
+              </div>
+              <div className="level-item">
+                <button className="is-link button">
+                  <span className="icon">
+                    <i className="fas fa-edit"></i>
+                  </span>
+                  <span>Profile</span>
+                </button>
+              </div>
+              <div className="level-item">
+                <button className="is-link button">
+                  <span className="icon">
+                    <i className="fas fa-edit"></i>
+                  </span>
+                  <span>History</span>
+                </button>
+              </div>
+            </nav>
+          )}
+          {this.state.creatingEncounter && (
+            <nav className="level">
+              <div className="level-item">
+                <ProviderSelect
+                  value={this.state.selectedProvider}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="level-item">
+                <button
+                  className="button is-link"
+                  onClick={this.handleCreateEncounter}
+                  disabled={this.state.selectedProvider === ""}
+                >
+                  <span className="icon">
+                    <i className="fas fa-plus-square"></i>
+                  </span>
+                  <span>Create Encounter</span>
+                </button>
+              </div>
+              <div className="level-item">
+                <button className="button is-link" onClick={this.handleCancel}>
+                  <span className="icon">
+                    <i className="fas fa-ban"></i>
+                  </span>
+                  <span>Cancel</span>
+                </button>
+              </div>
+            </nav>
+          )}
         </div>
         <div className="media-right is-link">
           <button
@@ -218,6 +280,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   addEncounters,
+  addEncounter,
   selectEncounter,
   clearEncounter,
   startEncounter,

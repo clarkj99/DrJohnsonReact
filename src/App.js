@@ -51,7 +51,7 @@ class App extends React.Component {
           <Navbar />
           <Switch>
             <Route exact path="/">
-              <Hero title="DrJohnson - FlatIron's Premier EMR" />
+              <Hero title="FlatIron's Premier EMR" />
               <Home />
             </Route>
             <Route path="/about">
