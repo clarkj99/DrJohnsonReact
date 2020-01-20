@@ -5,7 +5,12 @@ const user = (state = { patients: [], providers: [], admins: [], selectedPatient
         case 'ADD_PATIENT_TO_LIST':
             return { ...state, patients: [action.user, ...state.patients] }
         case 'SELECT_PATIENT':
-            return { ...state, selectedPatient: action.user }
+            return {
+                ...state, selectedPatient:
+                    action.user
+            }
+        case 'UPDATE_PATIENT_PROFILE':
+            return { ...state, selectedPatient: { ...state.selectedPatient, profile: { ...action.profile } } }
         case 'SET_CREATING_PATIENT':
             return { ...state, creatingPatient: action.value }
         case 'CLEAR_USER':

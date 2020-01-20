@@ -28,6 +28,7 @@ class ProfileForm extends React.Component {
   };
 
   handleSubmit = e => {
+    e.preventDefault();
     fetch("http://localhost:3000/api/v1/profile", {
       method: "PATCH",
       headers: {
@@ -39,7 +40,9 @@ class ProfileForm extends React.Component {
       })
     })
       .then(res => res.json())
-      .then(console.log);
+      .then(data => {
+        this.props.updateProfile(data);
+      });
   };
 
   render() {
@@ -146,7 +149,4 @@ class ProfileForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { user: state.login.user };
-};
-export default connect(mapStateToProps)(ProfileForm);
+export default ProfileForm;

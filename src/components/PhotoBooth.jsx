@@ -36,7 +36,7 @@ class PhotoBooth extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("TODO - save profile to state", data);
+        this.props.updateProfile(data);
       });
   };
 
@@ -114,4 +114,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(PhotoBooth);
+export default PhotoBooth;

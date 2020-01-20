@@ -12,6 +12,7 @@ import {
   startEncounter,
   clearUser
 } from "../actions/rootActions";
+import { Link } from "react-router-dom";
 
 class EncounterList extends React.Component {
   state = {
@@ -192,12 +193,15 @@ class EncounterList extends React.Component {
                 </button>
               </div>
               <div className="level-item">
-                <button className="is-link button">
+                <Link
+                  to="/providers/patient-profile"
+                  className="is-link button"
+                >
                   <span className="icon">
                     <i className="fas fa-edit"></i>
                   </span>
                   <span>Profile</span>
-                </button>
+                </Link>
               </div>
               <div className="level-item">
                 <button className="is-link button">

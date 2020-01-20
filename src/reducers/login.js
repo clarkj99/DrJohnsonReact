@@ -4,6 +4,8 @@ const login = (state = { user: null }, action) => {
             return { ...state, user: action.user }
         case 'LOGOUT':
             return { ...state, user: null }
+        case 'UPDATE_LOGIN_PROFILE':
+            return { ...state, user: { ...state.user, profile: { ...action.profile } } }
         default:
             return state
     }

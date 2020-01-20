@@ -1,11 +1,10 @@
 import React, { Fragment } from "react";
-import Hero from "./Hero";
 import { connect } from "react-redux";
 import ProfileForm from "./ProfileForm";
 import PhotoBooth from "./PhotoBooth";
-import { updateLoginProfile } from "../actions/rootActions";
+import { updatePatientProfile } from "../actions/rootActions";
 
-class Profile extends React.Component {
+class PatientProfile extends React.Component {
   render = () => {
     return (
       <Fragment>
@@ -21,13 +20,13 @@ class Profile extends React.Component {
                 <PhotoBooth
                   profile={this.props.user.profile}
                   photo={this.props.user.profile.photo}
-                  updateProfile={this.props.updateLoginProfile}
+                  updateProfile={this.props.updatePatientProfile}
                 />
               </div>
               <div className="column">
                 <ProfileForm
                   user={this.props.user}
-                  updateProfile={this.props.updateLoginProfile}
+                  updateProfile={this.props.updatePatientProfile}
                 />
               </div>
             </div>
@@ -38,12 +37,12 @@ class Profile extends React.Component {
   };
 }
 
-function mapStateToProps(state) {
-  return { user: state.login.user };
-}
-
-const mapDispatchToProps = {
-  updateLoginProfile
+const mapStateToProps = state => {
+  return { user: state.user.selectedPatient };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+const mapDispatchToProps = {
+  updatePatientProfile
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PatientProfile);

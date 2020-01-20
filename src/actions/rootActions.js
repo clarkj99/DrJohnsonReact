@@ -11,6 +11,13 @@ export const logout = () => {
     }
 }
 
+export const updateLoginProfile = (profile) => {
+    return {
+        type: 'UPDATE_LOGIN_PROFILE',
+        profile
+    }
+}
+
 export const addEncounters = (encounters) => {
     return {
         type: 'ADD_ENCOUNTERS',
@@ -85,6 +92,13 @@ export const selectPatient = (user) => {
     return {
         type: 'SELECT_PATIENT',
         user
+    }
+}
+
+export const updatePatientProfile = (profile) => {
+    return {
+        type: 'UPDATE_PATIENT_PROFILE',
+        profile
     }
 }
 

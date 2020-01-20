@@ -2,12 +2,13 @@ import React from 'react';
 import './App.scss';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
 import Login from './components/Login';
 import Home from './components/Home';
 import Nomatch from './components/Nomatch';
 import Profile from './components/Profile';
 import Provider from './containers/Provider';
+import PatientProfile from './components/PatientProfile';
 
 import { connect } from 'react-redux'
 import { addLogin } from './actions/rootActions'
@@ -72,6 +73,9 @@ class App extends React.Component {
             <Route path="/providers/newpatient">
               <NewPatient />
             </Route>
+            <Route path="/providers/patient-profile">
+              {this.props.selectedPatient ? <PatientProfile /> : <Redirect to="/providers" />}
+            </Route>
             <Route path="/patients">
               {this.props.user ? <Patient /> : <Login />}
             </Route>
@@ -89,7 +93,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.login.user }
+  return { user: state.login.user, selectedPatient: state.user.selectedPatient }
 }
 
 const mapDispatchToProps = { addLogin }
