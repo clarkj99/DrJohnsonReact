@@ -98,7 +98,7 @@ class ProblemExam extends React.Component {
                   list={["healthy", "ill"]}
                   field="appearance"
                   label="Appearance"
-                  value={appearance}
+                  value={appearance || ""}
                   handleChange={this.handleChange}
                 />
               </div>
@@ -126,7 +126,7 @@ class ProblemExam extends React.Component {
                   ]}
                   field="psychiatric_state"
                   label="Psychiatric State"
-                  value={psychiatric_state}
+                  value={psychiatric_state || ""}
                   handleChange={this.handleChange}
                 />
               </div>
@@ -166,7 +166,7 @@ class ProblemExam extends React.Component {
                   ]}
                   field="bowel_sounds"
                   label="Bowel Sounds"
-                  value={bowel_sounds}
+                  value={bowel_sounds || ""}
                   handleChange={this.handleChange}
                 />
               </div>
@@ -193,7 +193,7 @@ class ProblemExam extends React.Component {
                   ]}
                   field="pelvic_external"
                   label="External"
-                  value={pelvic_external}
+                  value={pelvic_external || ""}
                   handleChange={this.handleChange}
                 />
 
@@ -206,7 +206,7 @@ class ProblemExam extends React.Component {
                   ]}
                   field="pelvic_vaginal"
                   label="Vaginal"
-                  value={pelvic_vaginal}
+                  value={pelvic_vaginal || ""}
                   handleChange={this.handleChange}
                 />
 
@@ -219,7 +219,7 @@ class ProblemExam extends React.Component {
                   ]}
                   field="pelvic_uteris"
                   label="Uteris"
-                  value={pelvic_uteris}
+                  value={pelvic_uteris || ""}
                   handleChange={this.handleChange}
                 />
 
@@ -232,7 +232,7 @@ class ProblemExam extends React.Component {
                   ]}
                   field="pelvic_ovaries"
                   label="Ovaries"
-                  value={pelvic_ovaries}
+                  value={pelvic_ovaries || ""}
                   handleChange={this.handleChange}
                 />
               </div>

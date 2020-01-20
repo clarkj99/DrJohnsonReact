@@ -26,6 +26,10 @@ class NewUser extends React.Component {
     });
   };
 
+  handleCancel = () => {
+    this.props.setCreatingPatient(false);
+  };
+
   submitSignup = e => {
     e.preventDefault();
 
@@ -114,9 +118,24 @@ class NewUser extends React.Component {
             {this.state.signupError && (
               <p className="help is-danger">{this.state.signupError}</p>
             )}
-            <button type="submit" className="button is-fullwidth is-link">
-              Create {this.props.role}
-            </button>
+            <div className="buttons">
+              <button type="submit" className="button is-link">
+                <span className="icon">
+                  <i className="fas fa-plus-square"></i>
+                </span>
+                <span>Create {this.props.role}</span>
+              </button>
+              <button
+                type="reset"
+                className="button is-link"
+                onClick={this.handleCancel}
+              >
+                <span className="icon">
+                  <i className="fas fa-ban"></i>
+                </span>
+                <span>Cancel</span>
+              </button>
+            </div>
           </div>
         </form>
       </Fragment>

@@ -86,7 +86,7 @@ class HPI extends React.Component {
                   <div className="select">
                     <select
                       name="duration_units"
-                      value={duration_units}
+                      value={duration_units || ""}
                       onChange={this.handleChange}
                     >
                       <option value="">Units</option>
@@ -140,7 +140,7 @@ class HPI extends React.Component {
                   <div className="select">
                     <select
                       name="aggravating_factors"
-                      value={aggravating_factors}
+                      value={aggravating_factors || ""}
                       onChange={this.handleChange}
                     >
                       <option value="">Factors</option>
