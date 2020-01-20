@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import unknownUser from "../images/unknown-user2.png";
 import { fetchFunction } from "../utils";
 import ProviderSelect from "./ProviderSelect";
+import { Link, withRouter } from "react-router-dom";
 
 import {
   addEncounters,
@@ -10,9 +11,9 @@ import {
   selectEncounter,
   clearEncounter,
   startEncounter,
+  selectPatient,
   clearUser
 } from "../actions/rootActions";
-import { Link } from "react-router-dom";
 
 class EncounterList extends React.Component {
   state = {
@@ -34,7 +35,9 @@ class EncounterList extends React.Component {
   };
 
   handleEdit = encounter => {
-    this.props.startEncounter(encounter);
+    this.props.selectPatient(encounter.patient);
+    this.props.selectEncounter(encounter);
+    this.props.history.push("/providers/encounter");
   };
 
   handleChange = e => {
@@ -288,7 +291,11 @@ const mapDispatchToProps = {
   selectEncounter,
   clearEncounter,
   startEncounter,
+  selectPatient,
   clearUser
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EncounterList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(EncounterList));

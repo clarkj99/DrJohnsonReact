@@ -9,6 +9,7 @@ import Nomatch from './components/Nomatch';
 import Profile from './components/Profile';
 import Provider from './containers/Provider';
 import PatientProfile from './components/PatientProfile';
+import EncounterEdit from "./containers/EncounterEdit";
 
 import { connect } from 'react-redux'
 import { addLogin } from './actions/rootActions'
@@ -72,6 +73,9 @@ class App extends React.Component {
             </Route>
             <Route path="/providers/newpatient">
               <NewPatient />
+            </Route>
+            <Route path="/providers/encounter">
+              <EncounterEdit />
             </Route>
             <Route path="/providers/patient-profile">
               {this.props.selectedPatient ? <PatientProfile /> : <Redirect to="/providers" />}

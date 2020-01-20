@@ -80,3 +80,7 @@ const mapDispatchToProps = {
 2020-01-17
 
 - added photo booth to user profile component, using a react component `react-html5-camera-photo`.
+
+2020-01-20
+
+- used withRouter and props.history.push to navigate programatically
