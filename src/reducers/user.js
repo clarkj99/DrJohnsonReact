@@ -11,6 +11,8 @@ const user = (state = { patients: [], providers: [], admins: [], selectedPatient
             }
         case 'UPDATE_PATIENT_PROFILE':
             return { ...state, selectedPatient: { ...state.selectedPatient, profile: { ...action.profile } } }
+        case 'UPDATE_PATIENT_HISTORY':
+            return { ...state, selectedPatient: { ...state.selectedPatient, history: { ...action.history } } }
         case 'SET_CREATING_PATIENT':
             return { ...state, creatingPatient: action.value }
         case 'CLEAR_USER':

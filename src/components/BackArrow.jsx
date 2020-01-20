@@ -8,7 +8,7 @@ const BackArrow = props => {
         <span className="icon">
           <i className="fas fa-long-arrow-alt-left"></i>
         </span>
-        <span>Back</span>
+        <span>Providers</span>
       </Link>
     </nav>
   );

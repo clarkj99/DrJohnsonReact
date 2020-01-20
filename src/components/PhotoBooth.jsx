@@ -3,7 +3,7 @@ import Camera from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
 import { connect } from "react-redux";
 import { addLogin } from "../actions/rootActions";
-import unknownUser from "../images/unknown-user2.png";
+import unknownUser from "../images/unknown-user3.png";
 
 class PhotoBooth extends React.Component {
   initialState = { currentPhoto: null, takingPhoto: false };
@@ -59,9 +59,9 @@ class PhotoBooth extends React.Component {
           </div>
         )}
         <div className="column">
-          <figure className="image is-4by3">
+          <figure className="image avatar is-4by3">
             <img
-              className="avatar"
+              className=""
               src={this.state.currentPhoto || this.state.originalPhoto}
               alt="me"
             ></img>

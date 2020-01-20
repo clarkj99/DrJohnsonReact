@@ -9,6 +9,7 @@ import Nomatch from './components/Nomatch';
 import Profile from './components/Profile';
 import Provider from './containers/Provider';
 import PatientProfile from './components/PatientProfile';
+import History from './components/History';
 import EncounterEdit from "./containers/EncounterEdit";
 
 import { connect } from 'react-redux'
@@ -68,17 +69,21 @@ class App extends React.Component {
             <Route path="/login">
               {this.props.user ? <Profile /> : <Login />}
             </Route>
-            <Route exact path="/providers">
-              {this.props.user ? <Provider /> : <Login />}
-            </Route>
+
             <Route path="/providers/newpatient">
               <NewPatient />
             </Route>
             <Route path="/providers/encounter">
-              <EncounterEdit />
+              {Object.getOwnPropertyNames(this.props.selectedEncounter).length !== 0 ? <EncounterEdit /> : <Redirect to="/providers" />}
             </Route>
             <Route path="/providers/patient-profile">
               {this.props.selectedPatient ? <PatientProfile /> : <Redirect to="/providers" />}
+            </Route>
+            <Route path="/providers/patient-history">
+              {this.props.selectedPatient ? <History /> : <Redirect to="/providers" />}
+            </Route>
+            <Route exact path="/providers">
+              {this.props.user ? <Provider /> : <Login />}
             </Route>
             <Route path="/patients">
               {this.props.user ? <Patient /> : <Login />}
@@ -97,7 +102,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.login.user, selectedPatient: state.user.selectedPatient }
+  return { user: state.login.user, selectedPatient: state.user.selectedPatient, selectedEncounter: state.encounter.selectedEncounter }
 }
 
 const mapDispatchToProps = { addLogin }

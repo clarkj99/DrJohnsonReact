@@ -83,4 +83,5 @@ const mapDispatchToProps = {
 
 2020-01-20
 
-- used withRouter and props.history.push to navigate programatically
+- Used withRouter and props.history.push to navigate programatically
+- Can't just do boolean check for an object. `!!{}` returns true. Use `Object.getOwnPropertyNames(this.props.selectedEncounter).length !== 0`

@@ -102,6 +102,13 @@ export const updatePatientProfile = (profile) => {
     }
 }
 
+export const updatePatientHistory = (history) => {
+    return {
+        type: 'UPDATE_PATIENT_HISTORY',
+        history
+    }
+}
+
 export const setCreatingPatient = (value) => {
     return {
         type: 'SET_CREATING_PATIENT',

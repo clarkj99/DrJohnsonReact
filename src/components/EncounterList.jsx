@@ -198,12 +198,15 @@ class EncounterList extends React.Component {
                 </Link>
               </div>
               <div className="navbar-item">
-                <button className="is-link button">
+                <Link
+                  className="is-link button"
+                  to="/providers/patient-history"
+                >
                   <span className="icon">
                     <i className="fas fa-edit"></i>
                   </span>
                   <span>History</span>
-                </button>
+                </Link>
               </div>
             </nav>
           )}
