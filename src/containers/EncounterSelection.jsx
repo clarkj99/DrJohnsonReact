@@ -25,7 +25,10 @@ class EncounterSelection extends React.Component {
                     onClick={this.handleClick}
                     className="button is-link "
                   >
-                    New Patient
+                    <span className="icon">
+                      <i className="fas fa-plus-square"></i>
+                    </span>
+                    <span>New Patient</span>
                   </button>
                 </Fragment>
               ) : (

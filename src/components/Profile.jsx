@@ -5,10 +5,13 @@ import ProfileForm from "./ProfileForm";
 import PhotoBooth from "./PhotoBooth";
 import { updateLoginProfile } from "../actions/rootActions";
 
+import BackArrow from "./BackArrow";
+
 class Profile extends React.Component {
   render = () => {
     return (
       <Fragment>
+        <BackArrow />
         <section className="section">
           <div className="container">
             <div className="columns">

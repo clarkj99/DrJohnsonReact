@@ -10,7 +10,6 @@ import {
   addEncounter,
   selectEncounter,
   clearEncounter,
-  startEncounter,
   selectPatient,
   clearUser
 } from "../actions/rootActions";
@@ -29,9 +28,7 @@ class EncounterList extends React.Component {
   };
 
   handleToggle = encounter => {
-    if (this.props.selectedEncounter.id === encounter.id)
-      this.props.clearEncounter();
-    else this.props.selectEncounter(encounter);
+    this.props.selectPatient(encounter.patient);
   };
 
   handleEdit = encounter => {
@@ -124,13 +121,7 @@ class EncounterList extends React.Component {
                   onClick={e => this.handleToggle(encounter)}
                 >
                   <span className="icon">
-                    <i
-                      className={
-                        this.props.selectedEncounter.id === encounter.id
-                          ? "fas fa-minus"
-                          : "fas fa-plus"
-                      }
-                    ></i>
+                    <i className={"fas fa-user-injured"}></i>
                   </span>
                 </button>
                 <button
@@ -183,8 +174,8 @@ class EncounterList extends React.Component {
             </p>
           </div>
           {!this.state.creatingEncounter && (
-            <nav className="level">
-              <div className="level-item">
+            <nav className="navbar">
+              <div className="navbar-item">
                 <button
                   className="is-link  button"
                   onClick={this.handleNewClick}
@@ -195,7 +186,7 @@ class EncounterList extends React.Component {
                   <span>New Encounter</span>
                 </button>
               </div>
-              <div className="level-item">
+              <div className="navbar-item">
                 <Link
                   to="/providers/patient-profile"
                   className="is-link button"
@@ -206,7 +197,7 @@ class EncounterList extends React.Component {
                   <span>Profile</span>
                 </Link>
               </div>
-              <div className="level-item">
+              <div className="navbar-item">
                 <button className="is-link button">
                   <span className="icon">
                     <i className="fas fa-edit"></i>
@@ -217,14 +208,14 @@ class EncounterList extends React.Component {
             </nav>
           )}
           {this.state.creatingEncounter && (
-            <nav className="level">
-              <div className="level-item">
+            <nav className="navbar">
+              <div className="navbar-item">
                 <ProviderSelect
                   value={this.state.selectedProvider}
                   onChange={this.handleChange}
                 />
               </div>
-              <div className="level-item">
+              <div className="navbar-item">
                 <button
                   className="button is-link"
                   onClick={this.handleCreateEncounter}
@@ -236,7 +227,7 @@ class EncounterList extends React.Component {
                   <span>Create Encounter</span>
                 </button>
               </div>
-              <div className="level-item">
+              <div className="navbar-item">
                 <button className="button is-link" onClick={this.handleCancel}>
                   <span className="icon">
                     <i className="fas fa-ban"></i>
@@ -290,7 +281,6 @@ const mapDispatchToProps = {
   addEncounter,
   selectEncounter,
   clearEncounter,
-  startEncounter,
   selectPatient,
   clearUser
 };

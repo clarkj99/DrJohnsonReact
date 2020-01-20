@@ -118,10 +118,10 @@ class ProfileForm extends React.Component {
 
           <div className="field">
             <div className="control">
-              <div className="file has-name">
+              <div className="file has-name is-fullwidth is-link">
                 <label className="file-label">
                   <input
-                    className="file-input"
+                    className="file-input is-link"
                     type="file"
                     name="newPhoto"
                     accept="image/png, image/jpeg"
@@ -141,7 +141,7 @@ class ProfileForm extends React.Component {
             </div>
           </div>
           <div className="field">
-            <button className="button">Submit</button>
+            <button className="button is-link">Submit</button>
           </div>
         </form>
       </div>
