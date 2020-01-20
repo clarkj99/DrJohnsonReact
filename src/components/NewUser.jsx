@@ -69,8 +69,6 @@ class NewUser extends React.Component {
     const title = `New ${this.props.role}`;
     return (
       <Fragment>
-        <h2 className="title">{title}</h2>
-        <p className="subtitle">Create a new {this.props.role} login</p>
         <form onSubmit={this.submitSignup}>
           <div className="field">
             <div className="control">

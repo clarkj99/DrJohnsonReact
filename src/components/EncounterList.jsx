@@ -1,24 +1,19 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import unknownUser from "../images/unknown-user2.png";
 import { fetchFunction } from "../utils";
-import ProviderSelect from "./ProviderSelect";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import SelectedPatientInfo from "../containers/SelectedPatientInfo";
 
 import {
   addEncounters,
-  addEncounter,
   selectEncounter,
   clearEncounter,
-  selectPatient,
-  clearUser
+  selectPatient
 } from "../actions/rootActions";
 
 class EncounterList extends React.Component {
   state = {
-    open: true,
-    creatingEncounter: false,
-    selectedProvider: ""
+    open: true
   };
 
   componentDidMount = () => {
@@ -35,33 +30,6 @@ class EncounterList extends React.Component {
     this.props.selectPatient(encounter.patient);
     this.props.selectEncounter(encounter);
     this.props.history.push("/providers/encounter");
-  };
-
-  handleChange = e => {
-    this.setState({ selectedProvider: e.target.value });
-  };
-
-  handleCancel = () => {
-    this.setState({ creatingEncounter: false });
-  };
-
-  handleNewClick = () => {
-    this.setState({ creatingEncounter: true });
-  };
-
-  handleCreateEncounter = () => {
-    fetchFunction("encounters", "POST", {
-      encounter: {
-        patient_id: this.props.selectedPatient.id,
-        provider_id: this.state.selectedProvider,
-        status: "open"
-      }
-    })
-      .then(response => {
-        this.props.addEncounter(response);
-        this.setState({ creatingEncounter: false, selectedProvider: "" });
-      })
-      .catch(error => this.setState({ error }));
   };
 
   encounterList = () => {
@@ -154,109 +122,12 @@ class EncounterList extends React.Component {
     });
   };
 
-  SelectedPatientInfo = props => {
-    return (
-      <article className="box media">
-        <figure className="media-left image avatar-small is-64x64">
-          <img src={this.props.selectedPatient.profile.photo || unknownUser} />
-        </figure>
-        <div className="media-content">
-          <div className="field">
-            <p className="has-text-weight-bold">
-              {this.props.selectedPatient.last_name},{" "}
-              {this.props.selectedPatient.first_name}
-            </p>
-            <p>
-              {this.props.selectedPatient.profile.address1} <br />
-              {this.props.selectedPatient.profile.city},{" "}
-              {this.props.selectedPatient.profile.state}{" "}
-              {this.props.selectedPatient.profile.zip}
-            </p>
-          </div>
-          {!this.state.creatingEncounter && (
-            <nav className="navbar">
-              <div className="navbar-item">
-                <button
-                  className="is-link  button"
-                  onClick={this.handleNewClick}
-                >
-                  <span className="icon">
-                    <i className="fas fa-plus-square"></i>
-                  </span>
-                  <span>New Encounter</span>
-                </button>
-              </div>
-              <div className="navbar-item">
-                <Link
-                  to="/providers/patient-profile"
-                  className="is-link button"
-                >
-                  <span className="icon">
-                    <i className="fas fa-edit"></i>
-                  </span>
-                  <span>Profile</span>
-                </Link>
-              </div>
-              <div className="navbar-item">
-                <Link
-                  className="is-link button"
-                  to="/providers/patient-history"
-                >
-                  <span className="icon">
-                    <i className="fas fa-edit"></i>
-                  </span>
-                  <span>History</span>
-                </Link>
-              </div>
-            </nav>
-          )}
-          {this.state.creatingEncounter && (
-            <nav className="navbar">
-              <div className="navbar-item">
-                <ProviderSelect
-                  value={this.state.selectedProvider}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="navbar-item">
-                <button
-                  className="button is-link"
-                  onClick={this.handleCreateEncounter}
-                  disabled={this.state.selectedProvider === ""}
-                >
-                  <span className="icon">
-                    <i className="fas fa-plus-square"></i>
-                  </span>
-                  <span>Create Encounter</span>
-                </button>
-              </div>
-              <div className="navbar-item">
-                <button className="button is-link" onClick={this.handleCancel}>
-                  <span className="icon">
-                    <i className="fas fa-ban"></i>
-                  </span>
-                  <span>Cancel</span>
-                </button>
-              </div>
-            </nav>
-          )}
-        </div>
-        <div className="media-right is-link">
-          <button
-            className="delete is-link"
-            onClick={() => this.props.clearUser()}
-          ></button>
-        </div>
-      </article>
-    );
-  };
-
   render() {
     return (
       <Fragment>
         <h2 className="title">Encounters</h2>
         {this.props.selectedPatient ? (
-          <this.SelectedPatientInfo />
+          <SelectedPatientInfo />
         ) : (
           <h3 className="subtitle">All Users</h3>
         )}
@@ -271,6 +142,7 @@ class EncounterList extends React.Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     encounters: state.encounter.encounters,
@@ -281,11 +153,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   addEncounters,
-  addEncounter,
   selectEncounter,
   clearEncounter,
-  selectPatient,
-  clearUser
+  selectPatient
 };
 
 export default connect(

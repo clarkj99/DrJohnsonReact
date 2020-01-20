@@ -7,37 +7,41 @@ import { setCreatingPatient } from "../actions/rootActions";
 
 class EncounterSelection extends React.Component {
   handleClick = () => {
-    // this.setState({ creatingPatient: true });
     this.props.setCreatingPatient(true);
   };
-
   render() {
     return (
       <Fragment>
-        {/* <Hero title="Provider Access" /> */}
         <section className="section">
           <div className="columns">
-            <div className="column is-one-fifth">
-              {!this.props.creatingPatient ? (
-                <Fragment>
-                  <h2 className="title">Add A New Patient</h2>
-                  <button
-                    onClick={this.handleClick}
-                    className="button is-link "
-                  >
-                    <span className="icon">
-                      <i className="fas fa-plus-square"></i>
-                    </span>
-                    <span>New Patient</span>
-                  </button>
-                </Fragment>
-              ) : (
+            <div className="column is-two-fifths">
+              <div className="level">
+                <div className="level-left">
+                  {this.props.creatingPatient ? (
+                    <h2 className="title">New Patient</h2>
+                  ) : (
+                    <h2 className="title">Search</h2>
+                  )}
+                </div>
+                <div className="level-right">
+                  {!this.props.creatingPatient && (
+                    <button
+                      onClick={this.handleClick}
+                      className="button is-link "
+                    >
+                      <span className="icon">
+                        <i className="fas fa-plus-square"></i>
+                      </span>
+                      <span>New Patient</span>
+                    </button>
+                  )}
+                </div>
+              </div>
+              {this.props.creatingPatient ? (
                 <NewUser role="patient" />
+              ) : (
+                <Search />
               )}
-            </div>
-            <div className="is-divider-vertical"></div>
-            <div className="column">
-              <Search />
             </div>
 
             <div className="is-divider-vertical"></div>
@@ -61,5 +65,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EncounterSelection);
-
-// export default EncounterSelection;

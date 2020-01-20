@@ -1,6 +1,11 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { addUsers, selectPatient } from "../actions/rootActions";
+import NewUser from "../components/NewUser";
+import {
+  addUsers,
+  selectPatient,
+  setCreatingPatient
+} from "../actions/rootActions";
 
 class Search extends React.Component {
   state = { searchTerm: "" };
@@ -56,7 +61,7 @@ class Search extends React.Component {
   render() {
     return (
       <Fragment>
-        <h2 className="title">Search</h2>
+        {this.props.creatingPatient && <NewUser role="patient" />}
         <div className="field">
           <div className="control has-icons-left">
             <span className="icon is-small is-left">
@@ -93,9 +98,12 @@ class Search extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { patients: state.user.patients };
+  return {
+    patients: state.user.patients,
+    creatingPatient: state.user.creatingPatient
+  };
 };
 
-const mapDispatchToProps = { addUsers, selectPatient };
+const mapDispatchToProps = { addUsers, selectPatient, setCreatingPatient };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
