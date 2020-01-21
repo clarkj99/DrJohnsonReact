@@ -90,7 +90,7 @@ class RoSystems extends React.Component {
       joint_pain,
       joint_swelling,
       musculoskeletal_details
-    } = this.props.rosystem;
+    } = this.state;
 
     return (
       <section className="encounter-section section">

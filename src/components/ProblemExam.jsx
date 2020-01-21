@@ -81,7 +81,7 @@ class ProblemExam extends React.Component {
       pelvic_ovaries,
       pelvic_bladder,
       pelvic_details
-    } = this.props.problemExam;
+    } = this.state;
 
     return (
       <section className="encounter-section section">

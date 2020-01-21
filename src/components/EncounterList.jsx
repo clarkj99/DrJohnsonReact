@@ -85,7 +85,7 @@ class EncounterList extends React.Component {
             <div className="column">
               <div className="buttons">
                 <button
-                  className="button"
+                  className="button is-link"
                   onClick={e => this.handleToggle(encounter)}
                 >
                   <span className="icon">
@@ -93,7 +93,7 @@ class EncounterList extends React.Component {
                   </span>
                 </button>
                 <button
-                  className="button"
+                  className="button is-link"
                   onClick={e => this.handleEdit(encounter)}
                 >
                   <span className="icon">

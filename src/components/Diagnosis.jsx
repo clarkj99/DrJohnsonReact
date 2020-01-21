@@ -50,7 +50,7 @@ class Diagnosis extends React.Component {
   };
 
   render() {
-    let { orders, follow_up, icd } = this.props.diagnosis;
+    let { orders, follow_up, icd } = this.state;
     return (
       <section className="encounter-section section">
         <div className="container">
