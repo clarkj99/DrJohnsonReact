@@ -42,7 +42,10 @@ class SelectedPatientInfo extends React.Component {
     return (
       <article className="box media">
         <figure className="media-left image avatar-small is-64x64">
-          <img src={this.props.selectedPatient.profile.photo || unknownUser} />
+          <img
+            src={this.props.selectedPatient.profile.photo || unknownUser}
+            alt={this.props.selectedPatient.last_name}
+          />
         </figure>
         <div className="media-content">
           <div className="field">

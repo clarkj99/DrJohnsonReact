@@ -2,20 +2,24 @@ import React from "react";
 import { connect } from "react-redux";
 import { updateEncounterChild } from "../actions/rootActions";
 import Textarea from "./Textarea";
-import Checkbox from "./Checkbox";
+import { fetchFunction } from "../utils";
 
 class Diagnosis extends React.Component {
-  initialState = {
+  initialDiagnosis = {
     orders: "",
     follow_up: "",
     icd: ""
   };
 
-  state = { ...this.initialState };
+  state = {
+    diagnosis: { ...this.initialDiagnosis },
+    searchResults: [],
+    searchTerm: ""
+  };
 
   componentDidMount = () => {
-    this.initialState = { ...this.props.intake };
-    this.setState({ ...this.props.intake });
+    this.initialDiagnosis = { ...this.props.diagnosis };
+    this.setState({ diagnosis: { ...this.props.diagnosis } });
   };
 
   handleChange = e => {
@@ -30,7 +34,7 @@ class Diagnosis extends React.Component {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify({
-        diagnosis: { ...this.state, [e.target.name]: value }
+        diagnosis: { ...this.state.diagnosis, [e.target.name]: value }
       })
     })
       .then(response => {
@@ -42,28 +46,92 @@ class Diagnosis extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.props.updateEncounterChild("diagnosis", data);
-        this.setState(data);
+        this.setState({ diagnosis: data });
       })
       .catch(res => {
         this.setState({ error: res.message });
       });
   };
 
+  handleSearchChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+
+    fetchFunction(`/icd10s?term=${e.target.value}`, "GET").then(
+      searchResults => {
+        this.setState({ searchResults });
+      }
+    );
+  };
+
+  handleClick = icd => {
+    this.handleChange({
+      target: {
+        type: "text",
+        value: `${icd.code} - ${icd.description}`,
+        name: "icd"
+      }
+    });
+    this.handleSearchChange({ target: { name: "searchTerm", value: "" } });
+  };
+
+  handleMouseOver = e => {
+    console.dir(e.target);
+    if (e.target.type === "div")
+      e.target.className =
+        "has-text-left box has-background-link has-text-light";
+  };
+
+  handleMouseOut = e => {
+    if (e.target.type === "div") e.target.className = "has-text-left box";
+  };
+
   render() {
-    let { orders, follow_up, icd } = this.state;
+    const { orders, follow_up, icd } = this.state.diagnosis;
+    const { searchResults, searchTerm } = this.state;
     return (
       <section className="encounter-section section">
         <div className="container">
           <h2 className="subtitle">Diagnosis</h2>
 
           <div className="field is-horizontal has-addons">
-            <div className="field-label  is-normal">
+            <div className="field-label is-normal">
               <label className="label">ICD-10</label>
             </div>
 
             <div className="field-body">
-              <div className="control">
-                <input className="input" />
+              <div className="field has-addons">
+                <div className="control">
+                  <a className="button is-static icd-text has-text-left">
+                    {icd}
+                  </a>
+                </div>
+                <div className="control has-icons-left">
+                  <input
+                    className="input"
+                    type="search"
+                    name="searchTerm"
+                    value={searchTerm}
+                    onChange={this.handleSearchChange}
+                  />
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-search"></i>
+                  </span>
+                </div>
+                <div className="control is-expanded">
+                  {searchResults.length > 0 && (
+                    <div className="icd-search-results box">
+                      {searchResults.map(result => (
+                        <a
+                          key={result.id}
+                          className="has-text-left level"
+                          onClick={() => this.handleClick(result)}
+                        >
+                          {result.code} - {result.description}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

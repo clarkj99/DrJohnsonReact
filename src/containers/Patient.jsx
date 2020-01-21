@@ -6,7 +6,6 @@ import PatientList from "../components/PatientList";
 import EncounterDetail from "../components/EncounterDetail";
 
 const Patient = props => {
-  const isPatient = props.user.role === "patient";
   return (
     <Fragment>
       {!(props.user.role === "patient") ? (

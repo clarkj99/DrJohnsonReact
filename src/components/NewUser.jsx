@@ -66,7 +66,6 @@ class NewUser extends React.Component {
   };
 
   render() {
-    const title = `New ${this.props.role}`;
     return (
       <Fragment>
         <form onSubmit={this.submitSignup}>

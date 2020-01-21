@@ -59,7 +59,10 @@ class Search extends React.Component {
       >
         <div className="media-left">
           <figure className="media-left image avatar-small is-64x64">
-            <img src={props.user.profile.photo || unknownUser} />
+            <img
+              src={props.user.profile.photo || unknownUser}
+              alt={props.user.last_name}
+            />
           </figure>
         </div>
         <div className="media-content">

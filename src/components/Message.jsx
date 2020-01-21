@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 const Message = props => {
   const articleClass = `message is-${props.type}`;

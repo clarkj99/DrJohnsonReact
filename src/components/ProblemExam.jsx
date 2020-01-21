@@ -235,6 +235,18 @@ class ProblemExam extends React.Component {
                   value={pelvic_ovaries || ""}
                   handleChange={this.handleChange}
                 />
+                <DropdownSelect
+                  list={[
+                    "normal_bladder",
+                    "painful_bladder",
+                    "inflamed_bladder",
+                    "bleeding_bladder"
+                  ]}
+                  field="pelvic_bladder"
+                  label="Bladder"
+                  value={pelvic_bladder || ""}
+                  handleChange={this.handleChange}
+                />
               </div>
             </div>
 

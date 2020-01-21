@@ -1,8 +1,6 @@
-import React, { Fragment, useReducer } from "react";
+import React from "react";
 import Camera from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
-import { connect } from "react-redux";
-import { addLogin } from "../actions/rootActions";
 import unknownUser from "../images/unknown-user3.png";
 
 class PhotoBooth extends React.Component {
@@ -107,12 +105,5 @@ class PhotoBooth extends React.Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    photo: state.login.user.profile.photo,
-    profile: state.login.user.profile
-  };
-};
 
 export default PhotoBooth;

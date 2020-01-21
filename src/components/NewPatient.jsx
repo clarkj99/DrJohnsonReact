@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import Hero from "./Hero";
 import NewUser from "./NewUser";
 
 const NewPatient = props => {

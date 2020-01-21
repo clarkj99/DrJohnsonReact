@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import Hero from "./Hero";
 import { connect } from "react-redux";
 import ProfileForm from "./ProfileForm";
 import PhotoBooth from "./PhotoBooth";

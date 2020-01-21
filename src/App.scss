@@ -93,10 +93,40 @@ section {
   padding: 0 1em;
 }
 
+// body {
+//   background-image: url("./images/alex-knight-j4uuKnN43_M-unsplash.jpg");
+//   background-color: transparent;
+//   background-attachment: fixed;
+//   background-size: cover;
+//   background-position: bottom;
+// }
+.hero.is-bold {
+  background-color: transparent;
+}
+
+section.section {
+  background-color: $scheme-main;
+}
+
 .hero-body.box {
   padding: 1em 1.25rem;
 }
 
 .selected-patient {
   padding: 0 0 1rem 0;
+}
+.icd-search-results {
+  position: absolute;
+  z-index: 10;
+  max-height: 300px;
+  // max-width: 400px;
+  overflow-x: scroll;
+  overflow-y: auto;
+  margin-left: 1em;
+}
+
+.icd-text {
+  max-width: 400px;
+  white-space: normal;
+  height: auto;
 }
