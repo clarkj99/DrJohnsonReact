@@ -23,8 +23,7 @@ class ProfileForm extends React.Component {
   };
 
   handleImageChange = e => {
-    if (e.target.files[0])
-      this.setState({ [e.target.name]: e.target.files[0] });
+    if (e.target.files[0]) this.setState({ newPhoto: e.target.files[0] });
   };
 
   handleSubmit = e => {
@@ -43,7 +42,27 @@ class ProfileForm extends React.Component {
       .then(data => {
         this.props.updateProfile(data);
       });
+    // if (this.state.newPhoto) this.uploadPhoto();
   };
+
+  // uploadPhoto = () => {
+  //   const formData = new FormData();
+  //   formData.append("photo", this.state.newPhoto, this.state.newPhoto.name);
+
+  //   fetch(`http://localhost:3000/api/v1/photo/${this.props.user.profile.id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       // "Content-Type": "multipart/form-data",
+  //       Authorization: `Bearer ${localStorage.getItem("token")}`
+  //     },
+  //     body: formData
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       // this.props.updateProfile(data);
+  //       console.log("file", data);
+  //     });
+  // };
 
   render() {
     let profile = this.state;
@@ -116,7 +135,7 @@ class ProfileForm extends React.Component {
             </div>
           </div>
 
-          <div className="field">
+          {/* <div className="field">
             <div className="control">
               <div className="file has-name is-fullwidth is-link">
                 <label className="file-label">
@@ -139,7 +158,7 @@ class ProfileForm extends React.Component {
                 </label>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="field">
             <button className="button is-link">Submit</button>
           </div>

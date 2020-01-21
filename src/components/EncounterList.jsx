@@ -108,15 +108,18 @@ class EncounterList extends React.Component {
               </span>
             </div>
             <div className="column">
-              <span>{new Date(encounter.appointment_at).toLocaleString()}</span>
+              <span>
+                {new Date(encounter.intake.appointment_at).toLocaleString()}
+              </span>
             </div>
           </div>
-          {this.props.selectedEncounter.id === encounter.id && (
-            <div className="">
-              <p>{encounter.intake.complaint}</p>
-              <p>{encounter.hpi.context}</p>
-            </div>
-          )}
+
+          <div className="">
+            <p>
+              <strong>cc: </strong>
+              {encounter.intake.complaint.slice(0, 50)}...
+            </p>
+          </div>
         </div>
       );
     });
@@ -125,7 +128,12 @@ class EncounterList extends React.Component {
   render() {
     return (
       <Fragment>
-        <h2 className="title">Encounters</h2>
+        <h2 className="title">
+          <span className="icon">
+            <i className="fas fa-user-md"></i>
+          </span>
+          <span> Encounters</span>
+        </h2>
         {this.props.selectedPatient ? (
           <SelectedPatientInfo />
         ) : (

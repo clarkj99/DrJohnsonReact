@@ -36,6 +36,7 @@ class PhotoBooth extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
+        console.log("camera", data);
         this.props.updateProfile(data);
       });
   };

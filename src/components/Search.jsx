@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import NewUser from "../components/NewUser";
+import unknownUser from "../images/unknown-user2.png";
+
 import {
   addUsers,
   selectPatient,
@@ -51,10 +53,34 @@ class Search extends React.Component {
 
   SearchResult = props => {
     return (
-      <div className="box" onClick={e => this.handleClick(props.user)}>
-        {props.user.last_name}, {props.user.first_name} <br />
-        {props.user.profile.address1}
-      </div>
+      <article
+        className="box media"
+        onClick={e => this.handleClick(props.user)}
+      >
+        <div className="media-left">
+          <figure className="media-left image avatar-small is-64x64">
+            <img src={props.user.profile.photo || unknownUser} />
+          </figure>
+        </div>
+        <div className="media-content">
+          <div className="columns">
+            <div className="column">
+              {" "}
+              <p>
+                {props.user.last_name}, {props.user.first_name} <br />
+              </p>
+            </div>
+            <div className="column">
+              <p>
+                {props.user.profile.address1}
+                <br />
+                {props.user.profile.city}, {props.user.profile.state}{" "}
+                {props.user.profile.zip}
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
     );
   };
 

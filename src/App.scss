@@ -66,6 +66,12 @@ section {
   height: 64px;
 }
 
+.avatar-tiny img {
+  object-fit: cover;
+  width: 32px;
+  height: 32px;
+}
+
 .encounter-section {
   padding: 0 1.5rem 1.5rem;
 }

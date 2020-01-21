@@ -18,9 +18,19 @@ class EncounterSelection extends React.Component {
               <div className="level">
                 <div className="level-left">
                   {this.props.creatingPatient ? (
-                    <h2 className="title">New Patient</h2>
+                    <h2 className="title">
+                      <span className="icon">
+                        <i className="fas fa-user-injured"></i>
+                      </span>
+                      <span> New Patient</span>
+                    </h2>
                   ) : (
-                    <h2 className="title">Search</h2>
+                    <h2 className="title">
+                      <span className="icon">
+                        <i className="fas fa-search"></i>
+                      </span>
+                      <span> Search</span>
+                    </h2>
                   )}
                 </div>
                 <div className="level-right">
