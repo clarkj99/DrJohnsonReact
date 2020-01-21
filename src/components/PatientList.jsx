@@ -46,32 +46,26 @@ class PatientList extends React.Component {
   Encounters = () => {
     return this.encounterList().map(encounter => {
       return (
-        <div className="box" key={encounter.id}>
+        <div
+          className="box"
+          key={encounter.id}
+          onClick={() => this.handleView(encounter)}
+        >
           <div className="columns">
             <div className="column">
-              <div className="buttons">
-                <button
-                  className="button"
-                  onClick={e => this.handleView(encounter)}
-                >
-                  <span className="icon">
-                    <i className="fas fa-eye"></i>
-                  </span>
-                </button>
-              </div>
+              <span>
+                Seen by: {encounter.provider.last_name},{" "}
+                {encounter.provider.first_name}
+              </span>
+              {/* <span>
+                {encounter.patient.last_name}, {encounter.patient.first_name}
+              </span> */}
             </div>
             <div className="column">
               <span>
-                {encounter.patient.last_name}, {encounter.patient.first_name}
+                {new Date(encounter.intake.appointment_at).toLocaleString()}
               </span>
             </div>
-            <div className="column">
-              <span>{new Date(encounter.appointment_at).toLocaleString()}</span>
-            </div>
-          </div>
-
-          <div className="">
-            <p>{encounter.intake.complaint}</p>
           </div>
         </div>
       );

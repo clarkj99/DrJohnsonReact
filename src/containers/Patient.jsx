@@ -24,7 +24,8 @@ const Patient = props => {
               <PatientList />
             </div>
             <div className="column">
-              <EncounterDetail />
+              {Object.getOwnPropertyNames(props.selectedEncounter).length !==
+                0 && <EncounterDetail />}
             </div>
           </div>
         </section>
@@ -36,7 +37,8 @@ const Patient = props => {
 const mapStateToProps = state => {
   return {
     user: state.login.user,
-    encounters: state.encounter.encounters
+    encounters: state.encounter.encounters,
+    selectedEncounter: state.encounter.selectedEncounter
   };
 };
 
