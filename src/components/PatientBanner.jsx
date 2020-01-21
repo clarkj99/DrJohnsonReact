@@ -40,7 +40,7 @@ const PatientBanner = props => {
                 </p>
               </div>
             </div>
-            <nav className="navbar">
+            <nav className="navbar is-transparent">
               <div className="navbar-item">
                 <Link
                   to="/providers/patient-profile"

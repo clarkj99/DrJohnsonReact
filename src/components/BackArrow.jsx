@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const BackArrow = props => {
   return (
-    <nav className="navbar">
+    <nav className="navbar is-transparent-">
       <Link className="navbar-item" to="/providers">
         <span className="icon">
           <i className="fas fa-long-arrow-alt-left"></i>

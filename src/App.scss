@@ -7,7 +7,6 @@ $black-olive: #393e41;
 
 @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Inconsolata|Montserrat|Roboto&display=swap");
 
-// @import "../node_modules/bulmaswatch/sandstone/variables";
 $family-sans-serif: "Montserrat", sans-serif;
 $family-monospace: "Inconsolata", sans-serif;
 $primary: $powder-blue;
@@ -17,10 +16,7 @@ $dark: $ming;
 
 $navbar-breakpoint: 0;
 // $navbar-height: 3.25rem;
-
 @import "../node_modules/bulma/bulma.sass";
-
-// @import "../node_modules/bulmaswatch/sandstone/overrides";
 
 @import "../node_modules/bulma-divider/dist/css/bulma-divider.sass";
 @import "../node_modules/bulma-slider/dist/css/bulma-slider.sass";

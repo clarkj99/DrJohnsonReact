@@ -61,7 +61,7 @@ class SelectedPatientInfo extends React.Component {
             </p>
           </div>
           {!this.state.creatingEncounter && (
-            <nav className="navbar">
+            <nav className="navbar is-transparent">
               <div className="navbar-item">
                 <button
                   className="is-link  button"
@@ -98,7 +98,7 @@ class SelectedPatientInfo extends React.Component {
             </nav>
           )}
           {this.state.creatingEncounter && (
-            <nav className="navbar">
+            <nav className="navbar is-transparent">
               <div className="navbar-item">
                 <ProviderSelect
                   value={this.state.selectedProvider}
