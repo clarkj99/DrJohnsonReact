@@ -23,7 +23,7 @@ class PhotoBooth extends React.Component {
     });
 
     const formData = new FormData();
-    formData.append("photo", this.state.currentPhoto);
+    formData.append("camera", this.state.currentPhoto);
 
     fetch(`${baseURL}/photo/${this.props.profile.id}`, {
       method: "PATCH",
@@ -34,7 +34,7 @@ class PhotoBooth extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("camera", data);
+        console.log("photo", data);
         if (!data.error) this.props.updateProfile(data);
       });
   };

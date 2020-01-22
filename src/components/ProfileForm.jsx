@@ -49,7 +49,7 @@ class ProfileForm extends React.Component {
 
   uploadPhoto = () => {
     const formData = new FormData();
-    formData.append("camera", this.state.newPhoto);
+    formData.append("file", this.state.newPhoto);
     // formData.append("filename", this.state.newPhoto.name);
     // formData.append("type", this.state.newPhoto.name);
 
