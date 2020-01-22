@@ -17,9 +17,11 @@ class EncounterList extends React.Component {
   };
 
   componentDidMount = () => {
-    fetchFunction("encounters", "GET", null).then(response => {
-      this.props.addEncounters(response);
-    });
+    fetchFunction("encounters", "GET", null)
+      .then(response => {
+        this.props.addEncounters(response);
+      })
+      .catch(res => {});
   };
 
   handleToggle = encounter => {

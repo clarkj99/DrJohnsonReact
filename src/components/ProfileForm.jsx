@@ -41,9 +41,11 @@ class ProfileForm extends React.Component {
     //   .then(res => res.json())
     fetchFunction("profile", "PATCH", {
       profile: this.state
-    }).then(data => {
-      this.props.updateProfile(data);
-    });
+    })
+      .then(data => {
+        this.props.updateProfile(data);
+      })
+      .catch(res => {});
     if (this.state.newPhoto) this.uploadPhoto();
   };
 

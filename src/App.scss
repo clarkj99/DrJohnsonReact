@@ -42,6 +42,7 @@ $navbar-breakpoint: 0;
 html,
 body {
   height: 100%;
+  background-color: $primary;
 }
 section {
   height: 100%;
@@ -96,7 +97,7 @@ section {
   background-attachment: fixed;
   background-size: cover;
   background-position: bottom;
-  height: 75vh;
+  min-height: 60vh;
 }
 
 .hero.is-bold {
@@ -135,4 +136,7 @@ section.section {
 }
 .card {
   border-radius: 30px;
+}
+.footer {
+  padding: 1rem;
 }

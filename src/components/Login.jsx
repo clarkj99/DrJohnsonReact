@@ -45,8 +45,8 @@ class Login extends React.Component {
       user: this.state.loginUser
     })
       .then(res => {
-        this.props.addLogin(res.user);
         localStorage.setItem("token", res.jwt);
+        this.props.addLogin(res.user);
         // localStorage.setItem("user", JSON.stringify(res.user));
       })
       .catch(res => {

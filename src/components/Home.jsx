@@ -48,7 +48,7 @@ const Home = () => {
               <div className="card-content home-card-middle has-text-centered">
                 <h2 className="title has-text-primary">Healthcare Providers</h2>
               </div>
-              <footer class="card-footer">
+              <footer className="card-footer">
                 <div className="card-footer-item has-text-centered">
                   <Link to="/providers" className="button is-link is-large">
                     <span className="icon">
@@ -73,7 +73,7 @@ const Home = () => {
               <div className="card-content home-card-middle  has-text-centered">
                 <h2 className="title has-text-primary">Patients</h2>
               </div>
-              <footer class="card-footer">
+              <footer className="card-footer">
                 <div className="card-footer-item has-text-centered">
                   <Link to="/patients" className="button is-link is-large">
                     <span className="icon">

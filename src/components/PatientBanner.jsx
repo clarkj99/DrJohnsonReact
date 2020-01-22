@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { stopEncounter } from "../actions/rootActions";
+import { stopEncounter, setStep } from "../actions/rootActions";
 import unknownUser from "../images/unknown-user2.png";
 import { Link, withRouter } from "react-router-dom";
 
-const handleClose = history => {
-  history.push("/providers");
+const handleClose = props => {
+  props.setStep(1);
+  props.history.push("/providers");
 };
 
 const PatientBanner = props => {
@@ -68,7 +69,7 @@ const PatientBanner = props => {
           <div className="media-right">
             <button
               className="delete is-large"
-              onClick={() => handleClose(props.history)}
+              onClick={() => handleClose(props)}
             ></button>
           </div>
         </article>
@@ -81,7 +82,7 @@ const mapStateToProps = state => {
   return { encounter: state.encounter.selectedEncounter };
 };
 
-const mapDispatchToProps = { stopEncounter };
+const mapDispatchToProps = { stopEncounter, setStep };
 
 export default connect(
   mapStateToProps,

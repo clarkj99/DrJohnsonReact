@@ -80,7 +80,7 @@ class PhotoBooth extends React.Component {
           <div className="">
             {!this.state.takingPhoto && !this.state.currentPhoto ? (
               <button
-                className="button is-link is-fullwidth"
+                className="button is-link is-fullwidth is-hidden-mobile"
                 onClick={this.handleTakePhoto}
               >
                 <span className="icon">

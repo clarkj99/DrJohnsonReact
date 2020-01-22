@@ -93,7 +93,8 @@ class History extends React.Component {
             <h2 className="title">Patient History</h2>
             <PatientBanner2 />
           </div>
-
+        </section>
+        <section className="section">
           <div className="container">
             <div className="columns">
               <div className="column">

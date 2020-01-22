@@ -59,11 +59,11 @@ class Diagnosis extends React.Component {
   handleSearchChange = e => {
     this.setState({ [e.target.name]: e.target.value });
     // import {fetchFunction} from '../utils'
-    fetchFunction(`icd10s?term=${e.target.value}`, "GET").then(
-      searchResults => {
+    fetchFunction(`icd10s?term=${e.target.value}`, "GET")
+      .then(searchResults => {
         this.setState({ searchResults });
-      }
-    );
+      })
+      .catch(res => {});
   };
 
   handleClick = icd => {
