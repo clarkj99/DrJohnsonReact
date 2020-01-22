@@ -35,7 +35,7 @@ class PhotoBooth extends React.Component {
       .then(res => res.json())
       .then(data => {
         console.log("camera", data);
-        this.props.updateProfile(data);
+        if (!data.error) this.props.updateProfile(data);
       });
   };
 
@@ -61,7 +61,7 @@ class PhotoBooth extends React.Component {
           <figure className="image avatar is-4by3">
             <img
               className=""
-              src={this.state.currentPhoto || this.state.originalPhoto}
+              src={this.state.currentPhoto || this.props.photo}
               alt="me"
             ></img>
           </figure>
