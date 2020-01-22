@@ -1,4 +1,4 @@
-# DrJohnson React
+# DrJohnson React-Frontend
 
 DrJohnson is an Electronic Medical Records application (scaled down). It was written to showcase technologies learned from my Flatiron school coding bootcamp experience, using Ruby on Rails api for model and controller, and React for the views.
 
@@ -85,3 +85,7 @@ const mapDispatchToProps = {
 
 - Used withRouter and props.history.push to navigate programatically
 - Can't just do boolean check for an object. `!!{}` returns true. Use `Object.getOwnPropertyNames(this.props.selectedEncounter).length !== 0`
+
+2020-01-21
+
+- major refactor: used single imported function for all fetches.
