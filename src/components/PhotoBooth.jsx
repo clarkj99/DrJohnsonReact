@@ -2,6 +2,7 @@ import React from "react";
 import Camera from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
 import unknownUser from "../images/unknown-user3.png";
+import { baseURL } from "../utils";
 
 class PhotoBooth extends React.Component {
   initialState = { currentPhoto: null, takingPhoto: false };
@@ -24,10 +25,9 @@ class PhotoBooth extends React.Component {
     const formData = new FormData();
     formData.append("photo", this.state.currentPhoto);
 
-    fetch(`http://localhost:3000/api/v1/photo/${this.props.profile.id}`, {
+    fetch(`${baseURL}/photo/${this.props.profile.id}`, {
       method: "PATCH",
       headers: {
-        // "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: formData
@@ -61,7 +61,7 @@ class PhotoBooth extends React.Component {
           <figure className="image avatar is-4by3">
             <img
               className=""
-              src={this.state.currentPhoto || this.props.photo}
+              src={this.state.currentPhoto || this.props.photo || unknownUser}
               alt="me"
             ></img>
           </figure>

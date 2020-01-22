@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import { fetchFunction } from './utils'
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
@@ -22,21 +23,7 @@ class App extends React.Component {
   componentDidMount = () => {
     // If a token is present, then get the user profile
     if (localStorage.getItem('token')) {
-      fetch("http://localhost:3000/api/v1/profile", {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw Error(response.statusText);
-          }
-          return response; //we only get here if there is no error
-        })
-        .then(res => res.json())
+      fetchFunction(`/profile`, "GET")
         .then(data => {
           this.props.addLogin(data)
         })

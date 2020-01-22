@@ -4,6 +4,7 @@ import { updateEncounterChild } from "../actions/rootActions";
 import Checkbox from "./Checkbox";
 import Textarea from "./Textarea";
 import DropdownSelect from "./DropdownSelect";
+import { fetchFunction } from "../utils";
 
 class ProblemExam extends React.Component {
   initialState = {
@@ -36,26 +37,29 @@ class ProblemExam extends React.Component {
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     this.setState({ [e.target.name]: value });
 
-    fetch(
-      `http://localhost:3000/api/v1/problem_exam/${this.props.problemExam.id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`
-        },
-        body: JSON.stringify({
-          problem_exam: { ...this.state, [e.target.name]: value }
-        })
-      }
-    )
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response; //we only get here if there is no error
-      })
-      .then(res => res.json())
+    // fetch(
+    //   `http://localhost:3000/api/v1/problem_exam/${this.props.problemExam.id}`,
+    //   {
+    //     method: "PATCH",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${localStorage.getItem("token")}`
+    //     },
+    //     body: JSON.stringify({
+    //       problem_exam: { ...this.state, [e.target.name]: value }
+    //     })
+    //   }
+    // )
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw Error(response.statusText);
+    //     }
+    //     return response; //we only get here if there is no error
+    //   })
+    //   .then(res => res.json())
+    fetchFunction(`problem_exam/${this.props.problemExam.id}`, "PATCH", {
+      problem_exam: { ...this.state, [e.target.name]: value }
+    })
       .then(data => {
         this.props.updateEncounterChild("problem_exam", data);
         this.setState(data);

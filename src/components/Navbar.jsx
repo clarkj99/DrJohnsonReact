@@ -2,12 +2,20 @@ import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../images/DrJohnson-white.png";
 import { connect } from "react-redux";
-import { logout } from "../actions/rootActions";
+import {
+  logout,
+  resetEncounter,
+  resetStep,
+  resetUser
+} from "../actions/rootActions";
 
 const Navbar = props => {
   const handleClick = e => {
     localStorage.removeItem("token");
     props.logout();
+    props.resetEncounter();
+    props.resetStep();
+    props.resetUser();
   };
 
   let user = props.user;
@@ -82,5 +90,5 @@ function mapStateToProps(state) {
   return { user: state.login.user };
 }
 
-const mapDispatchToProps = { logout };
+const mapDispatchToProps = { logout, resetEncounter, resetUser, resetStep };
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

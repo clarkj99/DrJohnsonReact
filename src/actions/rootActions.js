@@ -120,3 +120,21 @@ export const clearUser = () => {
         type: 'CLEAR_USER'
     }
 }
+
+export const resetStep = () => {
+    return {
+        type: 'RESET_STEP'
+    }
+}
+
+export const resetUser = () => {
+    return {
+        type: 'RESET_USER'
+    }
+}
+
+export const resetEncounter = () => {
+    return {
+        type: 'RESET_ENCOUNTER'
+    }
+}

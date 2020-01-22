@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import NewUser from "../components/NewUser";
 import unknownUser from "../images/unknown-user2.png";
+import { fetchFunction } from "../utils";
 
 import {
   addUsers,
@@ -13,20 +14,20 @@ class Search extends React.Component {
   state = { searchTerm: "" };
 
   componentDidMount = () => {
-    fetch("http://localhost:3000/api/v1/users?role=patient", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response; //we only get here if there is no error
-      })
-      .then(res => res.json())
+    // fetch("http://localhost:3000/api/v1/users?role=patient", {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`
+    //   }
+    // })
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw Error(response.statusText);
+    //     }
+    //     return response; //we only get here if there is no error
+    //   })
+    fetchFunction(`users?role=patient`, "GET")
       .then(data => {
         this.props.addUsers("patients", data);
       })

@@ -1,7 +1,10 @@
+export const baseURL = 'http://localhost:3000/api/v1';
+
 export const fetchFunction = (route, method, data) => {
 
     const params = (method !== "GET") && { body: JSON.stringify(data) }
-    return fetch(`http://localhost:3000/api/v1/${route}`, {
+    console.log('fetching', `${baseURL}/${route}`, method);
+    return fetch(`${baseURL}/${route}`, {
         method: method,
         headers: {
             "Content-Type": "application/json",
@@ -17,4 +20,5 @@ export const fetchFunction = (route, method, data) => {
         })
         .then(res => res.json())
 
-};      
+};
+

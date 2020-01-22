@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import { fetchFunction } from "../utils";
 import {
   addEncounters,
   selectEncounter,
@@ -10,20 +11,7 @@ import {
 
 class PatientList extends React.Component {
   componentDidMount = () => {
-    fetch("http://localhost:3000/api/v1/encounters", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response; //we only get here if there is no error
-      })
-      .then(res => res.json())
+    fetchFunction(`/iencounters`, "GET")
       .then(data => {
         this.props.addEncounters(data);
       })

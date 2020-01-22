@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { updateEncounterChild } from "../actions/rootActions";
 import Textarea from "./Textarea";
+import { fetchFunction } from "../utils";
 
 class HPI extends React.Component {
   initialState = {
@@ -23,23 +24,26 @@ class HPI extends React.Component {
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
 
-    fetch(`http://localhost:3000/api/v1/hpi/${this.props.hpi.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      },
-      body: JSON.stringify({
-        hpi: { ...this.state, [e.target.name]: e.target.value }
-      })
+    // fetch(`http://localhost:3000/api/v1/hpi/${this.props.hpi.id}`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`
+    //   },
+    //   body: JSON.stringify({
+    //     hpi: { ...this.state, [e.target.name]: e.target.value }
+    //   })
+    // })
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw Error(response.statusText);
+    //     }
+    //     return response; //we only get here if there is no error
+    //   })
+    //   .then(res => res.json())
+    fetchFunction(`hpi/${this.props.hpi.id}`, "PATCH", {
+      hpi: { ...this.state, [e.target.name]: e.target.value }
     })
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response; //we only get here if there is no error
-      })
-      .then(res => res.json())
       .then(data => {
         this.props.updateEncounterChild("hpi", data);
         this.setState(data);

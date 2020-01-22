@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addLogin } from "../actions/rootActions";
 import Hero from "./Hero";
 import DemoUsers from "./DemoUsers";
+import { fetchFunction } from "../utils";
 
 class Login extends React.Component {
   initalUser = {
@@ -25,22 +26,24 @@ class Login extends React.Component {
   submitLogin = e => {
     e.preventDefault();
 
-    fetch("http://localhost:3000/api/v1/auth", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user: this.state.loginUser
-      })
+    // fetch("http://localhost:3000/api/v1/auth", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     user: this.state.loginUser
+    //   })
+    // })
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw Error(response.statusText);
+    //     }
+    //     return response; //we only get here if there is no error
+    //   })
+    fetchFunction("auth", "POST", {
+      user: this.state.loginUser
     })
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response; //we only get here if there is no error
-      })
-      .then(res => res.json())
       .then(res => {
         this.props.addLogin(res.user);
         localStorage.setItem("token", res.jwt);

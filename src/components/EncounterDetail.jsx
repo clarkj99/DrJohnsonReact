@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 const EncounterDetail = props => {
   const { selectedEncounter } = props;
+  // eslint-disable-next-line
   const { intake, hpi, rosystem, problem_exam, diagnosis } = selectedEncounter;
   return (
     <Fragment>

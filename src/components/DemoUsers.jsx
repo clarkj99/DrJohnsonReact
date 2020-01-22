@@ -1,21 +1,10 @@
 import React, { Fragment } from "react";
+import { fetchFunction } from "../utils";
 
 class DemoUsers extends React.Component {
   state = { demoUsers: { patient: {}, physician: {} } };
   componentDidMount = () => {
-    fetch("http://localhost:3000/api/v1/demo", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response; //we only get here if there is no error
-      })
-      .then(res => res.json())
+    fetchFunction("demo", "GET")
       .then(data => {
         this.setState({ ...this.state, demoUsers: data });
       })

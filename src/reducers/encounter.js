@@ -1,4 +1,5 @@
-const encounter = (state = { encounters: [], selectedEncounter: {}, editingEncounter: false }, action) => {
+const initialEncounter = { encounters: [], selectedEncounter: {}, editingEncounter: false }
+const encounter = (state = { ...initialEncounter }, action) => {
     switch (action.type) {
         case 'ADD_ENCOUNTERS':
             return { ...state, encounters: action.encounters }
@@ -18,6 +19,8 @@ const encounter = (state = { encounters: [], selectedEncounter: {}, editingEncou
             return { ...state, selectedEncounter: { ...state.selectedEncounter, rosystem: { ...action.hpi } } }
         case 'UPDATE_ENCOUNTER_CHILD':
             return { ...state, selectedEncounter: { ...state.selectedEncounter, [action.model]: { ...action.value } } }
+        case 'RESET_ENCOUNTER':
+            return { ...initialEncounter }
         default:
             return state
     }

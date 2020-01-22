@@ -1,4 +1,5 @@
-const user = (state = { patients: [], providers: [], admins: [], selectedPatient: null, creatingPatient: false }, action) => {
+const initialUser = { patients: [], providers: [], admins: [], selectedPatient: null, creatingPatient: false }
+const user = (state = { ...initialUser }, action) => {
     switch (action.type) {
         case 'ADD_USERS':
             return { ...state, [action.userType]: action.userList }
@@ -17,6 +18,8 @@ const user = (state = { patients: [], providers: [], admins: [], selectedPatient
             return { ...state, creatingPatient: action.value }
         case 'CLEAR_USER':
             return { ...state, selectedPatient: null }
+        case 'RESET_USER':
+            return { ...initialUser }
         default:
             return state
     }

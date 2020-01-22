@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import BackArrow from "./BackArrow";
 import PatientBanner2 from "./PatientBanner2";
 import Checkbox from "./Checkbox";
+import { fetchFunction } from "../utils";
 
 class History extends React.Component {
   initialState = {
@@ -36,23 +37,26 @@ class History extends React.Component {
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     this.setState({ [e.target.name]: value });
 
-    fetch(`http://localhost:3000/api/v1/history/${this.props.history.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      },
-      body: JSON.stringify({
-        history: { ...this.state, [e.target.name]: value }
-      })
+    // fetch(`http://localhost:3000/api/v1/history/${this.props.history.id}`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`
+    //   },
+    //   body: JSON.stringify({
+    //     history: { ...this.state, [e.target.name]: value }
+    //   })
+    // })
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw Error(response.statusText);
+    //     }
+    //     return response; //we only get here if there is no error
+    //   })
+    //   .then(res => res.json())
+    fetchFunction(`history/${this.props.history.id}`, "PATCH", {
+      history: { ...this.state, [e.target.name]: value }
     })
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response; //we only get here if there is no error
-      })
-      .then(res => res.json())
       .then(data => {
         this.props.updatePatientHistory(data);
         this.setState(data);

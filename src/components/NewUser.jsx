@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import { fetchFunction } from "../utils";
 import {
   addLogin,
   selectPatient,
   addPatientToList,
   setCreatingPatient
 } from "../actions/rootActions";
-// import Hero from "./Hero";
 
 class NewUser extends React.Component {
   initalUser = {
@@ -33,23 +33,26 @@ class NewUser extends React.Component {
   submitSignup = e => {
     e.preventDefault();
 
-    fetch("http://localhost:3000/api/v1/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      },
-      body: JSON.stringify({
-        user: this.state.signupUser
-      })
+    // fetch("http://localhost:3000/api/v1/users", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`
+    //   },
+    //   body: JSON.stringify({
+    //     user: this.state.signupUser
+    //   })
+    // })
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw Error(response.statusText);
+    //     }
+    //     return response; //we only get here if there is no error
+    //   })
+    //   .then(res => res.json())
+    fetchFunction("users", "POST", {
+      user: this.state.signupUser
     })
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response; //we only get here if there is no error
-      })
-      .then(res => res.json())
       .then(res => {
         console.log("new user done");
         // this.props.addLogin(res.user);

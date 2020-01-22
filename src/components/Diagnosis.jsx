@@ -27,23 +27,26 @@ class Diagnosis extends React.Component {
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     this.setState({ [e.target.name]: value });
 
-    fetch(`http://localhost:3000/api/v1/diagnosis/${this.props.diagnosis.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      },
-      body: JSON.stringify({
-        diagnosis: { ...this.state.diagnosis, [e.target.name]: value }
-      })
+    // fetch(`http://localhost:3000/api/v1/diagnosis/${this.props.diagnosis.id}`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`
+    //   },
+    //   body: JSON.stringify({
+    //     diagnosis: { ...this.state.diagnosis, [e.target.name]: value }
+    //   })
+    // })
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw Error(response.statusText);
+    //     }
+    //     return response; //we only get here if there is no error
+    //   })
+    //   .then(res => res.json())
+    fetchFunction(`diagnosis/${this.props.diagnosis.id}`, "PATCH", {
+      diagnosis: { ...this.state.diagnosis, [e.target.name]: value }
     })
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response; //we only get here if there is no error
-      })
-      .then(res => res.json())
       .then(data => {
         this.props.updateEncounterChild("diagnosis", data);
         this.setState({ diagnosis: data });
@@ -55,8 +58,8 @@ class Diagnosis extends React.Component {
 
   handleSearchChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-
-    fetchFunction(`/icd10s?term=${e.target.value}`, "GET").then(
+    // import {fetchFunction} from '../utils'
+    fetchFunction(`icd10s?term=${e.target.value}`, "GET").then(
       searchResults => {
         this.setState({ searchResults });
       }
@@ -101,9 +104,9 @@ class Diagnosis extends React.Component {
             <div className="field-body">
               <div className="field has-addons">
                 <div className="control">
-                  <a className="button is-static icd-text has-text-left">
+                  <button className="button is-static icd-text has-text-left">
                     {icd}
-                  </a>
+                  </button>
                 </div>
                 <div className="control has-icons-left">
                   <input
@@ -113,15 +116,17 @@ class Diagnosis extends React.Component {
                     value={searchTerm}
                     onChange={this.handleSearchChange}
                   />
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-search"></i>
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-search"></i>
                   </span>
                 </div>
                 <div className="control is-expanded">
                   {searchResults.length > 0 && (
                     <div className="icd-search-results box">
                       {searchResults.map(result => (
+                        // eslint-disable-next-line
                         <a
+                          href="#"
                           key={result.id}
                           className="has-text-left level"
                           onClick={() => this.handleClick(result)}

@@ -108,17 +108,21 @@ class EncounterList extends React.Component {
               </span>
             </div>
             <div className="column">
-              <span>
-                {new Date(encounter.intake.appointment_at).toLocaleString()}
-              </span>
+              {Object.getOwnPropertyNames(encounter.intake).length !== 0 && (
+                <span>
+                  {new Date(encounter.intake.appointment_at).toLocaleString()}
+                </span>
+              )}
             </div>
           </div>
 
           <div className="">
-            <p>
-              <strong>cc: </strong>
-              {encounter.intake.complaint.slice(0, 50)}...
-            </p>
+            {encounter.intake.complaint && (
+              <p>
+                <strong>cc: </strong>
+                {encounter.intake.complaint.slice(0, 50)}...
+              </p>
+            )}
           </div>
         </div>
       );

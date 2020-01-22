@@ -1,4 +1,5 @@
 import React from "react";
+import { fetchFunction, baseURL } from "../utils";
 
 class ProfileForm extends React.Component {
   initalState = {
@@ -27,20 +28,22 @@ class ProfileForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    fetch("http://localhost:3000/api/v1/profile", {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      },
-      body: JSON.stringify({
-        profile: this.state
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.props.updateProfile(data);
-      });
+    // fetch("http://localhost:3000/api/v1/profile", {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`
+    //   },
+    //   body: JSON.stringify({
+    //     profile: this.state
+    //   })
+    // })
+    //   .then(res => res.json())
+    fetchFunction("profile", "PATCH", {
+      profile: this.state
+    }).then(data => {
+      this.props.updateProfile(data);
+    });
     if (this.state.newPhoto) this.uploadPhoto();
   };
 
@@ -50,10 +53,9 @@ class ProfileForm extends React.Component {
     // formData.append("filename", this.state.newPhoto.name);
     // formData.append("type", this.state.newPhoto.name);
 
-    fetch(`http://localhost:3000/api/v1/photo/${this.props.user.profile.id}`, {
+    fetch(`${baseURL}/photo/${this.props.user.profile.id}`, {
       method: "PATCH",
       headers: {
-        // "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: formData
@@ -78,7 +80,7 @@ class ProfileForm extends React.Component {
                 className="input"
                 type="text"
                 placeholder="Street address"
-                value={profile.address1}
+                value={profile.address1 || ""}
                 onChange={this.handleChange}
               />
             </div>
@@ -91,7 +93,7 @@ class ProfileForm extends React.Component {
                 className="input"
                 type="text"
                 placeholder="Address 2"
-                value={profile.address2}
+                value={profile.address2 || ""}
                 onChange={this.handleChange}
               />
             </div>
@@ -104,7 +106,7 @@ class ProfileForm extends React.Component {
                 className="input"
                 type="text"
                 placeholder="City"
-                value={profile.city}
+                value={profile.city || ""}
                 onChange={this.handleChange}
               />
             </div>
@@ -117,7 +119,7 @@ class ProfileForm extends React.Component {
                 className="input"
                 type="text"
                 placeholder="State"
-                value={profile.state}
+                value={profile.state || ""}
                 onChange={this.handleChange}
               />
             </div>
@@ -130,7 +132,7 @@ class ProfileForm extends React.Component {
                 className="input"
                 type="text"
                 placeholder="Zip"
-                value={profile.zip}
+                value={profile.zip || ""}
                 onChange={this.handleChange}
               />
             </div>

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { updateEncounterChild } from "../actions/rootActions";
 import Textarea from "./Textarea";
 import moment from "moment";
+import { fetchFunction } from "../utils";
 
 class Intake extends React.Component {
   initialState = {
@@ -40,23 +41,26 @@ class Intake extends React.Component {
       default:
         value = e.target.value;
     }
-    fetch(`http://localhost:3000/api/v1/intake/${this.props.intake.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      },
-      body: JSON.stringify({
-        intake: { ...this.state, [e.target.name]: value }
-      })
+    // fetch(`http://localhost:3000/api/v1/intake/${this.props.intake.id}`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`
+    //   },
+    //   body: JSON.stringify({
+    //     intake: { ...this.state, [e.target.name]: value }
+    //   })
+    // })
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw Error(response.statusText);
+    //     }
+    //     return response; //we only get here if there is no error
+    //   })
+    //   .then(res => res.json())
+    fetchFunction(`intake/${this.props.intake.id}`, "PATCH", {
+      intake: { ...this.state, [e.target.name]: value }
     })
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response; //we only get here if there is no error
-      })
-      .then(res => res.json())
       .then(data => {
         this.props.updateEncounterChild("intake", data);
       })
