@@ -13,7 +13,8 @@ $primary: $powder-blue;
 $link: $sizzling-red;
 $scheme-main: $seashell;
 $dark: $ming;
-
+$card-background-color: $link;
+$card-color: $link;
 $navbar-breakpoint: 0;
 // $navbar-height: 3.25rem;
 @import "../node_modules/bulma/bulma.sass";
@@ -89,13 +90,15 @@ section {
   padding: 0 1em;
 }
 
-// body {
-//   background-image: url("./images/alex-knight-j4uuKnN43_M-unsplash.jpg");
-//   background-color: transparent;
-//   background-attachment: fixed;
-//   background-size: cover;
-//   background-position: bottom;
-// }
+.home-section {
+  background-image: url("./images/ezgif-1-ceb6a1074c7d.gif");
+  background-color: transparent;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: bottom;
+  height: 75vh;
+}
+
 .hero.is-bold {
   background-color: transparent;
 }
@@ -125,4 +128,11 @@ section.section {
   max-width: 400px;
   white-space: normal;
   height: auto;
+}
+
+.home-card-middle {
+  min-height: 120px;
+}
+.card {
+  border-radius: 30px;
 }

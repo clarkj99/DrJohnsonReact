@@ -20,20 +20,28 @@ class DemoUsers extends React.Component {
               <h2 className="subtitle"> Test Logins:</h2>
             </div>
             <div className="column">
-              <p>
-                Patient: <em>{this.state.demoUsers.patient.email}</em>
-              </p>
-              <p>
-                Password: <em>Patient1234</em>
-              </p>
+              {this.state.demoUsers.patient && (
+                <p>
+                  Patient: <em>{this.state.demoUsers.patient.email}</em>
+                </p>
+              )}
+              {this.state.demoUsers.patient && (
+                <p>
+                  Password: <em>Patient1234</em>
+                </p>
+              )}
             </div>
             <div className="column">
-              <p>
-                Physician: <em>{this.state.demoUsers.physician.email}</em>
-              </p>
-              <p>
-                Password: <em>Physician1234</em>
-              </p>
+              {this.state.demoUsers.physician && (
+                <p>
+                  Physician: <em>{this.state.demoUsers.physician.email}</em>
+                </p>
+              )}
+              {this.state.demoUsers.physician && (
+                <p>
+                  Password: <em>Physician1234</em>
+                </p>
+              )}
             </div>
           </div>
         </div>

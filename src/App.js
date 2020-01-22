@@ -23,7 +23,7 @@ class App extends React.Component {
   componentDidMount = () => {
     // If a token is present, then get the user profile
     if (localStorage.getItem('token')) {
-      fetchFunction(`/profile`, "GET")
+      fetchFunction(`profile`, "GET")
         .then(data => {
           this.props.addLogin(data)
         })
