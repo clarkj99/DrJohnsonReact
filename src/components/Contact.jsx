@@ -29,7 +29,7 @@ const Contact = props => {
                     <div className="media-content">
                       <p className="title is-4 has-text-dark">Clark Johnson</p>
                       <p className="subtitle is-6 has-text-dark has-text-bold">
-                        <span className="icon>">
+                        {/* <span className="icon>">
                           <i className="fas fa-envelope-square"></i>
                         </span>{" "}
                         <span>
@@ -37,7 +37,7 @@ const Contact = props => {
                             clarkjohnsoncodes@gmail.com
                           </a>
                         </span>
-                        <br />
+                        <br /> */}
                         <span className="icon>">
                           <i className="fab fa-linkedin-in"></i>
                         </span>{" "}
