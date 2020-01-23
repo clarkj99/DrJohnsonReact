@@ -1,12 +1,13 @@
 import React from "react";
 
 const Checkbox = props => {
+  const classText = "switch is-link " + props.size;
   return (
     <div className="field">
       <div className="control">
         <input
           id={props.field}
-          className="switch is-link"
+          className={classText}
           type="checkbox"
           name={props.field}
           checked={props.value ? "checked" : ""}

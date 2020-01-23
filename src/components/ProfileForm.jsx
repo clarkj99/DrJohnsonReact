@@ -1,5 +1,6 @@
 import React from "react";
 import { fetchFunction, baseURL } from "../utils";
+import Icon from "./Icon";
 
 class ProfileForm extends React.Component {
   initalState = {
@@ -165,7 +166,10 @@ class ProfileForm extends React.Component {
             </div>
           </div>
           <div className="field">
-            <button className="button is-link">Submit</button>
+            <button className="button is-link">
+              <Icon icon="check" />
+              <span>Submit</span>
+            </button>
           </div>
         </form>
       </div>

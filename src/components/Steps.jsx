@@ -1,14 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setStep } from "../actions/rootActions";
+import Icon from "./Icon";
 
-const Icon = props => {
-  return (
-    <span className="icon">
-      <i className={`fas fa-${props.icon}`}></i>
-    </span>
-  );
-};
+// const Icon = props => {
+//   return (
+//     <span className="icon">
+//       <i className={`fas fa-${props.icon}`}></i>
+//     </span>
+//   );
+// };
 
 const stepClass = (stepNumber, myStep) => {
   switch (true) {

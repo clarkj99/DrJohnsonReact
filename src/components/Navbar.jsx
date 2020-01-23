@@ -8,6 +8,7 @@ import {
   resetStep,
   resetUser
 } from "../actions/rootActions";
+import Icon from "./Icon";
 
 const Navbar = props => {
   const handleClick = e => {
@@ -47,9 +48,7 @@ const Navbar = props => {
             <Fragment>
               <div className="navbar-item">
                 <NavLink className="button is-small" to="/profile">
-                  <span className="icon">
-                    <i className="fas fa-user"></i>
-                  </span>
+                  <Icon icon="address-card" />
                   <span>
                     {user.first_name} {user.last_name}
                   </span>
@@ -57,9 +56,7 @@ const Navbar = props => {
               </div>
               <div className="navbar-item">
                 <button className="button is-small" onClick={handleClick}>
-                  <span className="icon">
-                    <i className="fas fa-sign-out-alt"></i>
-                  </span>
+                  <Icon icon="sign-out-alt" />
                   <span>Logout</span>
                 </button>
               </div>
@@ -67,9 +64,7 @@ const Navbar = props => {
           ) : (
             <div className="navbar-item">
               <NavLink className="button is-small" to="/login">
-                <span className="icon">
-                  <i className="fas fa-sign-in-alt"></i>
-                </span>
+                <Icon icon="sign-in-alt" />
                 <span> Login</span>
               </NavLink>
             </div>
@@ -77,7 +72,8 @@ const Navbar = props => {
 
           <div className="navbar-item">
             <NavLink className="button is-small is-link" to="/contact-us">
-              Contact Us
+              <Icon icon="phone" />
+              <span>Contact Me</span>
             </NavLink>
           </div>
         </div>

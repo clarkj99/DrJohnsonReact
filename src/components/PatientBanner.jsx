@@ -1,12 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
-import { stopEncounter, setStep } from "../actions/rootActions";
+import {
+  stopEncounter,
+  setStep,
+  selectEncounter
+} from "../actions/rootActions";
 import unknownUser from "../images/unknown-user2.png";
 import { Link, withRouter } from "react-router-dom";
+import Checkbox from "./Checkbox";
+import { fetchFunction } from "../utils";
+import Icon from "./Icon";
 
 const handleClose = props => {
   props.setStep(1);
   props.history.push("/providers");
+};
+
+const handleToggle = props => {
+  const status = props.encounter.status === "open" ? "closed" : "open";
+  fetchFunction(`encounter/${props.encounter.id}`, "PATCH", {
+    encounter: { status: status }
+  }).then(data => {
+    props.selectEncounter(data);
+  });
 };
 
 const PatientBanner = props => {
@@ -41,31 +57,51 @@ const PatientBanner = props => {
                 </p>
               </div>
             </div>
+
             <nav className="navbar is-transparent">
-              <div className="navbar-item">
-                <Link
-                  to="/providers/patient-profile"
-                  className="is-link button"
-                >
-                  <span className="icon">
-                    <i className="fas fa-edit"></i>
-                  </span>
-                  <span>Profile</span>
-                </Link>
-              </div>
-              <div className="navbar-item">
-                <Link
-                  className="is-link button"
-                  to="/providers/patient-history"
-                >
-                  <span className="icon">
-                    <i className="fas fa-edit"></i>
-                  </span>
-                  <span>History</span>
-                </Link>
+              <div className="navbar-menu">
+                <div className="navbar-start">
+                  <div className="navbar-item">
+                    <Link
+                      to="/providers/patient-profile"
+                      className="is-link button"
+                    >
+                      <Icon icon="address-card" />
+                      {/* <span className="icon">
+                        <i className="fas fa-edit"></i>
+                      </span> */}
+                      <span>Profile</span>
+                    </Link>
+                  </div>
+                  <div className="navbar-item">
+                    <Link
+                      className="is-link button"
+                      to="/providers/patient-history"
+                    >
+                      <span className="icon">
+                        <i className="fas fa-edit"></i>
+                      </span>
+                      <span>History</span>
+                    </Link>
+                  </div>
+                </div>
+                <div className="navbar-end">
+                  <div className="navbar-item">
+                    <Checkbox
+                      field="status"
+                      label={
+                        props.encounter.status === "open" ? "OPEN" : "SIGNED"
+                      }
+                      value={props.encounter.status === "open"}
+                      size={"is-large"}
+                      handleChange={() => handleToggle(props)}
+                    />
+                  </div>
+                </div>
               </div>
             </nav>
           </div>
+
           <div className="media-right">
             <button
               className="delete is-large"
@@ -82,7 +118,7 @@ const mapStateToProps = state => {
   return { encounter: state.encounter.selectedEncounter };
 };
 
-const mapDispatchToProps = { stopEncounter, setStep };
+const mapDispatchToProps = { stopEncounter, setStep, selectEncounter };
 
 export default connect(
   mapStateToProps,

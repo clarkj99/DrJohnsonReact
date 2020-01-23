@@ -12,7 +12,6 @@ import Provider from './containers/Provider';
 import PatientProfile from './components/PatientProfile';
 import History from './components/History';
 import EncounterEdit from "./containers/EncounterEdit";
-import aws from './images/AWS-Cloud-alt_dark-bg@4x.png'
 
 import { connect } from 'react-redux'
 import { addLogin } from './actions/rootActions'
@@ -84,24 +83,34 @@ class App extends React.Component {
             </Route>
           </Switch>
         </div>
-        <footer class="footer has-background-primary">
+        <footer className="footer has-background-primary">
           <div className="container">
-            <article className="media">
-              <figure className="media-left  image is-64x64">
-                <img src={aws} als="powered by amazon S3" />
-              </figure>
-              <div className="media-content">
-                <div class="content has-text-centered">
 
-                  <p>
-                    <strong>DrJohnson</strong> made with ❤️ by <a href="https://jgthms.com">Clark Johnson</a>. The source code is licensed
+            <div className="content has-text-centered">
+              <p><span className=" is-size-3">
+                <i className="fab fa-aws"></i>
+              </span>
+                <span className=" is-size-3">
+                  <i className="fab fa-react"></i>
+                </span>
+                <span className=" is-size-3">
+                  <i className="fas fa-gem"></i>
+                </span>
+                <span className=" is-size-3">
+                  <i className="fab fa-html5"></i>
+                </span>
+                <span className=" is-size-3">
+                  <i className="fab fa-css3"></i>
+                </span>
+                <span className=" is-size-3">
+                  <i className="fab fa-sass"></i>
+                </span><br />
+                <strong>DrJohnson</strong> made with ❤️ by <a href="https://jgthms.com">Clark Johnson</a>. The source code is licensed
       <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
       is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
     </p>
 
-                </div>
-              </div>
-            </article>
+            </div>
           </div>
 
         </footer>

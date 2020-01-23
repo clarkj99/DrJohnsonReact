@@ -159,67 +159,68 @@ class Intake extends React.Component {
       <section className="encounter-section section">
         <div className="container">
           <h2 className="subtitle">Intake</h2>
+          <fieldset disabled={this.props.status !== "open"}>
+            <this.DateTime
+              field="appointment_at"
+              label="Appointment Time"
+              value={appointment_at}
+            />
 
-          <this.DateTime
-            field="appointment_at"
-            label="Appointment Time"
-            value={appointment_at}
-          />
+            <this.DateTime
+              field="checkin_at"
+              label="Checkin Time"
+              value={checkin_at}
+            />
+            <Textarea
+              field="complaint"
+              label="Chief Complaint"
+              value={complaint}
+              handleChange={this.handleChange}
+            />
 
-          <this.DateTime
-            field="checkin_at"
-            label="Checkin Time"
-            value={checkin_at}
-          />
-          <Textarea
-            field="complaint"
-            label="Chief Complaint"
-            value={complaint}
-            handleChange={this.handleChange}
-          />
+            <this.StringField
+              field="weight"
+              label="Weight (lbs)"
+              value={weight}
+            />
+            <this.StringField
+              field="height"
+              label="Height (ins)"
+              value={height}
+            />
 
-          <this.StringField
-            field="weight"
-            label="Weight (lbs)"
-            value={weight}
-          />
-          <this.StringField
-            field="height"
-            label="Height (ins)"
-            value={height}
-          />
-
-          <div className="field is-horizontal has-addons">
-            <div className="field-label  is-normal">
-              <label className="label">Blood Pressure</label>
-            </div>
-
-            <div className="field-body ">
-              <div className="control">
-                <input
-                  className="input"
-                  name="bp_systolic"
-                  type="text"
-                  placeholder="Systolic"
-                  value={bp_systolic || ""}
-                  onChange={this.handleChange}
-                />
+            <div className="field is-horizontal has-addons">
+              <div className="field-label  is-normal">
+                <label className="label">Blood Pressure</label>
               </div>
-              <p className="control">
-                <span className="button is-static"> /</span>
-              </p>
-              <div className="control">
-                <input
-                  className="input"
-                  name="bp_diastolic"
-                  type="text"
-                  placeholder="Diastolic"
-                  value={bp_diastolic || ""}
-                  onChange={this.handleChange}
-                />
+
+              <div className="field-body ">
+                <div className="control">
+                  <input
+                    className="input"
+                    name="bp_systolic"
+                    type="text"
+                    placeholder="Systolic"
+                    value={bp_systolic || ""}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <p className="control">
+                  <span className="button is-static"> /</span>
+                </p>
+                <div className="control">
+                  <input
+                    className="input"
+                    name="bp_diastolic"
+                    type="text"
+                    placeholder="Diastolic"
+                    value={bp_diastolic || ""}
+                    onChange={this.handleChange}
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          </fieldset>
         </div>
       </section>
     );
@@ -227,7 +228,10 @@ class Intake extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { intake: state.encounter.selectedEncounter.intake };
+  return {
+    intake: state.encounter.selectedEncounter.intake,
+    status: state.encounter.selectedEncounter.status
+  };
 };
 const mapDispatchToProps = { updateEncounterChild };
 export default connect(mapStateToProps, mapDispatchToProps)(Intake);

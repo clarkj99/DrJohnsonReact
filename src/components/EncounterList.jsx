@@ -10,6 +10,7 @@ import {
   clearEncounter,
   selectPatient
 } from "../actions/rootActions";
+import Icon from "./Icon";
 
 class EncounterList extends React.Component {
   state = {
@@ -84,7 +85,7 @@ class EncounterList extends React.Component {
       return (
         <div className="box" key={encounter.id}>
           <div className="columns">
-            <div className="column">
+            <div className="column is-one-fifth">
               <div className="buttons">
                 <button
                   className="button is-link"
@@ -105,9 +106,19 @@ class EncounterList extends React.Component {
               </div>
             </div>
             <div className="column">
-              <span>
-                {encounter.patient.last_name}, {encounter.patient.first_name}
-              </span>
+              <p>
+                <Icon icon="user-injured" />
+                <span>
+                  {encounter.patient.last_name}, {encounter.patient.first_name}
+                </span>
+              </p>
+              <p>
+                <Icon icon="user-md" />
+                <span>
+                  {encounter.provider.last_name},{" "}
+                  {encounter.provider.first_name}
+                </span>
+              </p>
             </div>
             <div className="column">
               {Object.getOwnPropertyNames(encounter.intake).length !== 0 && (

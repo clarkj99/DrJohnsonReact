@@ -95,64 +95,65 @@ class Diagnosis extends React.Component {
       <section className="encounter-section section">
         <div className="container">
           <h2 className="subtitle">Diagnosis</h2>
+          <fieldset disabled={this.props.status !== "open"}>
+            <div className="field is-horizontal has-addons">
+              <div className="field-label is-normal">
+                <label className="label">ICD-10</label>
+              </div>
 
-          <div className="field is-horizontal has-addons">
-            <div className="field-label is-normal">
-              <label className="label">ICD-10</label>
-            </div>
-
-            <div className="field-body">
-              <div className="field has-addons">
-                <div className="control">
-                  <button className="button is-static icd-text has-text-left">
-                    {icd}
-                  </button>
-                </div>
-                <div className="control has-icons-left">
-                  <input
-                    className="input"
-                    type="search"
-                    name="searchTerm"
-                    value={searchTerm}
-                    onChange={this.handleSearchChange}
-                  />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-search"></i>
-                  </span>
-                </div>
-                <div className="control is-expanded">
-                  {searchResults.length > 0 && (
-                    <div className="icd-search-results box">
-                      {searchResults.map(result => (
-                        // eslint-disable-next-line
-                        <a
-                          href="#"
-                          key={result.id}
-                          className="has-text-left level"
-                          onClick={() => this.handleClick(result)}
-                        >
-                          {result.code} - {result.description}
-                        </a>
-                      ))}
-                    </div>
-                  )}
+              <div className="field-body">
+                <div className="field has-addons">
+                  <div className="control">
+                    <button className="button is-static icd-text has-text-left">
+                      {icd}
+                    </button>
+                  </div>
+                  <div className="control has-icons-left">
+                    <input
+                      className="input"
+                      type="search"
+                      name="searchTerm"
+                      value={searchTerm}
+                      onChange={this.handleSearchChange}
+                    />
+                    <span className="icon is-small is-left">
+                      <i className="fas fa-search"></i>
+                    </span>
+                  </div>
+                  <div className="control is-expanded">
+                    {searchResults.length > 0 && (
+                      <div className="icd-search-results box">
+                        {searchResults.map(result => (
+                          // eslint-disable-next-line
+                          <a
+                            href="#"
+                            key={result.id}
+                            className="has-text-left level"
+                            onClick={() => this.handleClick(result)}
+                          >
+                            {result.code} - {result.description}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <Textarea
-            field="orders"
-            label="Orders"
-            value={orders}
-            handleChange={this.handleChange}
-          />
-          <Textarea
-            field="follow_up"
-            label="Follow Up"
-            value={follow_up}
-            handleChange={this.handleChange}
-          />
+            <Textarea
+              field="orders"
+              label="Orders"
+              value={orders}
+              handleChange={this.handleChange}
+            />
+            <Textarea
+              field="follow_up"
+              label="Follow Up"
+              value={follow_up}
+              handleChange={this.handleChange}
+            />
+          </fieldset>
         </div>
       </section>
     );
@@ -160,7 +161,10 @@ class Diagnosis extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { diagnosis: state.encounter.selectedEncounter.diagnosis };
+  return {
+    diagnosis: state.encounter.selectedEncounter.diagnosis,
+    status: state.encounter.selectedEncounter.status
+  };
 };
 const mapDispatchToProps = { updateEncounterChild };
 export default connect(mapStateToProps, mapDispatchToProps)(Diagnosis);

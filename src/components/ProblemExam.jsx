@@ -92,174 +92,176 @@ class ProblemExam extends React.Component {
         <div className="container">
           <h2 className="subtitle">OB/GYN Problem Exam</h2>
           <form className="form">
-            <div className="field is-horizontal has-addons">
-              <div className="field-label is-normal">
-                <label className="label">Constitutional</label>
+            <fieldset disabled={this.props.status !== "open"}>
+              <div className="field is-horizontal has-addons">
+                <div className="field-label is-normal">
+                  <label className="label">Constitutional</label>
+                </div>
+
+                <div className="field-body">
+                  <DropdownSelect
+                    list={["healthy", "ill"]}
+                    field="appearance"
+                    label="Appearance"
+                    value={appearance || ""}
+                    handleChange={this.handleChange}
+                  />
+                </div>
               </div>
 
-              <div className="field-body">
-                <DropdownSelect
-                  list={["healthy", "ill"]}
-                  field="appearance"
-                  label="Appearance"
-                  value={appearance || ""}
-                  handleChange={this.handleChange}
-                />
+              <Textarea
+                field="constitutional_details"
+                label="Constitutional Details"
+                value={constitutional_details}
+                handleChange={this.handleChange}
+              />
+
+              <div className="field is-horizontal has-addons">
+                <div className="field-label is-normal">
+                  <label className="label">Psychiatric</label>
+                </div>
+                <div className="field-body">
+                  <DropdownSelect
+                    list={[
+                      "calm",
+                      "depressed",
+                      "anxious",
+                      "agitated",
+                      "disoriented"
+                    ]}
+                    field="psychiatric_state"
+                    label="Psychiatric State"
+                    value={psychiatric_state || ""}
+                    handleChange={this.handleChange}
+                  />
+                </div>
               </div>
-            </div>
 
-            <Textarea
-              field="constitutional_details"
-              label="Constitutional Details"
-              value={constitutional_details}
-              handleChange={this.handleChange}
-            />
+              <Textarea
+                field="psychiatric_details"
+                label="Psychiatric Details"
+                value={psychiatric_details}
+                handleChange={this.handleChange}
+              />
 
-            <div className="field is-horizontal has-addons">
-              <div className="field-label is-normal">
-                <label className="label">Psychiatric</label>
+              <div className="field is-horizontal has-addons">
+                <div className="field-label is-normal">
+                  <label className="label">Abdominal</label>
+                </div>
+                <div className="field-body">
+                  <Checkbox
+                    field="abdominal_tenderness"
+                    label="Abdominal Tenderness"
+                    value={abdominal_tenderness}
+                    handleChange={this.handleChange}
+                  />
+
+                  <Checkbox
+                    field="mass_detected"
+                    label="Mass Detected"
+                    value={mass_detected}
+                    handleChange={this.handleChange}
+                  />
+
+                  <DropdownSelect
+                    list={[
+                      "normal_bowel",
+                      "hyperactive_bowel",
+                      "hypocative_bowel"
+                    ]}
+                    field="bowel_sounds"
+                    label="Bowel Sounds"
+                    value={bowel_sounds || ""}
+                    handleChange={this.handleChange}
+                  />
+                </div>
               </div>
-              <div className="field-body">
-                <DropdownSelect
-                  list={[
-                    "calm",
-                    "depressed",
-                    "anxious",
-                    "agitated",
-                    "disoriented"
-                  ]}
-                  field="psychiatric_state"
-                  label="Psychiatric State"
-                  value={psychiatric_state || ""}
-                  handleChange={this.handleChange}
-                />
+
+              <Textarea
+                field="abdominal_details"
+                label="Abdominal Details"
+                value={abdominal_details}
+                handleChange={this.handleChange}
+              />
+
+              <div className="field is-horizontal has-addons">
+                <div className="field-label is-normal">
+                  <label className="label">Pelvic</label>
+                </div>
+                <div className="field-body">
+                  <DropdownSelect
+                    list={[
+                      "normal_external",
+                      "painful_external",
+                      "inflamed_external",
+                      "bleeding_external"
+                    ]}
+                    field="pelvic_external"
+                    label="External"
+                    value={pelvic_external || ""}
+                    handleChange={this.handleChange}
+                  />
+
+                  <DropdownSelect
+                    list={[
+                      "normal_vaginal",
+                      "painful_vaginal",
+                      "inflamed_vaginal",
+                      "bleeding_vaginal"
+                    ]}
+                    field="pelvic_vaginal"
+                    label="Vaginal"
+                    value={pelvic_vaginal || ""}
+                    handleChange={this.handleChange}
+                  />
+
+                  <DropdownSelect
+                    list={[
+                      "normal_uteris",
+                      "painful_uteris",
+                      "inflamed_uteris",
+                      "bleeding_uteris"
+                    ]}
+                    field="pelvic_uteris"
+                    label="Uteris"
+                    value={pelvic_uteris || ""}
+                    handleChange={this.handleChange}
+                  />
+
+                  <DropdownSelect
+                    list={[
+                      "normal_ovaries",
+                      "painful_ovaries",
+                      "inflamed_ovaries",
+                      "bleeding_ovaries"
+                    ]}
+                    field="pelvic_ovaries"
+                    label="Ovaries"
+                    value={pelvic_ovaries || ""}
+                    handleChange={this.handleChange}
+                  />
+                  <DropdownSelect
+                    list={[
+                      "normal_bladder",
+                      "painful_bladder",
+                      "inflamed_bladder",
+                      "bleeding_bladder"
+                    ]}
+                    field="pelvic_bladder"
+                    label="Bladder"
+                    value={pelvic_bladder || ""}
+                    handleChange={this.handleChange}
+                  />
+                </div>
               </div>
-            </div>
 
-            <Textarea
-              field="psychiatric_details"
-              label="Psychiatric Details"
-              value={psychiatric_details}
-              handleChange={this.handleChange}
-            />
-
-            <div className="field is-horizontal has-addons">
-              <div className="field-label is-normal">
-                <label className="label">Abdominal</label>
-              </div>
-              <div className="field-body">
-                <Checkbox
-                  field="abdominal_tenderness"
-                  label="Abdominal Tenderness"
-                  value={abdominal_tenderness}
-                  handleChange={this.handleChange}
-                />
-
-                <Checkbox
-                  field="mass_detected"
-                  label="Mass Detected"
-                  value={mass_detected}
-                  handleChange={this.handleChange}
-                />
-
-                <DropdownSelect
-                  list={[
-                    "normal_bowel",
-                    "hyperactive_bowel",
-                    "hypocative_bowel"
-                  ]}
-                  field="bowel_sounds"
-                  label="Bowel Sounds"
-                  value={bowel_sounds || ""}
-                  handleChange={this.handleChange}
-                />
-              </div>
-            </div>
-
-            <Textarea
-              field="abdominal_details"
-              label="Abdominal Details"
-              value={abdominal_details}
-              handleChange={this.handleChange}
-            />
-
-            <div className="field is-horizontal has-addons">
-              <div className="field-label is-normal">
-                <label className="label">Pelvic</label>
-              </div>
-              <div className="field-body">
-                <DropdownSelect
-                  list={[
-                    "normal_external",
-                    "painful_external",
-                    "inflamed_external",
-                    "bleeding_external"
-                  ]}
-                  field="pelvic_external"
-                  label="External"
-                  value={pelvic_external || ""}
-                  handleChange={this.handleChange}
-                />
-
-                <DropdownSelect
-                  list={[
-                    "normal_vaginal",
-                    "painful_vaginal",
-                    "inflamed_vaginal",
-                    "bleeding_vaginal"
-                  ]}
-                  field="pelvic_vaginal"
-                  label="Vaginal"
-                  value={pelvic_vaginal || ""}
-                  handleChange={this.handleChange}
-                />
-
-                <DropdownSelect
-                  list={[
-                    "normal_uteris",
-                    "painful_uteris",
-                    "inflamed_uteris",
-                    "bleeding_uteris"
-                  ]}
-                  field="pelvic_uteris"
-                  label="Uteris"
-                  value={pelvic_uteris || ""}
-                  handleChange={this.handleChange}
-                />
-
-                <DropdownSelect
-                  list={[
-                    "normal_ovaries",
-                    "painful_ovaries",
-                    "inflamed_ovaries",
-                    "bleeding_ovaries"
-                  ]}
-                  field="pelvic_ovaries"
-                  label="Ovaries"
-                  value={pelvic_ovaries || ""}
-                  handleChange={this.handleChange}
-                />
-                <DropdownSelect
-                  list={[
-                    "normal_bladder",
-                    "painful_bladder",
-                    "inflamed_bladder",
-                    "bleeding_bladder"
-                  ]}
-                  field="pelvic_bladder"
-                  label="Bladder"
-                  value={pelvic_bladder || ""}
-                  handleChange={this.handleChange}
-                />
-              </div>
-            </div>
-
-            <Textarea
-              field="pelvic_details"
-              label="Pelvic Details"
-              value={pelvic_details}
-              handleChange={this.handleChange}
-            />
+              <Textarea
+                field="pelvic_details"
+                label="Pelvic Details"
+                value={pelvic_details}
+                handleChange={this.handleChange}
+              />
+            </fieldset>
           </form>
         </div>
       </section>
@@ -268,7 +270,10 @@ class ProblemExam extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { problemExam: state.encounter.selectedEncounter.problem_exam };
+  return {
+    problemExam: state.encounter.selectedEncounter.problem_exam,
+    status: state.encounter.selectedEncounter.status
+  };
 };
 
 const mapDispatchToProps = { updateEncounterChild };

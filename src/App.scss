@@ -71,7 +71,7 @@ section {
 }
 
 .encounter-section {
-  padding: 0 1.5rem 1.5rem;
+  padding: 1.5rem;
 }
 
 .steps-section {
@@ -119,7 +119,6 @@ section.section {
   position: absolute;
   z-index: 10;
   max-height: 300px;
-  // max-width: 400px;
   overflow-x: scroll;
   overflow-y: auto;
   margin-left: 1em;
