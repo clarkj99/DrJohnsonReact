@@ -109,7 +109,7 @@ class App extends React.Component {
                 <span className=" is-size-2">
                   <i className="fas fa-hand-spock"></i>
                 </span><br />
-                <strong>DrJohnson</strong> made with ❤️ by <a href="https://jgthms.com">Clark Johnson</a>. The source code is licensed
+                <strong>DrJohnson</strong> made with ❤️ by <a href="https://github.com/clarkj99">Clark Johnson</a>. The source code is licensed
       <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
       is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
     </p>
