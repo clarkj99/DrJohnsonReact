@@ -40,11 +40,13 @@ class ProfileForm extends React.Component {
     //   })
     // })
     //   .then(res => res.json())
+    this.setState({ loading: true });
     fetchFunction("profile", "PATCH", {
       profile: this.state
     })
       .then(data => {
         this.props.updateProfile(data);
+        this.setState({ loading: false });
       })
       .catch(res => {});
     if (this.state.newPhoto) this.uploadPhoto();
@@ -71,7 +73,9 @@ class ProfileForm extends React.Component {
   };
 
   render() {
-    let profile = this.state;
+    const profile = this.state;
+    const loading = this.state.loading ? "is-loading" : "";
+
     return (
       <div className="container">
         <h2 className="title">Edit Profile</h2>
@@ -166,7 +170,7 @@ class ProfileForm extends React.Component {
             </div>
           </div>
           <div className="field">
-            <button className="button is-link">
+            <button className={"button is-link " + loading}>
               <Icon icon="check" />
               <span>Submit</span>
             </button>

@@ -51,7 +51,7 @@ class App extends React.Component {
             <Route path="/features">
               <Hero title="EMR Features" />
             </Route>
-            <Route path="/contact-us">
+            <Route path="/contact-me">
               <Contact />
             </Route>
             <Route path="/login">

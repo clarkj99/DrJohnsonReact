@@ -9,6 +9,7 @@ import {
   clearUser
 } from "../actions/rootActions";
 import Icon from "./Icon";
+import unknownUser from "../images/unknown-user2.png";
 
 class PatientList extends React.Component {
   componentDidMount = () => {
@@ -65,14 +66,37 @@ class PatientList extends React.Component {
   render() {
     return (
       <Fragment>
-        <h2 className="title">
+        <article className="media">
+          <figure className="media-left image avatar-small is-64x64">
+            <img
+              src={this.props.selectedPatient.profile.photo || unknownUser}
+              alt={this.props.selectedPatient.last_name}
+            />
+          </figure>
+          <div className="media-content">
+            <div className="field">
+              <h2 className="title">
+                {this.props.selectedPatient.last_name},{" "}
+                {this.props.selectedPatient.first_name}
+              </h2>
+              <p className="subtitle">
+                {this.props.selectedPatient.profile.address1} <br />
+                {this.props.selectedPatient.profile.city},{" "}
+                {this.props.selectedPatient.profile.state}{" "}
+                {this.props.selectedPatient.profile.zip}
+              </p>
+            </div>
+          </div>
+        </article>
+        <hr />
+        {/* <h2 className="title">
           <Icon icon="user" />{" "}
           <span>
             {this.props.selectedPatient.last_name},{" "}
             {this.props.selectedPatient.first_name}
           </span>
-        </h2>
-        <h3 className="subtitle">Encounters</h3>
+        </h2> */}
+        <h3 className="title">Encounters</h3>
         {this.encounterList().length > 0 ? (
           <this.Encounters />
         ) : (

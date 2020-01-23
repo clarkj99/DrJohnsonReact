@@ -22,6 +22,7 @@ const Patient = props => {
             <div className="column is-two-fifths">
               <PatientList />
             </div>
+            <div className="is-divider-vertical"></div>
             <div className="column">
               {Object.getOwnPropertyNames(props.selectedEncounter).length !==
               0 ? (

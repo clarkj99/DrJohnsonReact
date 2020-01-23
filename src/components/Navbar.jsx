@@ -34,14 +34,18 @@ const Navbar = props => {
       <div className="navbar-menu">
         <div className="navbar-start">
           <NavLink className="navbar-item" to="/">
-            Home
+            <Icon icon="home" /> <span> Home</span>
           </NavLink>
-          <NavLink className="navbar-item" to="/about">
+          <NavLink className="navbar-item" to="/contact-me">
+            <Icon icon="phone" />
+            <span>Contact Me</span>
+          </NavLink>
+          {/* <NavLink className="navbar-item" to="/about">
             About
           </NavLink>
           <NavLink className="navbar-item" to="/features">
             Features
-          </NavLink>
+          </NavLink> */}
         </div>
         <div className="navbar-end">
           {user ? (
@@ -69,13 +73,13 @@ const Navbar = props => {
               </NavLink>
             </div>
           )}
-
+          {/* 
           <div className="navbar-item">
-            <NavLink className="button is-small is-link" to="/contact-us">
+            <NavLink className="button is-small is-link" to="/contact-me">
               <Icon icon="phone" />
               <span>Contact Me</span>
             </NavLink>
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>

@@ -12,7 +12,7 @@ const EncounterDetail = props => {
         <Icon icon="file-alt" />
         <span> Details</span>
       </h2>
-      <div className="columns level">
+      <div className="columns">
         <div className="column ">
           <h2 className="subtitle">Intake</h2>
           <table className="table box">
@@ -41,6 +41,40 @@ const EncounterDetail = props => {
               </tr>
             </tbody>
           </table>
+        </div>
+        <div className="column">
+          <h2 className="subtitle">History of Illness</h2>
+          <table className="table box">
+            <tbody>
+              <tr>
+                <th>Duration</th>
+                <td>
+                  {hpi.duration} {hpi.duration_units}
+                </td>
+              </tr>
+              <tr>
+                <th>Severity</th>
+                <td>{hpi.severity} / 10</td>
+              </tr>
+              <tr>
+                <th>Aggravating Factors</th>
+                <td>{hpi.aggravating_factors}</td>
+              </tr>
+              <tr>
+                <th>Context</th>
+                <td>{hpi.context}</td>
+              </tr>
+              <tr>
+                <th>Location</th>
+                <td>{hpi.location}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="columns">
+        <div className="column">
           <h2 className="subtitle">Review</h2>
           <table className="table box">
             <tbody>
@@ -94,33 +128,6 @@ const EncounterDetail = props => {
           </table>
         </div>
         <div className="column">
-          <h2 className="subtitle">History of Illness</h2>
-          <table className="table box">
-            <tbody>
-              <tr>
-                <th>Duration</th>
-                <td>
-                  {hpi.duration} {hpi.duration_units}
-                </td>
-              </tr>
-              <tr>
-                <th>Severity</th>
-                <td>{hpi.severity} / 10</td>
-              </tr>
-              <tr>
-                <th>Aggravating Factors</th>
-                <td>{hpi.aggravating_factors}</td>
-              </tr>
-              <tr>
-                <th>Context</th>
-                <td>{hpi.context}</td>
-              </tr>
-              <tr>
-                <th>Location</th>
-                <td>{hpi.location}</td>
-              </tr>
-            </tbody>
-          </table>
           <h2 className="subtitle">Diagnosis</h2>
           <table className="table box">
             <tbody>

@@ -17,10 +17,7 @@ class PhotoBooth extends React.Component {
   };
 
   handleKeep = () => {
-    this.setState({
-      ...this.initialState,
-      originalPhoto: this.state.currentPhoto
-    });
+    this.setState({ loading: true });
 
     const formData = new FormData();
     formData.append("camera", this.state.currentPhoto);
@@ -35,7 +32,14 @@ class PhotoBooth extends React.Component {
       .then(res => res.json())
       .then(data => {
         console.log("photo", data);
-        if (!data.error) this.props.updateProfile(data);
+        if (!data.error) {
+          this.props.updateProfile(data);
+          this.setState({
+            ...this.initialState,
+            originalPhoto: this.state.currentPhoto
+          });
+          this.setState({ loading: false });
+        }
       });
   };
 
@@ -48,6 +52,7 @@ class PhotoBooth extends React.Component {
   };
 
   render() {
+    const loading = this.state.loading ? "is-loading" : "";
     return (
       <div className="columns">
         {this.state.takingPhoto && (
@@ -68,7 +73,7 @@ class PhotoBooth extends React.Component {
 
           {this.state.currentPhoto && (
             <button
-              className="button is-success is-fullwidth"
+              className={"button is-success is-fullwidth " + loading}
               onClick={this.handleKeep}
             >
               <span className="icon">
