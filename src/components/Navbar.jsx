@@ -34,10 +34,11 @@ const Navbar = props => {
       <div className="navbar-menu">
         <div className="navbar-start">
           <NavLink className="navbar-item" to="/">
-            <Icon icon="home" /> <span> Home</span>
+            {/* <Icon icon="home" /> */}
+            <span> Home</span>
           </NavLink>
           <NavLink className="navbar-item" to="/contact-me">
-            <Icon icon="phone" />
+            {/* <Icon icon="phone" /> */}
             <span>Contact Me</span>
           </NavLink>
           {/* <NavLink className="navbar-item" to="/about">
