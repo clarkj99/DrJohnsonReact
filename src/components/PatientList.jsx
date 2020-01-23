@@ -8,10 +8,11 @@ import {
   startEncounter,
   clearUser
 } from "../actions/rootActions";
+import Icon from "./Icon";
 
 class PatientList extends React.Component {
   componentDidMount = () => {
-    fetchFunction(`/iencounters`, "GET")
+    fetchFunction(`encounters`, "GET")
       .then(data => {
         this.props.addEncounters(data);
       })
@@ -23,7 +24,7 @@ class PatientList extends React.Component {
   };
 
   encounterList = () => {
-    const status = "open";
+    const status = "closed";
     return this.props.encounters.filter(
       encounter =>
         encounter.patient_id === this.props.selectedPatient.id &&
@@ -41,9 +42,9 @@ class PatientList extends React.Component {
         >
           <div className="columns">
             <div className="column">
+              <Icon icon="user-md" />
               <span>
-                Seen by: {encounter.provider.last_name},{" "}
-                {encounter.provider.first_name}
+                {encounter.provider.last_name}, {encounter.provider.first_name}
               </span>
               {/* <span>
                 {encounter.patient.last_name}, {encounter.patient.first_name}
@@ -51,6 +52,7 @@ class PatientList extends React.Component {
             </div>
             <div className="column">
               <span>
+                Appointment:{" "}
                 {new Date(encounter.intake.appointment_at).toLocaleString()}
               </span>
             </div>
@@ -63,11 +65,14 @@ class PatientList extends React.Component {
   render() {
     return (
       <Fragment>
-        <h2 className="title">Encounters</h2>
-        <h3 className="subtitle">
-          {this.props.selectedPatient.last_name},{" "}
-          {this.props.selectedPatient.first_name}
-        </h3>
+        <h2 className="title">
+          <Icon icon="user" />{" "}
+          <span>
+            {this.props.selectedPatient.last_name},{" "}
+            {this.props.selectedPatient.first_name}
+          </span>
+        </h2>
+        <h3 className="subtitle">Encounters</h3>
         {this.encounterList().length > 0 ? (
           <this.Encounters />
         ) : (

@@ -69,7 +69,9 @@ section {
   width: 32px;
   height: 32px;
 }
-
+.contact-image img {
+  object-fit: cover;
+}
 .encounter-section {
   padding: 1.5rem;
 }

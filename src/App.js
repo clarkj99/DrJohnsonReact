@@ -17,6 +17,7 @@ import { connect } from 'react-redux'
 import { addLogin } from './actions/rootActions'
 import Patient from './containers/Patient';
 import NewPatient from './components/NewPatient';
+import Contact from './components/Contact';
 
 class App extends React.Component {
 
@@ -51,7 +52,7 @@ class App extends React.Component {
               <Hero title="EMR Features" />
             </Route>
             <Route path="/contact-us">
-              <Hero title="Contact Us" />
+              <Contact />
             </Route>
             <Route path="/login">
               {this.props.user ? <Profile /> : <Login />}
@@ -87,23 +88,26 @@ class App extends React.Component {
           <div className="container">
 
             <div className="content has-text-centered">
-              <p><span className=" is-size-3">
+              <p><span className=" is-size-2">
                 <i className="fab fa-aws"></i>
               </span>
-                <span className=" is-size-3">
+                <span className=" is-size-2">
                   <i className="fab fa-react"></i>
                 </span>
-                <span className=" is-size-3">
+                <span className=" is-size-2">
                   <i className="fas fa-gem"></i>
                 </span>
-                <span className=" is-size-3">
+                <span className=" is-size-2">
                   <i className="fab fa-html5"></i>
                 </span>
-                <span className=" is-size-3">
+                <span className=" is-size-2">
                   <i className="fab fa-css3"></i>
                 </span>
-                <span className=" is-size-3">
+                <span className=" is-size-2">
                   <i className="fab fa-sass"></i>
+                </span>
+                <span className=" is-size-2">
+                  <i className="fas fa-hand-spock"></i>
                 </span><br />
                 <strong>DrJohnson</strong> made with ❤️ by <a href="https://jgthms.com">Clark Johnson</a>. The source code is licensed
       <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content

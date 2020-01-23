@@ -19,12 +19,19 @@ const Patient = props => {
       ) : (
         <section className="section">
           <div className="columns">
-            <div className="column">
+            <div className="column is-two-fifths">
               <PatientList />
             </div>
             <div className="column">
               {Object.getOwnPropertyNames(props.selectedEncounter).length !==
-                0 && <EncounterDetail />}
+              0 ? (
+                <EncounterDetail />
+              ) : (
+                <Message
+                  text=" Select an encounter to view details."
+                  type="warning"
+                />
+              )}
             </div>
           </div>
         </section>

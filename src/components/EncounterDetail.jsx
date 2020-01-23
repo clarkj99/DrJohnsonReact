@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import Icon from "./Icon";
 
 const EncounterDetail = props => {
   const { selectedEncounter } = props;
@@ -7,14 +8,18 @@ const EncounterDetail = props => {
   const { intake, hpi, rosystem, problem_exam, diagnosis } = selectedEncounter;
   return (
     <Fragment>
-      <h2 className="title">Details</h2>
-      <div className="columns">
-        <div className="column">
-          <table className="table">
+      <h2 className="title">
+        <Icon icon="file-alt" />
+        <span> Details</span>
+      </h2>
+      <div className="columns level">
+        <div className="column ">
+          <h2 className="subtitle">Intake</h2>
+          <table className="table box">
             <tbody>
               <tr>
                 <th>Checkin</th>
-                <td>{intake.checkin_at}</td>
+                <td>{new Date(intake.checkin_at).toLocaleString()}</td>
               </tr>
               <tr>
                 <th>Chief Complaint</th>
@@ -36,8 +41,8 @@ const EncounterDetail = props => {
               </tr>
             </tbody>
           </table>
-
-          <table className="table">
+          <h2 className="subtitle">Review</h2>
+          <table className="table box">
             <tbody>
               <tr>
                 <th>Constitutional</th>
@@ -87,9 +92,10 @@ const EncounterDetail = props => {
               </tr>
             </tbody>
           </table>
-        </div>{" "}
+        </div>
         <div className="column">
-          <table className="table">
+          <h2 className="subtitle">History of Illness</h2>
+          <table className="table box">
             <tbody>
               <tr>
                 <th>Duration</th>
@@ -115,7 +121,8 @@ const EncounterDetail = props => {
               </tr>
             </tbody>
           </table>
-          <table className="table">
+          <h2 className="subtitle">Diagnosis</h2>
+          <table className="table box">
             <tbody>
               <tr>
                 <th>Orders</th>

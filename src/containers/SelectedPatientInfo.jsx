@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { fetchFunction } from "../utils";
 import { connect } from "react-redux";
 import ProviderSelect from "../components/ProviderSelect";

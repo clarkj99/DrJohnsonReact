@@ -34,7 +34,7 @@ const Home = () => {
           </div>
         </div> */}
 
-        <div className="columns">
+        <div className="columns level">
           <div className="column">
             <div className="card">
               <div className="card-content has-text-centered">
