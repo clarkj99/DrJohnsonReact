@@ -159,7 +159,9 @@ class EncounterList extends React.Component {
 
         <this.StatusButtons />
         {this.encounterList().length > 0 ? (
-          <this.Encounters />
+          <div className="search-results">
+            <this.Encounters />
+          </div>
         ) : (
           <div className=" box has-dark">No encounters found</div>
         )}
