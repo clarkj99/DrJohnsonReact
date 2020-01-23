@@ -3,7 +3,7 @@ const steps = (state = { stepNumber: 1 }, action) => {
         case 'SET_STEP':
             return { ...state, stepNumber: action.stepNumber }
         case 'RESET_STEP':
-            return { stepnumber: 1 }
+            return { stepNumber: 1 }
         default:
             return state
     }

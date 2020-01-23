@@ -11,12 +11,13 @@ import Diagnosis from "../components/Diagnosis";
 class EncounterEdit extends React.Component {
   render() {
     const { stepNumber } = this.props;
+    console.log("stepNumber", stepNumber);
     return (
       <Fragment>
         <PatientBanner />
         <Steps />
 
-        {stepNumber === 1 && <Intake />}
+        {(stepNumber === 1 || stepNumber === undefined) && <Intake />}
         {stepNumber === 2 && <HPI />}
         {stepNumber === 3 && <RoSystems />}
         {stepNumber === 4 && <ProblemExam />}

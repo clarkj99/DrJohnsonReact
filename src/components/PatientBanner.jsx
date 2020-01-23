@@ -50,10 +50,17 @@ const PatientBanner = props => {
                   {props.encounter.patient.profile.zip}
                 </p>
               </div>
-              <div className="column is-four-fifths">
+              <div className="column">
                 <p>
                   <span className="has-text-weight-bold">Chief complaint:</span>{" "}
                   {props.encounter.intake.complaint}
+                </p>
+              </div>
+              <div className="column">
+                <p>
+                  <span className="has-text-weight-bold">Provider:</span>{" "}
+                  {props.encounter.provider.last_name},{" "}
+                  {props.encounter.provider.first_name}
                 </p>
               </div>
             </div>

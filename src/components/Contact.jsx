@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import Hero from "./Hero";
 import portrait from "../images/IMG_8520.jpg";
 import head from "../images/IMG_0103.jpg";
+import Icon from "./Icon";
 
 const Contact = props => {
   return (
@@ -28,7 +29,24 @@ const Contact = props => {
                     <div className="media-content">
                       <p className="title is-4 has-text-light">Clark Johnson</p>
                       <p className="subtitle is-6 has-text-light">
-                        clarkjohnsoncodes@gmail.com
+                        <Icon icon="envelope-square" />
+                        <span>
+                          <a href="mailto:clarkjohnsoncodes@gmail.com">
+                            clarkjohnsoncodes@gmail.com
+                          </a>
+                        </span>
+                        <br />
+                        <span className="icon>">
+                          <i className="fab fa-linkedin-in"></i>
+                        </span>
+                        <span>
+                          <a
+                            href="http://www.linkedin.com/in/clarkjohnsoncodes"
+                            target="new"
+                          >
+                            clarkjohnsoncodes
+                          </a>
+                        </span>
                       </p>
                     </div>
                   </div>
