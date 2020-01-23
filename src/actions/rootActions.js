@@ -39,6 +39,13 @@ export const selectEncounter = (encounter) => {
     }
 }
 
+export const deleteEncounter = (encounter) => {
+    return {
+        type: 'DELETE_ENCOUNTER',
+        encounter
+    }
+}
+
 export const clearEncounter = () => {
     return {
         type: 'CLEAR_ENCOUNTER'

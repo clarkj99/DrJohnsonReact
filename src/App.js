@@ -18,6 +18,7 @@ import { addLogin } from './actions/rootActions'
 import Patient from './containers/Patient';
 import NewPatient from './components/NewPatient';
 import Contact from './components/Contact';
+import Admin from './components/Admin';
 
 class App extends React.Component {
 
@@ -78,6 +79,9 @@ class App extends React.Component {
             </Route>
             <Route path="/profile">
               {this.props.user ? <Profile /> : <Login />}
+            </Route>
+            <Route path="/admin">
+              <Admin />
             </Route>
             <Route path="*">
               <Nomatch />

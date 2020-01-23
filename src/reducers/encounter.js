@@ -7,6 +7,13 @@ const encounter = (state = { ...initialEncounter }, action) => {
             return { ...state, encounters: [...state.encounters, action.encounter] }
         case 'SELECT_ENCOUNTER':
             return { ...state, selectedEncounter: { ...action.encounter } }
+        case 'DELETE_ENCOUNTER':
+            return {
+                ...state, encounters: state.encounters.map(encounter => {
+                    if (encounter.id !== action.encounter.id)
+                        return encounter
+                })
+            }
         case 'CLEAR_ENCOUNTER':
             return { ...state, selectedEncounter: {} }
         case 'START_ENCOUNTER':
