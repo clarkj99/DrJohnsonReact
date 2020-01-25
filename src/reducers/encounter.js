@@ -9,7 +9,7 @@ const encounter = (state = { ...initialEncounter }, action) => {
             return { ...state, selectedEncounter: { ...action.encounter } }
         case 'DELETE_ENCOUNTER':
             return {
-                ...state, encounters: state.encounters.map(encounter => {
+                ...state, encounters: state.encounters.filter(encounter => {
                     if (encounter.id !== action.encounter.id)
                         return encounter
                 })

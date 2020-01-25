@@ -30,9 +30,9 @@ class Intake extends React.Component {
         value = e.target.checked;
         break;
       case "datetime-local":
-        console.log(
-          moment(e.target.value, moment.HTML5_FMT.DATETIME_LOCAL).format()
-        );
+        // console.log(
+        //   moment(e.target.value, moment.HTML5_FMT.DATETIME_LOCAL).format()
+        // );
         value = moment(
           e.target.value,
           moment.HTML5_FMT.DATETIME_LOCAL

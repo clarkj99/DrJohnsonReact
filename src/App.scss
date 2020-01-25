@@ -48,7 +48,7 @@ section {
   height: 100%;
 }
 .search-results {
-  height: 740px;
+  max-height: 740px;
   overflow-y: auto;
   padding: 3px;
 }
