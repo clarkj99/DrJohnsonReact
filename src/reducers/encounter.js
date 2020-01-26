@@ -9,10 +9,7 @@ const encounter = (state = { ...initialEncounter }, action) => {
             return { ...state, selectedEncounter: { ...action.encounter } }
         case 'DELETE_ENCOUNTER':
             return {
-                ...state, encounters: state.encounters.filter(encounter => {
-                    if (encounter.id !== action.encounter.id)
-                        return encounter
-                })
+                ...state, encounters: state.encounters.filter(encounter => encounter.id !== action.encounter.id)
             }
         case 'CLEAR_ENCOUNTER':
             return { ...state, selectedEncounter: {} }

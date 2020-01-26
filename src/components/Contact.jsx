@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import Hero from "./Hero";
 import portrait from "../images/IMG_8520.jpg";
 import head from "../images/IMG_0103.jpg";
-import Icon from "./Icon";
 
 const Contact = props => {
   return (
