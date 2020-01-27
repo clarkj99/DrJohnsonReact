@@ -30,9 +30,6 @@ class Intake extends React.Component {
         value = e.target.checked;
         break;
       case "datetime-local":
-        // console.log(
-        //   moment(e.target.value, moment.HTML5_FMT.DATETIME_LOCAL).format()
-        // );
         value = moment(
           e.target.value,
           moment.HTML5_FMT.DATETIME_LOCAL
@@ -41,23 +38,7 @@ class Intake extends React.Component {
       default:
         value = e.target.value;
     }
-    // fetch(`http://localhost:3000/api/v1/intake/${this.props.intake.id}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`
-    //   },
-    //   body: JSON.stringify({
-    //     intake: { ...this.state, [e.target.name]: value }
-    //   })
-    // })
-    //   .then(response => {
-    //     if (!response.ok) {
-    //       throw Error(response.statusText);
-    //     }
-    //     return response; //we only get here if there is no error
-    //   })
-    //   .then(res => res.json())
+
     fetchFunction(`intake/${this.props.intake.id}`, "PATCH", {
       intake: { ...this.state, [e.target.name]: value }
     })
@@ -96,7 +77,6 @@ class Intake extends React.Component {
   };
 
   DateTime = props => {
-    console.log();
     return (
       <div className="field is-horizontal has-addons">
         <div className="field-label  is-normal">

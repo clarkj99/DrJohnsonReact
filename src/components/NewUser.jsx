@@ -33,35 +33,14 @@ class NewUser extends React.Component {
   submitSignup = e => {
     e.preventDefault();
 
-    // fetch("http://localhost:3000/api/v1/users", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`
-    //   },
-    //   body: JSON.stringify({
-    //     user: this.state.signupUser
-    //   })
-    // })
-    //   .then(response => {
-    //     if (!response.ok) {
-    //       throw Error(response.statusText);
-    //     }
-    //     return response; //we only get here if there is no error
-    //   })
-    //   .then(res => res.json())
     fetchFunction("users", "POST", {
       user: this.state.signupUser
     })
       .then(res => {
-        console.log("new user done");
-        // this.props.addLogin(res.user);
         this.props.selectPatient(res.user);
         this.props.addPatientToList(res.user);
         this.props.setCreatingPatient(false);
         this.setState({ signupError: "", signupUser: { ...this.initalUser } });
-        // localStorage.setItem("token", res.jwt);
-        // localStorage.setItem("user", JSON.stringify(res.user));
       })
       .catch(res => {
         this.setState({ signupError: res.message });

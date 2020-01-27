@@ -27,23 +27,6 @@ class Diagnosis extends React.Component {
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     this.setState({ [e.target.name]: value });
 
-    // fetch(`http://localhost:3000/api/v1/diagnosis/${this.props.diagnosis.id}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`
-    //   },
-    //   body: JSON.stringify({
-    //     diagnosis: { ...this.state.diagnosis, [e.target.name]: value }
-    //   })
-    // })
-    //   .then(response => {
-    //     if (!response.ok) {
-    //       throw Error(response.statusText);
-    //     }
-    //     return response; //we only get here if there is no error
-    //   })
-    //   .then(res => res.json())
     fetchFunction(`diagnosis/${this.props.diagnosis.id}`, "PATCH", {
       diagnosis: { ...this.state.diagnosis, [e.target.name]: value }
     })

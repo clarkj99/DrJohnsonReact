@@ -26,21 +26,6 @@ class Login extends React.Component {
   submitLogin = e => {
     e.preventDefault();
 
-    // fetch("http://localhost:3000/api/v1/auth", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     user: this.state.loginUser
-    //   })
-    // })
-    //   .then(response => {
-    //     if (!response.ok) {
-    //       throw Error(response.statusText);
-    //     }
-    //     return response; //we only get here if there is no error
-    //   })
     fetchFunction("auth", "POST", {
       user: this.state.loginUser
     })

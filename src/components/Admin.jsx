@@ -29,7 +29,6 @@ class Admin extends React.Component {
   };
 
   render() {
-    console.log(this.props.encounters);
     return (
       <Fragment>
         <Hero title="Admin" />

@@ -11,7 +11,6 @@ import Diagnosis from "../components/Diagnosis";
 class EncounterEdit extends React.Component {
   render() {
     const { stepNumber } = this.props;
-    console.log("stepNumber", stepNumber);
     return (
       <Fragment>
         <PatientBanner />

@@ -4,7 +4,6 @@ export const baseURL = 'https://obscure-gorge-19980.herokuapp.com/api/v1';
 export const fetchFunction = (route, method, data) => {
 
     const params = (method !== "GET") && { body: JSON.stringify(data) }
-    console.log('fetching', `${baseURL}/${route}`, method);
     return fetch(`${baseURL}/${route}`, {
         method: method,
         headers: {

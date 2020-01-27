@@ -29,17 +29,7 @@ class ProfileForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // fetch("http://localhost:3000/api/v1/profile", {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`
-    //   },
-    //   body: JSON.stringify({
-    //     profile: this.state
-    //   })
-    // })
-    //   .then(res => res.json())
+
     this.setState({ loading: true });
     fetchFunction("profile", "PATCH", {
       profile: this.state
@@ -55,8 +45,6 @@ class ProfileForm extends React.Component {
   uploadPhoto = () => {
     const formData = new FormData();
     formData.append("file", this.state.newPhoto);
-    // formData.append("filename", this.state.newPhoto.name);
-    // formData.append("type", this.state.newPhoto.name);
 
     fetch(`${baseURL}/photo/${this.props.user.profile.id}`, {
       method: "PATCH",
@@ -68,7 +56,6 @@ class ProfileForm extends React.Component {
       .then(res => res.json())
       .then(data => {
         if (!data.error) this.props.updateProfile(data);
-        // console.log("file", data);
       });
   };
 
