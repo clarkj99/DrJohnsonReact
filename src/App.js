@@ -37,6 +37,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props.user && this.props.user.role === "admin");
     return (
       <Router>
         <div>
@@ -55,10 +56,7 @@ class App extends React.Component {
             <Route path="/contact-me">
               <Contact />
             </Route>
-            <Route path="/login">
-              {this.props.user ? <Profile /> : <Login />}
-            </Route>
-
+            <Route path="/login" component={Login} />
             <Route path="/providers/newpatient">
               <NewPatient />
             </Route>
@@ -72,16 +70,16 @@ class App extends React.Component {
               {this.props.selectedPatient ? <History /> : <Redirect to="/providers" />}
             </Route>
             <Route exact path="/providers">
-              {this.props.user ? <Provider /> : <Login />}
+              {this.props.user ? <Provider /> : <Redirect to={{ pathname: "/login", state: { error: "Please log in." } }} />}
             </Route>
             <Route path="/patients">
-              {this.props.user ? <Patient /> : <Login />}
+              {this.props.user ? <Patient /> : <Redirect to={{ pathname: "/login", state: { error: "Please log in." } }} />}
             </Route>
             <Route path="/profile">
-              {this.props.user ? <Profile /> : <Login />}
+              {this.props.user ? <Profile /> : <Redirect to={{ pathname: "/login", state: { error: "Please log in." } }} />}
             </Route>
             <Route path="/admin">
-              <Admin />
+              {this.props.user && this.props.user.role === "admin" ? <Admin /> : <Redirect to={{ pathname: "/login", state: { error: "You must be an admin to access the admin portal." } }} />}
             </Route>
             <Route path="*">
               <Nomatch />

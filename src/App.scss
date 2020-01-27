@@ -15,7 +15,7 @@ $scheme-main: $seashell;
 $dark: $ming;
 $card-background-color: $link;
 $card-color: $link;
-$navbar-breakpoint: 0;
+// $navbar-breakpoint: 600px;
 // $navbar-height: 3.25rem;
 @import "../node_modules/bulma/bulma.sass";
 
@@ -94,7 +94,8 @@ section {
 }
 
 .home-section {
-  background-image: url("./images/ezgif-1-ceb6a1074c7d.gif");
+  // background-image: url("./images/ezgif-1-ceb6a1074c7d.gif");
+  background-image: url("./images/hi-res-wallpaper-3.jpg");
   background-color: transparent;
   background-attachment: fixed;
   background-size: cover;

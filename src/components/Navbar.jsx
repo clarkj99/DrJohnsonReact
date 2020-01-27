@@ -10,82 +10,108 @@ import {
 } from "../actions/rootActions";
 import Icon from "./Icon";
 
-const Navbar = props => {
-  const handleClick = e => {
+class Navbar extends React.Component {
+  state = { burgerMenuActive: false };
+
+  handleClick = e => {
     localStorage.removeItem("token");
-    props.logout();
-    props.resetEncounter();
-    props.resetStep();
-    props.resetUser();
+    this.props.logout();
+    this.props.resetEncounter();
+    this.props.resetStep();
+    this.props.resetUser();
   };
 
-  let user = props.user;
-  return (
-    <nav
-      className="navbar is-dark"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div className="navbar-brand">
-        <NavLink className="navbar-item" to="/">
-          <img src={Logo} alt="DrJohnson" />
-        </NavLink>
-      </div>
-      <div className="navbar-menu">
-        <div className="navbar-start">
+  handleMenuToggle = e => {
+    this.setState({ burgerMenuActive: !this.state.burgerMenuActive });
+  };
+
+  render() {
+    const user = this.props.user;
+    return (
+      <nav
+        className="navbar is-dark"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="navbar-brand">
           <NavLink className="navbar-item" to="/">
-            {/* <Icon icon="home" /> */}
-            <span> Home</span>
+            <img src={Logo} alt="DrJohnson" />
           </NavLink>
-          <NavLink className="navbar-item" to="/contact-me">
-            {/* <Icon icon="phone" /> */}
-            <span>Contact Me</span>
-          </NavLink>
-          {/* <NavLink className="navbar-item" to="/about">
-            About
-          </NavLink>
-          <NavLink className="navbar-item" to="/features">
-            Features
-          </NavLink> */}
+          <a
+            role="button"
+            onClick={this.handleMenuToggle}
+            className={
+              "navbar-burger burger " +
+              (this.state.burgerMenuActive && "is-active")
+            }
+            aria-label="menu"
+            aria-expanded="false"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-        <div className="navbar-end">
-          {user ? (
-            <Fragment>
-              <div className="navbar-item">
-                <NavLink className="button is-small" to="/profile">
-                  <Icon icon="address-card" />
-                  <span>
-                    {user.first_name} {user.last_name}
-                  </span>
-                </NavLink>
-              </div>
-              <div className="navbar-item">
-                <button className="button is-small" onClick={handleClick}>
-                  <Icon icon="sign-out-alt" />
-                  <span>Logout</span>
-                </button>
-              </div>
-            </Fragment>
-          ) : (
-            <div className="navbar-item">
-              <NavLink className="button is-small" to="/login">
-                <Icon icon="sign-in-alt" />
-                <span> Login</span>
-              </NavLink>
-            </div>
-          )}
-          {/* 
-          <div className="navbar-item">
-            <NavLink className="button is-small is-link" to="/contact-me">
+        <div
+          className={
+            "navbar-menu " + (this.state.burgerMenuActive && "is-active")
+          }
+        >
+          <div className="navbar-start">
+            <NavLink className="navbar-item" to="/">
+              <Icon icon="home" />
+              <span> Home</span>
+            </NavLink>
+            <NavLink className="navbar-item" to="/contact-me">
               <Icon icon="phone" />
               <span>Contact Me</span>
             </NavLink>
-          </div> */}
+          </div>
+          <div className="navbar-end">
+            {user ? (
+              <Fragment>
+                <div className="navbar-item">
+                  <NavLink className="button is-small" to="/profile">
+                    <Icon icon="address-card" />
+                    <span>
+                      {user.first_name} {user.last_name}
+                    </span>
+                  </NavLink>
+                </div>
+
+                {user.role === "admin" && (
+                  <div className="navbar-item">
+                    <NavLink className="button is-small" to="/admin">
+                      <Icon icon="cog" />
+                      <span>Admin</span>
+                    </NavLink>
+                  </div>
+                )}
+
+                <div className="navbar-item">
+                  <button
+                    className="button is-small"
+                    onClick={this.handleClick}
+                  >
+                    <Icon icon="sign-out-alt" />
+                    <span>Logout</span>
+                  </button>
+                </div>
+              </Fragment>
+            ) : (
+              <div className="navbar-item">
+                <NavLink className="button is-small" to="/login">
+                  <Icon icon="sign-in-alt" />
+                  <span> Login</span>
+                </NavLink>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </nav>
-  );
-};
+      </nav>
+    );
+  }
+}
 
 function mapStateToProps(state) {
   return { user: state.login.user };

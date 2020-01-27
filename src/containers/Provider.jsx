@@ -7,7 +7,7 @@ import Message from "../components/Message";
 const Provider = props => {
   return (
     <Fragment>
-      {props.user.role === "patient" ? (
+      {props.user.role !== "physician" ? (
         <Fragment>
           <Hero title="Healthcare Providers" />
           <Message

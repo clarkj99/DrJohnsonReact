@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { addLogin } from "../actions/rootActions";
 import Hero from "./Hero";
 import DemoUsers from "./DemoUsers";
 import { fetchFunction } from "../utils";
+import Message from "./Message";
 
 class Login extends React.Component {
   initalUser = {
@@ -14,7 +16,8 @@ class Login extends React.Component {
   };
 
   state = {
-    loginUser: { ...this.initalUser }
+    loginUser: { ...this.initalUser },
+    error: ""
   };
 
   handleLoginChange = e => {
@@ -32,18 +35,24 @@ class Login extends React.Component {
       .then(res => {
         localStorage.setItem("token", res.jwt);
         this.props.addLogin(res.user);
-        // localStorage.setItem("user", JSON.stringify(res.user));
+        this.props.history.push("/");
       })
       .catch(res => {
-        this.setState({ loginError: res.message });
+        this.setState({ error: res.message });
       });
   };
 
   render = () => {
+    const error =
+      this.props.location &&
+      this.props.location.state &&
+      this.props.location.state.error;
+
     return (
       <Fragment>
         <Hero title="Login" />
         <DemoUsers />
+        {error && <Message text={error} type="danger" />}
         <section className="section">
           <div className="container">
             <h2 className="title">Login</h2>
@@ -73,8 +82,8 @@ class Login extends React.Component {
                 />
               </div>
               <div className="field">
-                {this.state.loginError && (
-                  <p className="help is-danger">{this.state.loginError}</p>
+                {this.state.error && (
+                  <p className="help is-danger">{this.state.error}</p>
                 )}
                 <button
                   type="submit"
@@ -95,4 +104,4 @@ const mapDispatchToProps = {
   addLogin
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(withRouter(Login));
