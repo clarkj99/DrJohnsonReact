@@ -9,6 +9,7 @@ class EncounterSelection extends React.Component {
   handleClick = () => {
     this.props.setCreatingPatient(true);
   };
+
   render() {
     return (
       <Fragment>

@@ -7,7 +7,7 @@ const Contact = props => {
   return (
     <Fragment>
       <Hero title="Contact Me" />
-      <section className="section">
+      <section className="section home-section">
         <div className="container">
           <div className="columns">
             <div className="column"></div>

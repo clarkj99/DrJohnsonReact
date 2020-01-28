@@ -4,11 +4,7 @@ import NewUser from "../components/NewUser";
 import unknownUser from "../images/unknown-user2.png";
 import { fetchFunction } from "../utils";
 
-import {
-  addUsers,
-  selectPatient,
-  setCreatingPatient
-} from "../actions/rootActions";
+import { addUsers, selectPatient } from "../actions/rootActions";
 
 class Search extends React.Component {
   state = { searchTerm: "" };
@@ -78,7 +74,7 @@ class Search extends React.Component {
   render() {
     return (
       <Fragment>
-        {this.props.creatingPatient && <NewUser role="patient" />}
+        {/* {this.props.creatingPatient && <NewUser role="patient" />} */}
         <div className="field">
           <div className="control has-icons-left">
             <span className="icon is-small is-left">
@@ -121,6 +117,6 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { addUsers, selectPatient, setCreatingPatient };
+const mapDispatchToProps = { addUsers, selectPatient };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

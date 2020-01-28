@@ -88,6 +88,14 @@ export const addUsers = (userType, userList) => {
     }
 }
 
+export const addUser = (userType, user) => {
+    return {
+        type: 'ADD_USER',
+        userType,
+        user
+    }
+}
+
 export const addPatientToList = (user) => {
     return {
         type: 'ADD_PATIENT_TO_LIST',

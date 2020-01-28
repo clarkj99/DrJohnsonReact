@@ -5,7 +5,8 @@ import {
   addLogin,
   selectPatient,
   addPatientToList,
-  setCreatingPatient
+  setCreatingPatient,
+  addUser
 } from "../actions/rootActions";
 
 class NewUser extends React.Component {
@@ -37,8 +38,12 @@ class NewUser extends React.Component {
       user: this.state.signupUser
     })
       .then(res => {
-        this.props.selectPatient(res.user);
-        this.props.addPatientToList(res.user);
+        if (this.props.role === "patient") {
+          this.props.selectPatient(res.user);
+          this.props.addPatientToList(res.user);
+        } else if (this.props.role === "physician") {
+          this.props.addUser("physicians", res.user);
+        }
         this.props.setCreatingPatient(false);
         this.setState({ signupError: "", signupUser: { ...this.initalUser } });
       })
@@ -130,7 +135,8 @@ const mapDispatchToProps = {
   addLogin,
   selectPatient,
   addPatientToList,
-  setCreatingPatient
+  setCreatingPatient,
+  addUser
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewUser);

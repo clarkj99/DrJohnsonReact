@@ -4,14 +4,20 @@ import Hero from "./Hero";
 import NewUser from "./NewUser";
 import { fetchFunction } from "../utils";
 import unknownUser from "../images/unknown-user2.png";
-import { addEncounters, deleteEncounter } from "../actions/rootActions";
+import {
+  addEncounters,
+  deleteEncounter,
+  setCreatingPatient,
+  addUsers
+} from "../actions/rootActions";
 import Icon from "./Icon";
 
 class Admin extends React.Component {
   state = { physicians: [] };
   componentDidMount = () => {
     fetchFunction("users?role=physician", "GET", null)
-      .then(response => this.setState({ physicians: response }))
+      // .then(response => this.setState({ physicians: response }))
+      .then(response => this.props.addUsers("physicians", response))
       .catch(res => {});
     fetchFunction("encounters", "GET", null)
       .then(response => {
@@ -28,6 +34,10 @@ class Admin extends React.Component {
       .catch(res => {});
   };
 
+  handleClick = () => {
+    this.props.setCreatingPatient(true);
+  };
+
   render() {
     return (
       <Fragment>
@@ -35,49 +45,77 @@ class Admin extends React.Component {
         <section className="section">
           <div className="">
             <div className="columns">
-              <div className="column">
+              {/* <div className="column">
                 <h2 className="title">Create New Physician</h2>
-                <NewUser role="patient" />
+                <NewUser role="physician" />
               </div>
-              <div className="is-divider-vertical"></div>
-              <div className="column">
-                <h2 className="title">Physicians</h2>
-                {this.state.physicians.map(physician => (
-                  <div key={physician.id} className="box">
-                    <article className="media">
-                      <div className="media-left">
-                        <figure className="media-left image avatar-small is-64x64">
-                          <img
-                            src={physician.profile.photo || unknownUser}
-                            alt={physician.last_name}
-                          />
-                        </figure>
-                      </div>
-                      <div className="media-content">
-                        <div className="columns">
-                          <div className="column">
-                            {" "}
-                            <p>
-                              {physician.last_name}, {physician.first_name}{" "}
-                              <br />
-                            </p>
+              <div className="is-divider-vertical"></div> */}
+              <div className="column is-two-fifths">
+                <div className="level">
+                  <div className="level-left">
+                    {!this.props.creatingPatient ? (
+                      <h2 className="title">Physicians</h2>
+                    ) : (
+                      <h2 className="title">Create New Physician</h2>
+                    )}
+                  </div>
+                  <div className="level-right">
+                    {!this.props.creatingPatient && (
+                      <button
+                        onClick={this.handleClick}
+                        className="button is-link "
+                      >
+                        <span className="icon">
+                          <i className="fas fa-plus-square"></i>
+                        </span>
+                        <span>New Physician</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+                {this.props.creatingPatient ? (
+                  <NewUser role="physician" />
+                ) : (
+                  <Fragment>
+                    {this.props.physicians.map(physician => (
+                      <div key={physician.id} className="box">
+                        <article className="media">
+                          <div className="media-left">
+                            <figure className="media-left image avatar-small is-64x64">
+                              <img
+                                src={physician.profile.photo || unknownUser}
+                                alt={physician.last_name}
+                              />
+                            </figure>
                           </div>
-                          <div className="column">
-                            <p>
-                              {physician.profile.address1}
-                              <br />
-                              {physician.profile.city},{" "}
-                              {physician.profile.state} {physician.profile.zip}
-                            </p>
+                          <div className="media-content">
+                            <div className="columns">
+                              <div className="column">
+                                {" "}
+                                <p>
+                                  {physician.last_name}, {physician.first_name}{" "}
+                                  <br />
+                                </p>
+                              </div>
+                              <div className="column">
+                                <p>
+                                  {physician.profile.address1}
+                                  <br />
+                                  {physician.profile.city},{" "}
+                                  {physician.profile.state}{" "}
+                                  {physician.profile.zip}
+                                </p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      {/* <div className="media-right">
+                          {/* <div className="media-right">
                         <button className="button is-link">Delete</button>
                       </div> */}
-                    </article>
-                  </div>
-                ))}
+                        </article>
+                      </div>
+                    ))}
+                  </Fragment>
+                )}
               </div>
               <div className="is-divider-vertical"></div>
               <div className="column">
@@ -149,11 +187,15 @@ class Admin extends React.Component {
 const mapStateToProps = state => {
   return {
     user: state.login.user,
-    encounters: state.encounter.encounters
+    encounters: state.encounter.encounters,
+    creatingPatient: state.user.creatingPatient,
+    physicians: state.user.physicians
   };
 };
 const mapDispatchToProps = {
   addEncounters,
-  deleteEncounter
+  deleteEncounter,
+  setCreatingPatient,
+  addUsers
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);

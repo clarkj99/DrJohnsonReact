@@ -37,8 +37,8 @@ class Navbar extends React.Component {
           <NavLink className="navbar-item" to="/">
             <img src={Logo} alt="DrJohnson" />
           </NavLink>
+
           <a
-            role="button"
             onClick={this.handleMenuToggle}
             className={
               "navbar-burger burger " +
