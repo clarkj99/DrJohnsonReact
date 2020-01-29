@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import NewUser from "../components/NewUser";
 import unknownUser from "../images/unknown-user2.png";
 import { fetchFunction } from "../utils";
 
