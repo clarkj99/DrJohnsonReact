@@ -5,16 +5,23 @@ $powder-blue: #bee9e8;
 $ming: #387780;
 $black-olive: #393e41;
 
+/* Coolors Exported Palette - coolors.co/96cae7-0e6700-000807-9395d3-fbf9ff */
+$light-cornflower-blue: rgba(150, 202, 231, 1);
+$pakistan-green: rgba(14, 103, 0, 1);
+$rich-black: rgba(0, 8, 7, 1);
+$ceil: rgba(147, 149, 211, 1);
+$ghost-white: rgba(251, 249, 255, 1);
+
 @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Inconsolata|Montserrat|Roboto&display=swap");
 
 $family-sans-serif: "Montserrat", sans-serif;
 $family-monospace: "Inconsolata", sans-serif;
-$primary: $powder-blue;
+$primary: $light-cornflower-blue;
 $link: $sizzling-red;
-$scheme-main: $seashell;
-$dark: $ming;
+$scheme-main: $ghost-white;
+$dark: $rich-black;
 $card-background-color: $link;
-$card-color: $link;
+$card-color: $dark;
 // $navbar-breakpoint: 600px;
 // $navbar-height: 3.25rem;
 @import "../node_modules/bulma/bulma.sass";
