@@ -132,6 +132,10 @@ const EncounterDetail = props => {
           <table className="table box">
             <tbody>
               <tr>
+                <th>Code</th>
+                <td>{diagnosis.icd}</td>
+              </tr>
+              <tr>
                 <th>Orders</th>
                 <td>{diagnosis.orders}</td>
               </tr>
