@@ -103,7 +103,7 @@ class NewUser extends React.Component {
               <p className="help is-danger">{this.state.signupError}</p>
             )}
             <div className="buttons">
-              <button type="submit" className="button is-link">
+              <button type="submit" className="button ">
                 <span className="icon">
                   <i className="fas fa-plus-square"></i>
                 </span>
@@ -111,7 +111,7 @@ class NewUser extends React.Component {
               </button>
               <button
                 type="reset"
-                className="button is-link"
+                className="button "
                 onClick={this.handleCancel}
               >
                 <span className="icon">

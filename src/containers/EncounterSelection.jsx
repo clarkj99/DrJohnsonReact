@@ -36,10 +36,7 @@ class EncounterSelection extends React.Component {
                 </div>
                 <div className="level-right">
                   {!this.props.creatingPatient && (
-                    <button
-                      onClick={this.handleClick}
-                      className="button is-link "
-                    >
+                    <button onClick={this.handleClick} className="button  ">
                       <span className="icon">
                         <i className="fas fa-plus-square"></i>
                       </span>

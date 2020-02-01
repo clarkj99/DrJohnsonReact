@@ -63,9 +63,9 @@ class SelectedPatientInfo extends React.Component {
               </p>
             </div>
           </div>
-          <div className="media-right is-link">
+          <div className="media-right ">
             <button
-              className="delete is-link"
+              className="delete "
               onClick={() => this.props.clearUser()}
             ></button>
           </div>
@@ -74,7 +74,7 @@ class SelectedPatientInfo extends React.Component {
         {!this.state.creatingEncounter && (
           <nav className="navbar is-transparent">
             <div className="navbar-item">
-              <button className="is-link  button" onClick={this.handleNewClick}>
+              <button className="  button" onClick={this.handleNewClick}>
                 <span className="icon">
                   <i className="fas fa-plus-square"></i>
                 </span>
@@ -82,7 +82,7 @@ class SelectedPatientInfo extends React.Component {
               </button>
             </div>
             <div className="navbar-item">
-              <Link to="/providers/patient-profile" className="is-link button">
+              <Link to="/providers/patient-profile" className=" button">
                 <Icon icon="address-card" />
                 {/* <span className="icon">
                   <i className="fas fa-edit"></i>
@@ -91,7 +91,7 @@ class SelectedPatientInfo extends React.Component {
               </Link>
             </div>
             <div className="navbar-item">
-              <Link className="is-link button" to="/providers/patient-history">
+              <Link className=" button" to="/providers/patient-history">
                 <span className="icon">
                   <i className="fas fa-edit"></i>
                 </span>
@@ -110,7 +110,7 @@ class SelectedPatientInfo extends React.Component {
             </div>
             <div className="navbar-item">
               <button
-                className="button is-link"
+                className="button "
                 onClick={this.handleCreateEncounter}
                 disabled={this.state.selectedProvider === ""}
               >
@@ -121,7 +121,7 @@ class SelectedPatientInfo extends React.Component {
               </button>
             </div>
             <div className="navbar-item">
-              <button className="button is-link" onClick={this.handleCancel}>
+              <button className="button " onClick={this.handleCancel}>
                 <span className="icon">
                   <i className="fas fa-ban"></i>
                 </span>

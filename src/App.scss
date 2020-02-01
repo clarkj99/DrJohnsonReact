@@ -1,5 +1,6 @@
 /* Coolors Exported Palette - coolors.co/ff3154-f7f8ee-bee9e8-387780-393e41 */
 $sizzling-red: #ff3154;
+$sizzling-red-light: #ff5154;
 $seashell: #f7f8ee;
 $powder-blue: #bee9e8;
 $ming: #387780;
@@ -17,11 +18,25 @@ $ghost-white: rgba(251, 249, 255, 1);
 $family-sans-serif: "Montserrat", sans-serif;
 $family-monospace: "Inconsolata", sans-serif;
 $primary: $light-cornflower-blue;
+// $primary: $powder-blue;
 $link: $sizzling-red;
+// $link-hover: $sizzling-red-light;
 $scheme-main: $ghost-white;
 $dark: $rich-black;
+$card-color: $scheme-main;
 $card-background-color: $link;
-$card-color: $dark;
+$hero-background-color: $primary;
+
+$button-background-color: $link;
+$button-hover-color: $scheme-main;
+$button-color: $scheme-main;
+$button-border-width: 0;
+
+$footer-background-color: $primary;
+$footer-padding: 1rem;
+
+$switch-background-active: $link;
+
 // $navbar-breakpoint: 600px;
 // $navbar-height: 3.25rem;
 @import "../node_modules/bulma/bulma.sass";
@@ -109,17 +124,17 @@ section {
   min-height: 60vh;
 }
 
-.hero.is-bold {
-  background-color: transparent;
-}
+// .hero.is-bold {
+//   background-color: transparent;
+// }
 
 section.section {
   background-color: $scheme-main;
 }
 
-.hero-body.box {
-  padding: 1em 1.25rem;
-}
+// .hero-body.box {
+//   padding: 1em 1.25rem;
+// }
 
 .selected-patient {
   padding: 0 0 1rem 0;
@@ -145,6 +160,10 @@ section.section {
 .card {
   border-radius: 30px;
 }
-.footer {
-  padding: 1rem;
+.card .title {
+  color: $scheme-main;
+}
+a.button:hover,
+button:hover {
+  background-color: $link-dark;
 }

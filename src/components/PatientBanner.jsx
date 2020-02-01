@@ -69,10 +69,7 @@ const PatientBanner = props => {
               <div className="navbar-menu">
                 <div className="navbar-start">
                   <div className="navbar-item">
-                    <Link
-                      to="/providers/patient-profile"
-                      className="is-link button"
-                    >
+                    <Link to="/providers/patient-profile" className=" button">
                       <Icon icon="address-card" />
                       {/* <span className="icon">
                         <i className="fas fa-edit"></i>
@@ -81,10 +78,7 @@ const PatientBanner = props => {
                     </Link>
                   </div>
                   <div className="navbar-item">
-                    <Link
-                      className="is-link button"
-                      to="/providers/patient-history"
-                    >
+                    <Link className=" button" to="/providers/patient-history">
                       <span className="icon">
                         <i className="fas fa-edit"></i>
                       </span>

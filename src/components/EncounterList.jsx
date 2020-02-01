@@ -58,7 +58,7 @@ class EncounterList extends React.Component {
       <div className="level">
         <div className="field">
           <input
-            className="is-checkradio is-link"
+            className="is-checkradio "
             id="exampleRadioInline1"
             type="radio"
             name="exampleRadioInline"
@@ -67,7 +67,7 @@ class EncounterList extends React.Component {
           />
           <label htmlFor="exampleRadioInline1">Open</label>
           <input
-            className="is-checkradio is-link"
+            className="is-checkradio "
             id="exampleRadioInline2"
             type="radio"
             name="exampleRadioInline"
@@ -88,7 +88,7 @@ class EncounterList extends React.Component {
             <div className="column is-one-fifth">
               <div className="buttons">
                 <button
-                  className="button is-link"
+                  className="button "
                   onClick={e => this.handleToggle(encounter)}
                 >
                   <span className="icon">
@@ -96,7 +96,7 @@ class EncounterList extends React.Component {
                   </span>
                 </button>
                 <button
-                  className="button is-link"
+                  className="button "
                   onClick={e => this.handleEdit(encounter)}
                 >
                   <span className="icon">

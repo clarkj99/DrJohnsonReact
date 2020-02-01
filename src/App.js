@@ -43,7 +43,7 @@ class App extends React.Component {
           <Navbar />
           <Switch>
             <Route exact path="/">
-              <Hero title="FlatIron's Premier EMR" />
+              <Hero title="Electronic Medical Records" />
               <Home />
             </Route>
             <Route path="/about">
@@ -85,7 +85,7 @@ class App extends React.Component {
             </Route>
           </Switch>
         </div>
-        <footer className="footer has-background-primary">
+        <footer className="footer">
           <div className="container">
 
             <div className="content has-text-centered">

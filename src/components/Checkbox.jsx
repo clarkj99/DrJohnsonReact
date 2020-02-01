@@ -1,7 +1,7 @@
 import React from "react";
 
 const Checkbox = props => {
-  const classText = "switch is-link " + props.size;
+  const classText = "switch  " + props.size;
   return (
     <div className="field">
       <div className="control">

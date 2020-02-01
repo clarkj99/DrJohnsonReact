@@ -100,7 +100,7 @@ class Intake extends React.Component {
           {/* Set the time to current time if you want  */}
           <div className="control">
             <button
-              className="button is-link"
+              className="button "
               onClick={() =>
                 this.handleChange({
                   target: {

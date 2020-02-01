@@ -16,7 +16,7 @@ const stepClass = (stepNumber, myStep) => {
     case myStep < stepNumber:
       return "step-item is-completed is-dark ";
     case myStep === stepNumber:
-      return "step-item is-active is-link";
+      return "step-item is-active ";
     default:
       return "step-item";
   }
