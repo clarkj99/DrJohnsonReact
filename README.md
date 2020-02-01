@@ -1,5 +1,7 @@
 # DrJohnson React-Frontend
 
+![DrJohnson Micro EMR by Clark Johnson](./src/images/DrJohnson-screenshot.png?raw=true "DrJohnson")
+
 DrJohnson is an Electronic Medical Records application (scaled down). It was written to showcase technologies learned from my Flatiron school coding bootcamp experience, using Ruby on Rails api for model and controller, and React for the views.
 
 ## Configuration
