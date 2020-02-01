@@ -14,7 +14,10 @@ const EncounterDetail = props => {
       </h2>
       <div className="columns">
         <div className="column ">
-          <h2 className="subtitle">Intake</h2>
+          <h2 className="subtitle">
+            <Icon icon="user" />
+            <span>Intake</span>
+          </h2>
           <table className="table box">
             <tbody>
               <tr>
@@ -43,7 +46,10 @@ const EncounterDetail = props => {
           </table>
         </div>
         <div className="column">
-          <h2 className="subtitle">History of Illness</h2>
+          <h2 className="subtitle">
+            <Icon icon="user-injured" />
+            <span>History of Illness</span>
+          </h2>
           <table className="table box">
             <tbody>
               <tr>
@@ -75,7 +81,10 @@ const EncounterDetail = props => {
 
       <div className="columns">
         <div className="column">
-          <h2 className="subtitle">Review</h2>
+          <h2 className="subtitle">
+            <Icon icon="question" />
+            <span>Review</span>
+          </h2>
           <table className="table box">
             <tbody>
               <tr>
@@ -128,7 +137,10 @@ const EncounterDetail = props => {
           </table>
         </div>
         <div className="column">
-          <h2 className="subtitle">Diagnosis</h2>
+          <h2 className="subtitle">
+            <Icon icon="stethoscope" />
+            <span>Diagnosis</span>
+          </h2>
           <table className="table box">
             <tbody>
               <tr>
