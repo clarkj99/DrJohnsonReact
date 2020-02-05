@@ -1,6 +1,6 @@
 # DrJohnson React-Frontend
 
-![DrJohnson Micro EMR by Clark Johnson](./src/images/DrJohnson-screenshot.png?raw=true "DrJohnson")
+![DrJohnson Micro EMR by Clark Johnson  ](./src/images/DrJohnson-screenshot.png?raw=true "DrJohnson")
 
 DrJohnson is an Electronic Medical Records application (scaled down). It was written to showcase technologies learned from my Flatiron school coding bootcamp experience, using Ruby on Rails api for model and controller, and React for the views.
 
@@ -21,14 +21,13 @@ yarn create react-app frontend
 ## Tasks
 
 - [x] Scaffold Rails and React
-- [ ] Models and Controllers
-- [ ] Authentication and Roles
-- [ ] Seed data
-- [ ]
-- [ ] Search bar
-- [ ] Admin Page to add new providers
-- [ ] ICD-10 Lookup/Download
-- [ ] Photo for Profile
+- [x] Models and Controllers
+- [x] Authentication and Roles
+- [x] Seed data
+- [x] Search bar
+- [x] Admin Page to add new providers
+- [x] ICD-10 Lookup/Download
+- [x] Photo for Profile
 - [ ] Alexa Skill (?)
 
 ## Notes
