@@ -44,7 +44,6 @@ class Diagnosis extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
     fetchFunction(`icd10s?term=${e.target.value}`, "GET")
       .then(searchResults => {
-        console.log(searchResults);
         this.setState({ searchResults });
       })
       .catch(res => {});

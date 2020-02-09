@@ -90,3 +90,26 @@ const mapDispatchToProps = {
 2020-01-21
 
 - major refactor: used single imported function for all fetches.
+
+2020-02-06
+
+- added `debounce` to ICD10 lookup in Diagnosis.jsx
+
+```
+debounceSearch = e => {
+    e.persist();
+    this.setState({ [e.target.name]: e.target.value });
+    debounce(
+      e => {
+        this.handleSearchChange(e);
+      },
+      900,
+      {
+        leading: false
+      }
+    )(e);
+  };
+```
+
+- I needed e.persist() so React wouldn't reuse the synthetic event.
+- I had to invoke the debounced function instead of returning it.
