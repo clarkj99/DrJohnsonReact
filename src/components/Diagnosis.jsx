@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { updateEncounterChild } from "../actions/rootActions";
 import Textarea from "./Textarea";
 import { fetchFunction } from "../utils";
+import { debounce } from "lodash";
 
 class Diagnosis extends React.Component {
   initialDiagnosis = {
@@ -41,12 +42,26 @@ class Diagnosis extends React.Component {
 
   handleSearchChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-    // import {fetchFunction} from '../utils'
     fetchFunction(`icd10s?term=${e.target.value}`, "GET")
       .then(searchResults => {
+        console.log(searchResults);
         this.setState({ searchResults });
       })
       .catch(res => {});
+  };
+
+  debounceSearch = e => {
+    e.persist();
+    this.setState({ [e.target.name]: e.target.value });
+    debounce(
+      e => {
+        this.handleSearchChange(e);
+      },
+      900,
+      {
+        leading: false
+      }
+    )(e);
   };
 
   handleClick = icd => {
@@ -97,7 +112,7 @@ class Diagnosis extends React.Component {
                       type="search"
                       name="searchTerm"
                       value={searchTerm}
-                      onChange={this.handleSearchChange}
+                      onChange={this.debounceSearch}
                     />
                     <span className="icon is-small is-left">
                       <i className="fas fa-search"></i>
