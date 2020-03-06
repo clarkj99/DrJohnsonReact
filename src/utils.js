@@ -1,6 +1,5 @@
-export const baseURL = 'https://dekalbwebdev.net/api/v1';
-// export const baseURL = 'https://obscure-gorge-19980.herokuapp.com/api/v1';
-// export const baseURL = 'http://localhost:3000/api/v1';
+// export const baseURL = 'https://dekalbwebdev.net/api/v1';
+export const baseURL = 'http://localhost:3000/api/v1';
 
 
 export const fetchFunction = (route, method, data) => {

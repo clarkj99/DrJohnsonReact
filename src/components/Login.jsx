@@ -51,7 +51,7 @@ class Login extends React.Component {
     return (
       <Fragment>
         <Hero title="Login" />
-        <DemoUsers />
+        {/* <DemoUsers /> */}
         {error && <Message text={error} type="danger" />}
         <section className="section">
           <div className="container">

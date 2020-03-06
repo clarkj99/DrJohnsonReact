@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import BackArrow from "./BackArrow";
 import PatientBanner2 from "./PatientBanner2";
 import Checkbox from "./Checkbox";
+import { updatePatientHistory } from "../actions/rootActions";
 import { fetchFunction } from "../utils";
 
 class History extends React.Component {
@@ -187,4 +188,5 @@ const mapStateToProps = state => {
   return { history: state.user.selectedPatient.history };
 };
 
-export default connect(mapStateToProps)(History);
+const mapDispatchToProps = { updatePatientHistory };
+export default connect(mapStateToProps, mapDispatchToProps)(History);

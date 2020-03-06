@@ -38,6 +38,7 @@ class NewUser extends React.Component {
       user: this.state.signupUser
     })
       .then(res => {
+        console.log("new user", res);
         if (this.props.role === "patient") {
           this.props.selectPatient(res.user);
           this.props.addPatientToList(res.user);
