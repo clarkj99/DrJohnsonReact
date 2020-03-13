@@ -1,11 +1,11 @@
-// export const baseURL = 'https://dekalbwebdev.net/api/v1';
-export const baseURL = 'http://localhost:3000/api/v1';
+export const baseURL = 'https://dekalbwebdev.net/api/v1';
+// export const baseURL = 'http://localhost:3000/api/v1';
 
 
-export const fetchFunction = (route, method, data) => {
+export const fetchFunction = async (route, method, data) => {
 
     const params = (method !== "GET") && { body: JSON.stringify(data) }
-    return fetch(`${baseURL}/${route}`, {
+    const response = await fetch(`${baseURL}/${route}`, {
         method: method,
         headers: {
             "Content-Type": "application/json",
@@ -13,13 +13,10 @@ export const fetchFunction = (route, method, data) => {
         },
         ...params
     })
-        .then(response => {
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-            return response; //we only get here if there is no error
-        })
-        .then(res => res.json())
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return await response.json();
 
 };
 
