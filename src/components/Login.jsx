@@ -12,32 +12,32 @@ class Login extends React.Component {
     email: "",
     password: "",
     first_name: "",
-    last_name: ""
+    last_name: "",
   };
 
   state = {
     loginUser: { ...this.initalUser },
-    error: ""
+    error: "",
   };
 
-  handleLoginChange = e => {
+  handleLoginChange = (e) => {
     this.setState({
-      loginUser: { ...this.state.loginUser, [e.target.name]: e.target.value }
+      loginUser: { ...this.state.loginUser, [e.target.name]: e.target.value },
     });
   };
 
-  submitLogin = e => {
+  submitLogin = (e) => {
     e.preventDefault();
 
     fetchFunction("auth", "POST", {
-      user: this.state.loginUser
+      user: this.state.loginUser,
     })
-      .then(res => {
+      .then((res) => {
         localStorage.setItem("token", res.jwt);
         this.props.addLogin(res.user);
         this.props.history.push("/");
       })
-      .catch(res => {
+      .catch((res) => {
         this.setState({ error: res.message });
       });
   };
@@ -51,7 +51,7 @@ class Login extends React.Component {
     return (
       <Fragment>
         <Hero title="Login" />
-        {/* <DemoUsers /> */}
+        <DemoUsers />
         {error && <Message text={error} type="danger" />}
         <section className="section">
           <div className="container">
@@ -98,7 +98,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = {
-  addLogin
+  addLogin,
 };
 
 export default connect(null, mapDispatchToProps)(withRouter(Login));

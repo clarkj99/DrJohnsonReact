@@ -112,5 +112,5 @@ debounceSearch = e => {
   };
 ```
 
-- I needed e.persist() so React wouldn't reuse the synthetic event.
-- I had to invoke the debounced function instead of returning it.
+- Needed e.persist() so React wouldn't reuse the synthetic event.
+- Invoke the debounced function instead of returning it.
