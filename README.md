@@ -28,6 +28,7 @@ yarn create react-app frontend
 - [x] Admin Page to add new providers
 - [x] ICD-10 Lookup/Download
 - [x] Photo for Profile
+- [ ] Video chat
 - [ ] Alexa Skill (?)
 
 ## Notes
